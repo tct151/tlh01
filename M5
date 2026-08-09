@@ -29,13 +29,13 @@ OpenB.Visible = true OpenB.Style=BSR OpenB[TC3]=C3N(1,1,0)
 
 -- /////////////////////////////////////  BUTON OLUŞTURMA TOPLU  /////////////////////////////////////
 for i = 1,20 do Btn[i]=ins("TextButton") Btn[i][PR]=BtnF Btn[i][POS]=UD2(0,0,0,i*30+50) Btn[i][TX]=i
-    Btn[i][ST]=BSR Btn[i].Font=EFF Btn[i][TSZ]=19 Btn[i].Size=UD2(0,40,0,28) Btn[i][TC3]=C3N(0,1,1) end
+    Btn[i][ST]=BSR Btn[i].Font=EFF Btn[i][TSZ]=15 Btn[i].Size=UD2(0,40,0,28) Btn[i][TC3]=C3N(0,1,1) end
 	
-    for i = 21,37 do Btn[i]=ins("TextButton") Btn[i][PR]=BtnF Btn[i][POS]=UD2(0,100+(i-20)*sxx,0,-60) Btn[i][TX]=i
-    Btn[i][ST]=BSR Btn[i].Font=EFF Btn[i][TSZ]=18 Btn[i][SZ]=UD2(0,sxx,0,25) Btn[i][TC3]=C3N(1,1,0) end
+    for i = 21,37 do Btn[i]=ins("TextButton") Btn[i][PR]=BtnF Btn[i][POS]=UD2(0,(i-20)*sxx,0,-60) Btn[i][TX]=i
+    Btn[i][ST]=BSR Btn[i].Font=EFF Btn[i][TSZ]=15 Btn[i][SZ]=UD2(0,sxx,0,25) Btn[i][TC3]=C3N(1,1,0) end
 
-	for i=38,42   do Btn[i]=ins("TextButton") Btn[i][PR]=BtnF Btn[i][POS]=UD2(0,120+(i-20)*sxx,0,-60) Btn[i][TX]=i
-    Btn[i][ST]=BSR Btn[i].Font=EFF Btn[i][TSZ]=18 Btn[i][SZ]=UD2(0,sxx,0,25) Btn[i][TC3]=C3N(1,1,0) Btn[i][VS]=true 
+	for i=38,42   do Btn[i]=ins("TextButton") Btn[i][PR]=BtnF Btn[i][POS]=UD2(0,20+(i-20)*sxx,0,-60) Btn[i][TX]=i
+    Btn[i][ST]=BSR Btn[i].Font=EFF Btn[i][TSZ]=15 Btn[i][SZ]=UD2(0,sxx,0,25) Btn[i][TC3]=C3N(1,1,0) Btn[i][VS]=true 
 	Btn[i].MouseButton2Down:connect(function() PlyF[VS]=false for y=38,42 do Btn[y][ST]=BSR pasify() end end)
 	Btn[i].MouseButton1Down:connect(function() PlyF[VS]=true for y=38,42 do Btn[y][ST]=BSR end pasify() Btn[i][ST]=BSRD Oyuncular(Btn[i][TX]) end) end
 	
@@ -224,8 +224,8 @@ PlyN = {} function Oyuncular(e)
     for i,v in pairs(game.Players:GetChildren()) do l=i+42
 
 	
-    Btn[l]=ins("TextButton") Btn[l][PR]=PlyF Btn[l][POS]=UD2(0,1110,0,i*25-35) Btn[l][TX]=tostring(v.Name) PlyN[i]=tostring(v.Name)
-    Btn[l][ST]=BSR Btn[l].Font=EFF Btn[l][TSZ]=20 Btn[l].Size=UD2(0,200,0,27) Btn[l][TC3]=C3N(0,1,1)
+    Btn[l]=ins("TextButton") Btn[l][PR]=PlyF Btn[l][POS]=UD2(0,sxx*0.75,0,i*25-35) Btn[l][TX]=tostring(v.Name) PlyN[i]=tostring(v.Name)
+    Btn[l][ST]=BSR Btn[l].Font=EFF Btn[l][TSZ]=15 Btn[l].Size=UD2(0,sxx/10,0,27) Btn[l][TC3]=C3N(0,1,1)
 
 	if e=="GIT" then Btn[l].MouseButton1Down:connect(function() mesaj(prefix.."goto "..PlyN[i]) yaz(PlyN[i])  end) end
 	if e=="GETR" then Btn[l].MouseButton1Down:connect(function() mesaj(prefix.."bring "..PlyN[i]) yaz(PlyN[i]) end) end
