@@ -1,0 +1,339 @@
+
+
+
+HRT=game.Players.LocalPlayer.Character.HumanoidRootPart
+virtualUser = game:GetService('VirtualUser')
+ReplicatedStorage = game:GetService("ReplicatedStorage")
+remote = ReplicatedStorage.Remotes.Events.Request
+Players = game:GetService("Players")
+localPlayer = Players.LocalPlayer
+myName = localPlayer and localPlayer.Name or "tacet036"
+FReq=ReplicatedStorage.Remotes.Functions.Request
+EReq=ReplicatedStorage.Remotes.Events.Request
+character = localPlayer.Character or localPlayer.CharacterAdded:Wait()
+humanoid = character:WaitForChild("Humanoid")
+rootPart = character:WaitForChild("HumanoidRootPart")
+
+
+
+ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
+UD2 = UDim2.new    POS="Position"   BGT="BackgroundTransparency" SZ="Size" BSR=Enum.ButtonStyle.RobloxRoundDefaultButton 
+C3N = Color3.new   VN=Vector3.new   PR="Parent"      ST="Style"  VS="Visible"     EFF=Enum.Font.Fantasy EFD=Enum.FrameStyle.DropShadow  
+Btn={} ext=true
+
+MainG = ins("ScreenGui")  MainG[PR]=game.CoreGui MainG.Name="MainG"
+MainF = ins("Frame")      MainF[PR]=MainG
+BtnF  = ins("Frame")      BtnF[PR] =MainF
+PlyF  = ins("Frame")      PlyF[PR] =MainF
+
+local KapaB   = ins("TextButton") KapaB[PR]=MainG KapaB.Text="X"    KapaB[POS]=UD2(0,2,0,-5) KapaB.Size=UD2(0,31,0,27) KapaB.Font=EFF KapaB[TSZ]=20 
+KapaB.Visible = true KapaB.Style=BSR KapaB[TC3]=C3N(1,1,0)
+local OpenB   = ins("TextButton") OpenB[PR]=MainG OpenB[TX]="<<" OpenB[ST]=BSRD OpenB[POS]=UD2(0,32,0,-5) OpenB.Size=UD2(0,31,0,27) OpenB.Font=EFF 		OpenB[TSZ]=20 OpenB.Visible = true OpenB.Style=BSR OpenB[TC3]=C3N(1,1,0)
+local OpenE   = ins("TextButton") OpenE[PR]=MainG OpenE[TX]="0" OpenE[ST]=BSRD OpenE[POS]=UD2(0,225,0,-60) OpenE.Size=UD2(0,150,0,30) OpenE.Font=EFF 	 OpenE[TSZ]=23 OpenE.Visible = true OpenE.Style=BSR OpenE[TC3]=C3N(1,1,0)
+scbox  = ins("TextBox")    scbox[PR]=MainG scbox[POS]=UD2(0,225,0,-30)   scbox.Size=UD2(0,150,0,28) scbox.ClearTextOnFocus=false scbox.MultiLine=true scbox.Font = EFF scbox[TSZ]=18 scbox[TC3]=C3N(1,1,0) scbox[VS]=true scbox.Name="scbox" scbox[TX]=""
+
+function yaz(msg) game.StarterGui:SetCore('SendNotification',{Title='BILGI';Text=msg;Duration=2;}) end
+function hiz(i) localPlayer.Character:WaitForChild("Humanoid").WalkSpeed=i end
+
+
+
+
+for i = 1,20 do Btn[i]=ins("TextButton") Btn[i][PR]=BtnF Btn[i][POS]=UD2(0,0,0,i*25+50) Btn[i][TX]=i
+    Btn[i][ST]=BSR Btn[i].Font=EFF Btn[i][TSZ]=18 Btn[i].Size=UD2(0,120,0,27) Btn[i][TC3]=C3N(0,1,1) end
+
+KapaB  .MouseButton1Down:connect(function() for i=1,20 do Btn[i][ST]=BSR end ext=false MainG:Destroy() end)
+OpenB  .MouseButton1Down:connect(function() if OpenB[ST]==BSR then MainF[VS]=true OpenB[ST]=BSRD OpenB[TX]=">>" 
+											else MainF[VS]=false OpenB[ST]=BSR OpenB[TX]="<<" end end)
+
+for i = 1,15 do Btn[i].MouseButton1Down:connect(function() if Btn[i][ST]==BSR then Btn[i][ST]=BSRD else Btn[i][ST]=BSR end end) end
+
+
+	
+Btn[1][TX]="DIPPER"
+Btn[2][TX]="TOPLA"
+Btn[3][TX]="SAT"
+Btn[4][TX]="GEAR"
+Btn[5][TX]="AFK"
+Btn[6][TX]="OTOTAK"
+Btn[7][TX]="KOS"
+Btn[8][TX]="HONEY"
+Btn[9][TX]="BOSSBEE"
+Btn[10][TX]="RETRO"
+Btn[11][TX]=""
+Btn[12][TX]=""
+Btn[13][TX]="ARA"
+Btn[14][TX]="YAZ"
+Btn[15][TX]=""
+Btn[16][TX]="TEMIZLE"
+Btn[17][TX]="REFINE"
+Btn[18][TX]="URETIM"
+Btn[19][TX]="TOPLA"
+Btn[20][TX]=""
+
+
+
+
+task.spawn(function() while ext do task.wait() if Btn[1][ST]==BSRD then 
+	equipitem("Duality Dipper") 
+	for i=1,30 do remote:FireServer("ManualGather") task.wait() end end end end)
+
+
+
+
+task.spawn(function()
+    while ext do task.wait(1) if Btn[2][ST]==BSRD then myplotn() 
+        if myPlot and myPlot:FindFirstChild("Placed") then
+            local targetObject = myPlot.Placed:FindFirstChild("Equinox Vessel")
+            
+            if targetObject then
+                local args = {
+                    [1] = "CollectStructure",
+                    [2] = targetObject
+                }
+                EReq:FireServer(unpack(args))
+            end
+        end
+    end end
+end)
+
+
+
+
+List = {"Small Luck Potion","Small Yield Potion","Small Speed Potion",
+		"Medium Luck Potion","Medium Yield Potion","Medium Speed Potion",
+		"Large Luck Potion","Large Yield Potion","Large Speed Potion",
+		"Gear Accelerator","Pocket Watch","Golden Compass","Time Remote","Golden Hourglass"} li=0
+spawn(function() while ext do wait(1) if Btn[4][ST]==BSRD then if li>13 then li=0 end li=li+1
+	             FReq:InvokeServer("PurchaseGear",List[li]) end end end)
+
+	
+	
+spawn(function() while ext do wait(10) if Btn[5][ST]==BSRD then
+	game:GetService('VirtualUser'):SetKeyDown("k") wait(1) 
+	game:GetService('VirtualUser'):SetKeyUp("k") yaz("k") end end end)
+
+
+
+spawn(function() while ext do wait(3) if Btn[6][ST]==BSRD then  
+local localPlayer = game:GetService("Players").LocalPlayer
+local weatherTitle = localPlayer:WaitForChild("PlayerGui"):WaitForChild("HUD"):WaitForChild("ServerInfo"):WaitForChild("Weather"):WaitForChild("Title")
+if weatherTitle:FindFirstChild("Night") and durum ~= "Night" then yaz("Gece")
+    durum = "Night"
+    FReq:InvokeServer("EquipEquipment", "Lunar Sigil")
+elseif weatherTitle:FindFirstChild("Day") and durum ~= "Day" then yaz("Gündüz")
+    durum = "Day"
+    FReq:InvokeServer("EquipEquipment", "Nature Pendant")
+elseif weatherTitle:FindFirstChild("Rainy") and durum ~= "Rainy" then yaz("Yagmurlu")
+    durum = "Rainy"
+    FReq:InvokeServer("EquipEquipment", "Aqua Pendant")
+elseif weatherTitle:FindFirstChild("Blizzard") and durum ~= "Blizzard" then yaz("Karli")
+    durum = "Blizzard"
+    FReq:InvokeServer("EquipEquipment", "Aqua Pendant")
+elseif not weatherTitle:FindFirstChild("Night") and not weatherTitle:FindFirstChild("Day") and not weatherTitle:FindFirstChild("Rainy") and not weatherTitle:FindFirstChild("Blizzard") and durum ~= "Honey" then yaz("Diğer")
+    durum = "Honey"
+    FReq:InvokeServer("EquipEquipment", "Honey Pendant")
+end end end end)
+
+
+
+
+Btn[7].MouseButton2Down:connect(function() cf=localPlayer.Character.HumanoidRootPart.CFrame
+	xxu=cf.x yyu=cf.y zzu=cf.z Btn[7][ST]=BSRD yaz("KONUM ALINDI") end)
+
+	
+spawn(function() while ext do wait(1) if Btn[7][ST]==BSRD then
+	
+  hiz(10)
+  localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(xxu,yyu,zzu) 
+  for i=1,105 do
+  localPlayer.Character:WaitForChild("Humanoid").WalkToPoint=Vector3.new(xxu+1000,yyu,zzu) wait(.1) end
+ 
+else hiz(35) end end end)
+
+	
+
+
+
+--OpenE[TX] = workspace.Plots["1"].Placed.Sign["8"].Board.PlayerBillboard.Stats.Honey.Text
+task.spawn(function()
+    while ext do task.wait(1) if Btn[8][ST] == BSRD then 
+        myplotn()
+        if myPlot then
+				local stats = myPlot:FindFirstChild("Placed") 
+                and myPlot.Placed:FindFirstChild("Sign") 
+                and myPlot.Placed.Sign:FindFirstChild("8") 
+                and myPlot.Placed.Sign["8"]:FindFirstChild("Board") 
+                and myPlot.Placed.Sign["8"].Board:FindFirstChild("PlayerBillboard") 
+                and myPlot.Placed.Sign["8"].Board.PlayerBillboard:FindFirstChild("Stats") 
+                and myPlot.Placed.Sign["8"].Board.PlayerBillboard.Stats:FindFirstChild("Honey")
+            if stats then
+                OpenE[TX] = stats.Text
+            end
+        end
+    end end
+end)
+	
+
+	
+Btn[9].MouseButton1Down:connect(function() 
+		yy=-80 for k=1,7 do yy=yy+20 xx=-50 for l=1,4 do xx=xx+20 
+		equipitem("Boss Bee") wait(.7)
+		local args ={[1]="PlaceStructure",[2]={["orientation"]=180,["coords"]={[1]=xx,[2]=yy},
+			 ["tool"] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Boss Bee")}}
+		FReq:InvokeServer(unpack(args))
+		wait(.7) end end end)
+
+Btn[10].MouseButton1Down:connect(function() 
+		yy=80 for k=1,7 do yy=yy-20 xx=50 for l=1,4 do xx=xx-20 
+		equipitem("Retro Hive") wait(.7)
+		local args ={[1]="PlaceStructure",[2]={["orientation"]=180,["coords"]={[1]=xx,[2]=yy},
+			 ["tool"] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Retro Hive")}}
+		FReq:InvokeServer(unpack(args))
+		wait(.7) end end end)
+		
+	
+
+task.spawn(function() while ext do if Btn[13][ST]==BSRD then equipitem(scbox[TX]) end task.wait(3) end end)
+--Btn[13].MouseButton1Down:connect(function() equipitem(scbox[TX]) end)
+
+
+
+task.spawn(function() while ext do task.wait(3) if Btn[14][ST]==BSRD then 
+	player = game.Players.LocalPlayer
+	character = player.Character or player.CharacterAdded:Wait()
+	humanoid = character:WaitForChild("Humanoid")
+	equippedTool = character:FindFirstChildOfClass("Tool")
+	if equippedTool then
+		scbox[TX] = equippedTool.Name
+	else
+		scbox[TX] = "Yok"
+	end
+end end end)
+
+
+	
+Btn[16].MouseButton1Down:connect(function() FReq:InvokeServer("ClearPlot") end)
+Btn[17].MouseButton2Down:connect(function() if Btn[17][ST]==BSR then Btn[17][ST]=BSRD else Btn[17][ST]=BSR end end)
+Btn[17].MouseButton1Down:connect(function() if Btn[17][ST]==BSRD then equipitem(scbox[TX]) else equipitem("Hadron Refiner") end
+		yy=80 for k=1,7 do yy=yy-20 xx=50 for l=1,4 do xx=xx-20 
+		local args ={[1]="PlaceStructure",[2]={["orientation"]=180,["coords"]={[1]=xx,[2]=yy},
+			 ["tool"] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Hadron Refiner")}}
+		FReq:InvokeServer(unpack(args))
+		wait(.1) end end end)
+
+		
+		
+
+		
+Btn[18].MouseButton1Down:Connect(function()
+    local urett = scbox[TX]
+    if not urett or urett == "" then 
+        yaz("URETILECEK ITEM SECILMEDI")
+        return 
+    end
+
+    yaz(urett .. " URETILIYOR")
+    equipitem(urett)
+    task.wait(0.7)
+
+    myplotn() -- myPlot değişkenini günceller
+    yaz(tostring(myPlot))
+
+    local remote = game:GetService("ReplicatedStorage").Remotes.Functions.Request
+
+    -- Doğrudan myPlot üzerinden Placed klasörüne erişim
+    if myPlot and myPlot:FindFirstChild("Placed") then
+        local placedFolder = myPlot.Placed
+        
+        for _, item in ipairs(placedFolder:GetChildren()) do
+            if item.Name == "Hadron Refiner" then
+                local args = {
+                    [1] = "StartRefine",
+                    [2] = urett,
+                    [3] = item
+                }
+                remote:InvokeServer(unpack(args))
+                task.wait(0.1)
+            end
+        end
+    else
+        yaz("PLOT BULUNAMADI")
+    end
+end)
+
+
+
+
+
+		
+Btn[19].MouseButton1Down:Connect(function()
+    yaz("TOPLANIYOR")
+    myplotn() -- myPlot değişkenini günceller
+    
+    if myPlot and myPlot:FindFirstChild("Placed") then
+        local placedFolder = myPlot.Placed
+        
+        for _, item in ipairs(placedFolder:GetChildren()) do
+            if item.Name == "Hadron Refiner" then
+                local args = {
+                    [1] = "ClaimRefine",
+                    [2] = item
+                }
+                FReq:InvokeServer(unpack(args))
+                task.wait(0.1)
+            end
+        end
+    else
+        yaz("PLOT BULUNAMADI")
+    end
+end)
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+function equipitem(i) 
+	player = game.Players.LocalPlayer	
+	character = player.Character or player.CharacterAdded:Wait()
+	humanoid = character:WaitForChild("Humanoid")
+	tool = player.Backpack:FindFirstChild(i)
+	if tool then humanoid:EquipTool(tool) end end 
+	
+
+
+myPlot = nil
+
+function myplotn()
+    for _, plot in ipairs(workspace.Plots:GetChildren()) do
+        if plot:GetAttribute("Taken") == myName then
+            myPlot = plot -- tostring() KALDIRILDI, nesne olarak saklanıyor
+            break
+        end
+    end
+end
+
+
+
+
+
+
+
+
+
+
+
+
