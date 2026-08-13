@@ -1,0 +1,311 @@
+
+-- MY  BEEEE  EMPIIREEE
+
+HRT=game.Players.LocalPlayer.Character.HumanoidRootPart
+virtualUser = game:GetService('VirtualUser')
+ReplicatedStorage = game:GetService("ReplicatedStorage")
+Players = game:GetService("Players")
+localPlayer = Players.LocalPlayer
+character = localPlayer.Character or localPlayer.CharacterAdded:Wait()
+humanoid = character:WaitForChild("Humanoid")
+rootPart = character:WaitForChild("HumanoidRootPart")
+remote = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("HoneyCombCollectRequest")
+localHoneyCombs = workspace:WaitForChild("LocalHoneyCombs")
+
+
+ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
+UD2 = UDim2.new    POS="Position"   BGT="BackgroundTransparency" SZ="Size" BSR=Enum.ButtonStyle.RobloxRoundDefaultButton 
+C3N = Color3.new   VN=Vector3.new   PR="Parent"      ST="Style"  VS="Visible"     EFF=Enum.Font.Fantasy EFD=Enum.FrameStyle.DropShadow  
+Btn={} ext=true
+
+MainG = ins("ScreenGui")  MainG[PR]=game.CoreGui MainG.Name="MainG"
+MainF = ins("Frame")      MainF[PR]=MainG
+BtnF  = ins("Frame")      BtnF[PR] =MainF
+PlyF  = ins("Frame")      PlyF[PR] =MainF
+
+local KapaB   = ins("TextButton") KapaB[PR]=MainG KapaB.Text="X"    KapaB[POS]=UD2(0,2,0,-5) KapaB.Size=UD2(0,31,0,27) KapaB.Font=EFF KapaB[TSZ]=20 
+KapaB.Visible = true KapaB.Style=BSR KapaB[TC3]=C3N(1,1,0)
+local OpenB   = ins("TextButton") OpenB[PR]=MainG OpenB[TX]="<<" OpenB[ST]=BSRD OpenB[POS]=UD2(0,32,0,-5) OpenB.Size=UD2(0,31,0,27) OpenB.Font=EFF 		OpenB[TSZ]=20 OpenB.Visible = true OpenB.Style=BSR OpenB[TC3]=C3N(1,1,0)
+local OpenE   = ins("TextButton") OpenE[PR]=MainG OpenE[TX]=1 OpenE[ST]=BSRD OpenE[POS]=UD2(0,225,0,-60) OpenE.Size=UD2(0,150,0,30) OpenE.Font=EFF 	 OpenE[TSZ]=23 OpenE.Visible = true OpenE.Style=BSR OpenE[TC3]=C3N(1,1,0)
+scbox  = ins("TextBox")    scbox[PR]=MainG scbox[POS]=UD2(0,225,0,-30)   scbox.Size=UD2(0,150,0,28) scbox.ClearTextOnFocus=false scbox.MultiLine=true scbox.Font = EFF scbox[TSZ]=18 scbox[TC3]=C3N(1,1,0) scbox[VS]=true scbox.Name="scbox" scbox[TX]=""
+
+function yaz(msg) game.StarterGui:SetCore('SendNotification',{Title='BILGI';Text=msg;Duration=2;}) end
+function hiz(i) localPlayer.Character:WaitForChild("Humanoid").WalkSpeed=i end
+
+
+
+
+for i = 1,20 do Btn[i]=ins("TextButton") Btn[i][PR]=BtnF Btn[i][POS]=UD2(0,0,0,i*25+50) Btn[i][TX]=i
+    Btn[i][ST]=BSR Btn[i].Font=EFF Btn[i][TSZ]=18 Btn[i].Size=UD2(0,120,0,27) Btn[i][TC3]=C3N(0,1,1) end
+
+KapaB  .MouseButton1Down:connect(function() for i=1,20 do Btn[i][ST]=BSR end ext=false MainG:Destroy() end)
+OpenB  .MouseButton1Down:connect(function() if OpenB[ST]==BSR then MainF[VS]=true OpenB[ST]=BSRD OpenB[TX]=">>" 
+											else MainF[VS]=false OpenB[ST]=BSR OpenB[TX]="<<" end end)
+
+for i = 1,20 do Btn[i].MouseButton2Down:connect(function() if Btn[i][ST]==BSR then Btn[i][ST]=BSRD else Btn[i][ST]=BSR end end) end
+
+
+	
+Btn[1][TX]="TOPLA"
+Btn[2][TX]="ARI AL"
+Btn[3][TX]="MERGE"
+Btn[4][TX]="TAKAS"
+Btn[5][TX]="AL"
+Btn[6][TX]="UPG 3X"
+Btn[7][TX]="EGG OPN"
+Btn[8][TX]="EGG AL"
+Btn[9][TX]="REBIRT"
+Btn[10][TX]="AFK"
+Btn[11][TX]=""
+Btn[12][TX]=""
+Btn[13][TX]=""
+Btn[14][TX]=""
+Btn[15][TX]=""
+Btn[16][TX]=""
+Btn[17][TX]=""
+Btn[18][TX]=""
+Btn[19][TX]="AKTF"
+Btn[20][TX]="PSIF"
+
+
+eb=0
+OpenE.MouseButton1Down:connect(function() eb=eb+1 if eb>6 then eb=1 end OpenE[TX]=eb end)
+
+
+
+
+spawn(function() while ext do wait(.1) if Btn[1][ST]==BSRD then for i=1,25 do topla() task.wait(0.01) end
+end end end)
+
+
+
+Btn[2].MouseButton1Down:connect(function() arial(5) end)
+spawn(function() while ext do wait(1) if Btn[2][ST]==BSRD then arial(1000) arial(100) arial(25) arial(5) arial(1)
+end end end)
+	
+	
+spawn(function() while ext do wait(1.7) if Btn[3][ST]==BSRD then merge()
+end end end)
+	
+	
+spawn(function() while ext do wait(1.9) if Btn[4][ST]==BSRD then takas()
+end end end)	
+	
+
+	
+spawn(function() while ext do wait(1.8) if Btn[5][ST]==BSRD then albutonu()
+end end end)	
+	
+
+spawn(function() while ext do wait(2.1) if Btn[6][ST]==BSRD then upg3x()
+end end end)	
+	
+	
+	
+spawn(function() while ext do wait(2.2) if Btn[7][ST]==BSRD then openegg()
+end end end)	
+	
+	
+spawn(function() while ext do wait(2.5) if Btn[8][ST]==BSRD then eggtola()
+end end end)	
+	
+
+spawn(function() while ext do wait(5) if Btn[9][ST]==BSRD then rebirt()
+end end end)	
+	
+	
+-- AFK
+spawn(function() while ext do wait(10) if Btn[10][ST]==BSRD then
+	game:GetService('VirtualUser'):SetKeyDown("k") wait(1) 
+	game:GetService('VirtualUser'):SetKeyUp("k") yaz("k") end end end)
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+Btn[19].MouseButton1Down:connect(function() for i=1,10 do Btn[i][ST]=BSRD end end)
+Btn[20].MouseButton1Down:connect(function() for i=1,10 do Btn[i][ST]=BSR end end)
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+function topla()
+
+for _, comb in ipairs(localHoneyCombs:GetChildren()) do
+    local handle = comb:FindFirstChild("Handle") or comb.PrimaryPart
+    
+    if handle then
+        -- İsmin sonundaki 4 haneli sayıyı çeker (Örn: Basic_LocalHoneyComb_4536 -> 4536)
+        local combId = tonumber(string.match(comb.Name, "%d+"))
+        
+        if combId then
+            local args = {
+                [1] = combId,
+                [2] = handle.Position
+            }
+            
+            remote:FireServer(unpack(args))
+            task.wait(0.01) -- Sunucuya aşırı yüklenip spama düşmemesi için minik bir ara
+        end
+    end
+end
+
+end
+
+--workspace.Plots:FindFirstChild("Plot_" .. tostring(be)).Buttons.BuyBeeButtons.BuyBee5.Upgrade
+--.BuyBeeButtons:FindFirstChild("BuyBee" .. tostring(i)).
+--.Plot_1.
+--:FindFirstChild("Plot_" .. tostring(be)).
+
+
+function arial(i)
+
+local i = 5 -- Değişken (1, 5, 25, 100, 1000 vb.)
+local upgradePart = workspace.Plots.Plot_1.Buttons.BuyBeeButtons:FindFirstChild("BuyBee" .. tostring(i)).Upgrade
+
+local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+local rootPart = character:WaitForChild("HumanoidRootPart")
+
+firetouchinterest(rootPart, upgradePart, 0)
+task.wait(0.1)
+firetouchinterest(rootPart, upgradePart, 1)
+Wait(.2)
+
+end
+
+
+
+function merge()
+	
+
+local targetPart = workspace.Plots.Plot_1.Buttons.MergeBtn.MergeButton
+local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+local rootPart = character:WaitForChild("HumanoidRootPart")
+
+if targetPart then
+    -- Dokunma sinyalini başlat (Touch)
+    firetouchinterest(rootPart, targetPart, 0)
+    task.wait(0.02)
+    -- Dokunma sinyalini bitir (Untouch)
+    firetouchinterest(rootPart, targetPart, 1)
+end
+
+
+end
+
+
+
+
+function takas()
+
+
+local targetPart = workspace.Plots.Plot_1.Buttons.SellBtn.SellButton
+local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+local rootPart = character:WaitForChild("HumanoidRootPart")
+
+if targetPart then
+    firetouchinterest(rootPart, targetPart, 0)
+    task.wait(0.02)
+    firetouchinterest(rootPart, targetPart, 1)
+end
+
+end
+
+
+function albutonu()
+
+
+
+local targetPart = workspace.Plots.Plot_1.Buttons.ClaimBtn.ClaimButton
+local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+local rootPart = character:WaitForChild("HumanoidRootPart")
+
+if targetPart then
+    firetouchinterest(rootPart, targetPart, 0)
+    task.wait(0.02)
+    firetouchinterest(rootPart, targetPart, 1)
+end
+
+end
+
+
+
+
+function upg3x()  --UpExchange    teklisi
+
+
+local targetPart = workspace.Plots.Plot_1.Buttons.UpExchange10.Upgrade
+local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+local rootPart = character:WaitForChild("HumanoidRootPart")
+
+if targetPart then
+    firetouchinterest(rootPart, targetPart, 0)
+    task.wait(0.02)
+    firetouchinterest(rootPart, targetPart, 1)
+end
+
+
+end
+
+
+
+
+function openegg()
+
+for i=1,25 do 
+game:GetService("ReplicatedStorage").Remotes.ChestOpenRequest:FireServer() wait(.2) end
+game:GetService("ReplicatedStorage").Remotes.ChestCancelRequest:FireServer()
+
+
+end
+
+
+
+function eggtola()
+
+local spawnedChests = workspace.Plots.Plot_1.SpawnedChests
+local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+local rootPart = character:WaitForChild("HumanoidRootPart")
+
+for _, item in ipairs(spawnedChests:GetDescendants()) do
+    if item:IsA("BasePart") and item.Name == "Handle" then
+        firetouchinterest(rootPart, item, 0)
+        task.wait(0.02)
+        firetouchinterest(rootPart, item, 1)
+		break
+    end
+end
+
+
+end
+
+
+function   rebirt()
+
+game:GetService("ReplicatedStorage").Remotes.RebirthRequest:FireServer()
+
+
+end
+
+
+
