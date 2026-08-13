@@ -53,7 +53,7 @@ Btn[24][TX]="UC"
 Btn[25][TX]="ESYA"
 Btn[26][TX]="ZIPLA"
 Btn[27][TX]="GIZLI"
-Btn[28][TX]="----"
+Btn[28][TX]="DEX"
 Btn[29][TX]="DASH"
 Btn[30][TX]="ZEMN"
 Btn[31][TX]="CAM"
@@ -111,7 +111,7 @@ Btn[24].MouseButton2Down:connect(function() mesaj(prefix.."unfly")  Btn[24][ST]=
 Btn[25].MouseButton1Down:connect(function() mesaj(prefix.."btools")    end) 
 Btn[26].MouseButton1Down:connect(function() sinirsizzipla() yaz("SINIRSIZ ZIPLA AKTIF")   end) 
 Btn[27].MouseButton1Down:connect(function() loadstring(game:HttpGet('https://pastebin.com/raw/3Rnd9rHf'))()    end) 
-Btn[28].MouseButton1Down:connect(function() loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))() end) 
+Btn[28].MouseButton1Down:connect(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/nuIIism/scripts/main/dex.lua"))() end) 
 Btn[29].MouseButton1Down:connect(function() loadstring(game:HttpGet("https://gist.githubusercontent.com/ThailandExpl0it111/d80b700e94b518f1c3ebaa8d9f0688de/raw/9e6e09fa54a2de460d602b8a4487631002729362/DashAbilityUNiversal"))()
  end) 
 
