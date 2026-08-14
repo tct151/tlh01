@@ -8,7 +8,7 @@ speedfly = Hizd  -- bunu ben eğiştirdim
 HRT=game.Players.LocalPlayer.Character.HumanoidRootPart
 virtualUser = game:GetService('VirtualUser')
 sxx = game.workspace.CurrentCamera.ViewportSize.X
-
+talhaa()
 
 ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
 UD2 = UDim2.new    POS="Position"   BGT="BackgroundTransparency" SZ="Size" BSR=Enum.ButtonStyle.RobloxRoundDefaultButton 
@@ -4396,8 +4396,37 @@ end
 
 
 
+function talhaa()
 
 
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- ScreenGui Oluştur
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "TalhaGui"
+screenGui.Parent = playerGui
+
+-- TextLabel Oluştur
+local textLabel = Instance.new("TextLabel")
+textLabel.Parent = screenGui
+textLabel.Size = UDim2.new(0.9, 0, 0.3, 0)
+textLabel.Position = UDim2.new(0.05, 0, 0.35, 0)
+textLabel.BackgroundTransparency = 1
+textLabel.Text = "TALHA NE YAPIYORSUN ???"
+textLabel.TextColor3 = Color3.fromRGB(255, 0, 0) -- Kırmızı renk
+textLabel.TextScaled = true
+textLabel.Font = Enum.Font.FredokaOne
+textLabel.TextStrokeTransparency = 0 -- Siyah dış çizgi
+
+-- 3 Saniye bekle ve kaldır
+task.wait(3)
+screenGui:Destroy()
+
+
+
+end
 
 
 
