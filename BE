@@ -229,8 +229,8 @@ end
 
 function takas()
 
-
-local targetPart = workspace.Plots["Plot_"..be].Buttons.SellBtn.SellButton
+rrrr=3
+local targetPart = workspace.Plots["Plot_".. rrrr ].Buttons.SellBtn.SellButton
 local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
 local rootPart = character:WaitForChild("HumanoidRootPart")
 
