@@ -42,7 +42,7 @@ KapaB  .MouseButton1Down:connect(function() for i=1,20 do Btn[i][ST]=BSR end ext
 OpenB  .MouseButton1Down:connect(function() if OpenB[ST]==BSR then MainF[VS]=true OpenB[ST]=BSRD OpenB[TX]=">>" 
 											else MainF[VS]=false OpenB[ST]=BSR OpenB[TX]="<<" end end)
 
-for i = 1,20 do Btn[i].MouseButton2Down:connect(function() if Btn[i][ST]==BSR then Btn[i][ST]=BSRD else Btn[i][ST]=BSR end end) end
+for i = 1,20 do Btn[i].MouseButton1Down:connect(function() if Btn[i][ST]==BSR then Btn[i][ST]=BSRD else Btn[i][ST]=BSR end end) end
 
 
 	
@@ -79,7 +79,7 @@ end end end)
 
 
 
-Btn[2].MouseButton1Down:connect(function() arial(5) end)
+--Btn[2].MouseButton1Down:connect(function() arial(5) end)
 spawn(function() while ext do wait(1) if Btn[2][ST]==BSRD then arial(1000) arial(100) arial(25) arial(5) arial(1)
 end end end)
 	
