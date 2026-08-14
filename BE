@@ -175,13 +175,13 @@ end
 
 
 
---workspace.Plots:FindFirstChild("Plot_" .. tostring(be)).Buttons.BuyBeeButtons.BuyBee5.Upgrade
+--workspace.Plots:FindFirstChild("Plot_" .. tostring(eb)).Buttons.BuyBeeButtons.BuyBee5.Upgrade
 --.BuyBeeButtons:FindFirstChild("BuyBee" .. tostring(i)).
 --.Plot_1.
---:FindFirstChild("Plot_" .. tostring(be)).
+--:FindFirstChild("Plot_" .. tostring(eb)).
 --workspace.Plots.Plot_1.Buttons.BuyBeeButtons
 --be=1
---workspace.Plots["Plot_"..be].Buttons.BuyBeeButtons
+--workspace.Plots["Plot_"..eb].Buttons.BuyBeeButtons
 
 
 
@@ -192,7 +192,7 @@ end
 function arial(i)
 
 local i = 5 -- Değişken (1, 5, 25, 100, 1000 vb.)
-local upgradePart = workspace.Plots["Plot_"..be].Buttons.BuyBeeButtons:FindFirstChild("BuyBee" .. tostring(i)).Upgrade
+local upgradePart = workspace.Plots["Plot_"..eb].Buttons.BuyBeeButtons:FindFirstChild("BuyBee" .. tostring(i)).Upgrade
 
 local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
 local rootPart = character:WaitForChild("HumanoidRootPart")
@@ -209,7 +209,7 @@ end
 function merge()
 	
 
-local targetPart = workspace.Plots["Plot_"..be].Buttons.MergeBtn.MergeButton
+local targetPart = workspace.Plots["Plot_"..eb].Buttons.MergeBtn.MergeButton
 local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
 local rootPart = character:WaitForChild("HumanoidRootPart")
 
@@ -247,7 +247,7 @@ function albutonu()
 
 
 
-local targetPart = workspace.Plots["Plot_"..be].Buttons.ClaimBtn.ClaimButton
+local targetPart = workspace.Plots["Plot_"..eb].Buttons.ClaimBtn.ClaimButton
 local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
 local rootPart = character:WaitForChild("HumanoidRootPart")
 
@@ -265,7 +265,7 @@ end
 function upg3x()  --UpExchange    teklisi
 
 
-local targetPart = workspace.Plots["Plot_"..be].Buttons.UpExchange10.Upgrade
+local targetPart = workspace.Plots["Plot_"..eb].Buttons.UpExchange10.Upgrade
 local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
 local rootPart = character:WaitForChild("HumanoidRootPart")
 
@@ -294,7 +294,7 @@ end
 
 function eggtola()
 
-local spawnedChests = workspace.Plots["Plot_"..be].SpawnedChests
+local spawnedChests = workspace.Plots["Plot_"..eb].SpawnedChests
 local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
 local rootPart = character:WaitForChild("HumanoidRootPart")
 
