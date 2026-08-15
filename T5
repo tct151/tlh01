@@ -71,8 +71,8 @@ Btn[41][TX]="TAKP2"
 Btn[42][TX]="GETR"
 Btn[51][TX]="SPIN"
 Btn[52][TX]="HBOX"
+Btn[53][TX]="TEKME"
 Btn[60][TX]="ADMIN"
-
 
 
 
@@ -131,7 +131,9 @@ Btn[30].MouseButton1Down:connect(function() ZEMINKOY() game.Workspace.AAA.Sp1.Si
 Btn[30].MouseButton2Down:connect(function() game.Workspace.AAA.Sp1:Destroy()  Btn[30][ST]=BSR   end) 
 Btn[51].MouseButton1Down:connect(function() spinsc() yaz("SPIN ACILDI") Btn[51][ST]=BSRD end) 
 Btn[52].MouseButton1Down:connect(function() hitboxsc() yaz("HITBOX ACILDI") Btn[52][ST]=BSRD end) 
+Btn[53].MouseButton1Down:connect(function() loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-THE-REAL-dropkick-177199"))() Btn[53][ST]=BSRD end) 
 Btn[60].MouseButton1Down:connect(function() loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Sky-Hub-10706"))() yaz("SKY ADMIN ACILDI") Btn[60][ST]=BSRD end) 
+
 
 
 
