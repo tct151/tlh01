@@ -79,35 +79,35 @@ Btn[1].MouseButton2Down:connect(function() Hizd=Hizd/1.25 hiz(Hizd) yaz(tostring
 Btn[2].MouseButton1Down:connect(function() Zpld=Zpld*1.25 zip(Zpld) yaz(tostring(Zpld)) end)
 Btn[2].MouseButton2Down:connect(function() Zpld=Zpld/1.25 zip(Zpld) yaz(tostring(Zpld)) end)
 Btn[3].MouseButton1Down:connect(function() Workspace.CurrentCamera.FieldOfView=(Workspace.CurrentCamera.FieldOfView)*1.05 end)
-Btn[3].MouseButton2Down:connect(function() Workspace.CurrentCamera.FieldOfView=(Workspace.CurrentCamera.FieldOfView)/1.05 end)
+Btn[3].MouseButton1Down:connect(function() Workspace.CurrentCamera.FieldOfView=(Workspace.CurrentCamera.FieldOfView)/1.05 end)
 
 
 
-Btn[4].MouseButton2Down:connect(function() if Btn[4][ST]==BSR then Btn[4][ST]=BSRD else Btn[4][ST]=BSR end end) 
+Btn[4].MouseButton1Down:connect(function() if Btn[4][ST]==BSR then Btn[4][ST]=BSRD else Btn[4][ST]=BSR end end) 
 
 
-Btn[5].MouseButton2Down:connect(function() if Btn[5][ST]==BSR then Btn[5][ST]=BSRD else Btn[5][ST]=BSR end end) 
+Btn[5].MouseButton1Down:connect(function() if Btn[5][ST]==BSR then Btn[5][ST]=BSRD else Btn[5][ST]=BSR end end) 
 
-Btn[6].MouseButton2Down:connect(function() if Btn[6][ST]==BSR then Btn[6][ST]=BSRD else Btn[6][ST]=BSR end end) 
+Btn[6].MouseButton1Down:connect(function() if Btn[6][ST]==BSR then Btn[6][ST]=BSRD else Btn[6][ST]=BSR end end) 
 
 
 Btn[7].MouseButton1Down:connect(function() git(-4940,3,-497) end)
-Btn[7].MouseButton2Down:connect(function() if Btn[7][ST]==BSR then Btn[7][ST]=BSRD else Btn[7][ST]=BSR end end) 
+Btn[7].MouseButton1Down:connect(function() if Btn[7][ST]==BSR then Btn[7][ST]=BSRD else Btn[7][ST]=BSR end end) 
 
 
-Btn[8].MouseButton2Down:connect(function() if Btn[8][ST]==BSR then Btn[8][ST]=BSRD else Btn[8][ST]=BSR end end) 
+Btn[8].MouseButton1Down:connect(function() if Btn[8][ST]==BSR then Btn[8][ST]=BSRD else Btn[8][ST]=BSR end end) 
 
 
-Btn[9].MouseButton2Down:connect(function() if Btn[9][ST]==BSR then Btn[9][ST]=BSRD else Btn[9][ST]=BSR end end) 
+Btn[9].MouseButton1Down:connect(function() if Btn[9][ST]==BSR then Btn[9][ST]=BSRD else Btn[9][ST]=BSR end end) 
 
 
-Btn[10].MouseButton2Down:connect(function() if Btn[10][ST]==BSR then Btn[10][ST]=BSRD else Btn[10][ST]=BSR end end) 
-Btn[13].MouseButton2Down:connect(function() if Btn[13][ST]==BSR then Btn[13][ST]=BSRD else Btn[13][ST]=BSR end end) 
-Btn[14].MouseButton2Down:connect(function() if Btn[14][ST]==BSR then Btn[14][ST]=BSRD else Btn[14][ST]=BSR end end) 
-Btn[16].MouseButton2Down:connect(function() if Btn[16][ST]==BSR then Btn[16][ST]=BSRD else Btn[16][ST]=BSR end end) 
-Btn[17].MouseButton2Down:connect(function() if Btn[17][ST]==BSR then Btn[17][ST]=BSRD else Btn[17][ST]=BSR end end) 
-Btn[34].MouseButton2Down:connect(function() if Btn[34][ST]==BSR then Btn[34][ST]=BSRD else Btn[34][ST]=BSR end end) 
-Btn[35].MouseButton2Down:connect(function() if Btn[35][ST]==BSR then Btn[35][ST]=BSRD else Btn[35][ST]=BSR end end) 
+Btn[10].MouseButton1Down:connect(function() if Btn[10][ST]==BSR then Btn[10][ST]=BSRD else Btn[10][ST]=BSR end end) 
+Btn[13].MouseButton1Down:connect(function() if Btn[13][ST]==BSR then Btn[13][ST]=BSRD else Btn[13][ST]=BSR end end) 
+Btn[14].MouseButton1Down:connect(function() if Btn[14][ST]==BSR then Btn[14][ST]=BSRD else Btn[14][ST]=BSR end end) 
+Btn[16].MouseButton1Down:connect(function() if Btn[16][ST]==BSR then Btn[16][ST]=BSRD else Btn[16][ST]=BSR end end) 
+Btn[17].MouseButton1Down:connect(function() if Btn[17][ST]==BSR then Btn[17][ST]=BSRD else Btn[17][ST]=BSR end end) 
+Btn[34].MouseButton1Down:connect(function() if Btn[34][ST]==BSR then Btn[34][ST]=BSRD else Btn[34][ST]=BSR end end) 
+Btn[35].MouseButton1Down:connect(function() if Btn[35][ST]==BSR then Btn[35][ST]=BSRD else Btn[35][ST]=BSR end end) 
 
 
 
