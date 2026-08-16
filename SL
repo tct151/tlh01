@@ -1,0 +1,1385 @@
+
+
+ReplicatedStorage = game:GetService("ReplicatedStorage")
+Players = game:GetService("Players")
+Workspace = game:GetService("Workspace")
+pname=game.Players.LocalPlayer.Name
+LocalPlayer = Players.LocalPlayer
+--HRT  = Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+HRT  = Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") --arama yaptￄﾱￄﾟￄﾱ iￃﾧin bulamayￄﾱnca es geￃﾧiyor bu iyi
+virtualUser = game:GetService('VirtualUser')
+
+function yaz(msg) game.StarterGui:SetCore('SendNotification',{Title='MYBOT';Text=msg;Duration=1;}) end
+for i,v in pairs(game.CoreGui:GetChildren()) do if tostring(v.Name)=="MainG" then for k,vv in pairs(v:GetDescendants()) do 
+vv:Destroy() end v:Destroy() end end wait(1) getgenv().mypro=true atakhiz=10 --normai .1  hￄﾱzlￄﾱ .02
+
+Hizd = math.floor(LocalPlayer.Character:WaitForChild("Humanoid").WalkSpeed)
+Zpld = math.floor(LocalPlayer.Character:WaitForChild("Humanoid").JumpPower)
+
+ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
+UD2 = UDim2.new    POS="Position"   BGT="BackgroundTransparency" SZ="Size" BSR=Enum.ButtonStyle.RobloxRoundDefaultButton 
+C3N = Color3.new   VN=Vector3.new   PR="Parent"      ST="Style"  VS="Visible"     EFF=Enum.Font.Fantasy EFD=Enum.FrameStyle.DropShadow  
+
+Btn={} BtnTx={}
+MainG = ins("ScreenGui")  MainG[PR]=game.CoreGui MainG.Name="MainG"
+MainF = ins("Frame")      MainF[PR]=MainG
+BtnF  = ins("Frame")      BtnF[PR] =MainF
+PlyF  = ins("Frame")      PlyF[PR] =MainF
+
+local KapaB   = ins("TextButton") KapaB[PR]=MainG KapaB.Text="X"    KapaB[POS]=UD2(0,2,0,-5) KapaB.Size=UD2(0,31,0,27) KapaB.Font=EFF KapaB[TSZ]=20 
+KapaB[VS] = true KapaB.Style=BSR KapaB[TC3]=C3N(1,1,0)
+local OpenB   = ins("TextButton") OpenB[PR]=MainG OpenB[TX]="<<"    OpenB[POS]=UD2(0,32,0,-5) OpenB.Size=UD2(0,31,0,27) OpenB.Font=EFF OpenB[TSZ]=20 
+OpenB[VS] = true OpenB.Style=BSR OpenB[TC3]=C3N(1,1,0)
+local ScnB   = ins("TextButton") ScnB[PR]=MainG ScnB[TX]="E"    ScnB[POS]=UD2(0,62,0,-5) ScnB.Size=UD2(0,31,0,27) ScnB.Font=EFF ScnB[TSZ]=20 
+ScnB[VS] = true ScnB.Style=BSR ScnB[TC3]=C3N(1,1,0)
+scbox=ins("TextBox") scbox[PR]=MainG scbox[POS]=UD2(0,80,0,100) scbox.Size=UD2(0,360,0,657) scbox.ClearTextOnFocus=false scbox.MultiLine=true 
+scbox.Font = EFF scbox[TSZ]=17 scbox[TC3]=C3N(10,0,0) scbox[VS]=false scbox.Name="scbox" scbox[TX]=""
+
+for i=1,18 do Btn[i]=ins("TextButton") Btn[i][PR]=BtnF Btn[i][POS]=UD2(0,(i)*70,0,-60) Btn[i][TX]=i
+Btn[i][ST]=BSR Btn[i].Font=EFF Btn[i][TSZ]=15 Btn[i][SZ]=UD2(0,70,0,20) Btn[i][TC3]=C3N(1,1,0) end
+
+for i = 25,44 do Btn[i]=ins("TextButton") Btn[i][PR]=BtnF Btn[i][POS]=UD2(0,0,0,(i-24)*25+70) Btn[i][TX]=i
+    Btn[i][ST]=BSR Btn[i].Font=EFF Btn[i][TSZ]=18 Btn[i].Size=UD2(0,80,0,27) Btn[i][TC3]=C3N(0,1,1) Btn[i][VS]=true end
+
+-- KAYDET VE ISINLAN BUTONLARI
+Knm = {} for i = 1,10 do Btn[34+i].MouseButton2Down:connect(function() 
+Knm[i*3-2]=HRT.CFrame.x Knm[i*3-1]=HRT.CFrame.y Knm[i*3-0]=HRT.CFrame.z syaz("koor") syaz(Knm[i*3-2]) syaz(Knm[i*3-1]) syaz(Knm[i*3-0])
+Btn[34+i][ST]=BSRD Btn[34+i][TC3]=C3N(1,1,0) end)
+Btn[34+i].MouseButton1Down:connect(function() git(Knm[i*3-2],Knm[i*3-1],Knm[i*3-0]) end) end
+
+
+VirtualUser=game:service'VirtualUser' LocalPlayer.Idled:connect(function() --20 DAKIKA HATASI ICIN
+VirtualUser:CaptureController() VirtualUser:ClickButton2(Vector2.new()) end) 
+if not workspace:FindFirstChild("AAA") then f=ins("Folder",workspace) f.Name="AAA" end
+for i,v in pairs(Workspace.AAA:GetChildren()) do v:Destroy() end
+for i=1,10 do p=ins("Part") p[PR]=Workspace.AAA p.Name="Sp"..i p.Anchored=true p.Size=Vector3.new(20,1,20) end
+
+KapaB  .MouseButton1Down:connect(function() getgenv().mypro=false MainG:Destroy() end)
+OpenB  .MouseButton1Down:connect(function() if MainF[VS]==true then MainF[VS]=false OpenB[TX]=">>" else MainF[VS]=true OpenB[TX]="<<" end end)
+ScnB   .MouseButton1Down:connect(function() if scbox[VS]==true then scbox[VS]=false else scbox[VS]=true end end)
+function hiz(i) LocalPlayer.Character:WaitForChild("Humanoid").WalkSpeed=i end
+function zip(i) LocalPlayer.Character:WaitForChild("Humanoid").JumpPower=i end 
+--function git(x,y,z) Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame=CFrame.new(x,y,z) end
+function git(x,y,z) if game.workspace:FindFirstChild(pname):FindFirstChild("HumanoidRootPart") then
+game.workspace:FindFirstChild(pname):FindFirstChild("HumanoidRootPart").CFrame=CFrame.new(x,y,z) end end
+function gitb(x,y,z) git(x,y,z) pausebekle() end
+function sgit(x,y,z) game.Workspace.AAA.Sp10.CFrame=CFrame.new(x,y-3.6,z) wait(.2) git(x,y,z) end
+function syaz(msg) scbox[TX]=scbox[TX].." \n"..msg end
+function ssyaz(msg) scbox[TX]=msg end
+function mykoor() HRT=Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart") myx=HRT.CFrame.x myy=HRT.CFrame.y myz=HRT.CFrame.z end
+
+---////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+---////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+---////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Btn[1][TX]="HIZ"
+Btn[2][TX]="ZIP"
+Btn[3][TX]="CAM"
+Btn[1].MouseButton1Down:connect(function() Hizd=Hizd*1.25 hiz(Hizd) yaz(tostring(Hizd)) end)
+Btn[1].MouseButton2Down:connect(function() Hizd=Hizd/1.25 hiz(Hizd) yaz(tostring(Hizd)) end)
+Btn[2].MouseButton1Down:connect(function() Zpld=Zpld*1.25 zip(Zpld) yaz(tostring(Zpld)) end)
+Btn[2].MouseButton2Down:connect(function() Zpld=Zpld/1.25 zip(Zpld) yaz(tostring(Zpld)) end)
+Btn[3].MouseButton1Down:connect(function() Workspace.CurrentCamera.FieldOfView=(Workspace.CurrentCamera.FieldOfView)*1.05 end)
+Btn[3].MouseButton2Down:connect(function() Workspace.CurrentCamera.FieldOfView=(Workspace.CurrentCamera.FieldOfView)/1.05 end)
+
+
+
+Btn[4].MouseButton2Down:connect(function() if Btn[4][ST]==BSR then Btn[4][ST]=BSRD else Btn[4][ST]=BSR end end) 
+
+
+Btn[5].MouseButton2Down:connect(function() if Btn[5][ST]==BSR then Btn[5][ST]=BSRD else Btn[5][ST]=BSR end end) 
+
+Btn[6].MouseButton2Down:connect(function() if Btn[6][ST]==BSR then Btn[6][ST]=BSRD else Btn[6][ST]=BSR end end) 
+
+
+Btn[7].MouseButton1Down:connect(function() git(-4940,3,-497) end)
+Btn[7].MouseButton2Down:connect(function() if Btn[7][ST]==BSR then Btn[7][ST]=BSRD else Btn[7][ST]=BSR end end) 
+
+
+Btn[8].MouseButton2Down:connect(function() if Btn[8][ST]==BSR then Btn[8][ST]=BSRD else Btn[8][ST]=BSR end end) 
+
+
+Btn[9].MouseButton2Down:connect(function() if Btn[9][ST]==BSR then Btn[9][ST]=BSRD else Btn[9][ST]=BSR end end) 
+
+
+Btn[10].MouseButton2Down:connect(function() if Btn[10][ST]==BSR then Btn[10][ST]=BSRD else Btn[10][ST]=BSR end end) 
+Btn[13].MouseButton2Down:connect(function() if Btn[13][ST]==BSR then Btn[13][ST]=BSRD else Btn[13][ST]=BSR end end) 
+Btn[14].MouseButton2Down:connect(function() if Btn[14][ST]==BSR then Btn[14][ST]=BSRD else Btn[14][ST]=BSR end end) 
+Btn[16].MouseButton2Down:connect(function() if Btn[16][ST]==BSR then Btn[16][ST]=BSRD else Btn[16][ST]=BSR end end) 
+Btn[17].MouseButton2Down:connect(function() if Btn[17][ST]==BSR then Btn[17][ST]=BSRD else Btn[17][ST]=BSR end end) 
+Btn[34].MouseButton2Down:connect(function() if Btn[34][ST]==BSR then Btn[34][ST]=BSRD else Btn[34][ST]=BSR end end) 
+Btn[35].MouseButton2Down:connect(function() if Btn[35][ST]==BSR then Btn[35][ST]=BSRD else Btn[35][ST]=BSR end end) 
+
+
+
+
+--///////////////////////// SKILL UZAKLIK ARTTIRILDI  TABLO HACK
+scr=game:GetService("ReplicatedStorage").Config.SkillHelper.SkillConfig
+scv=require(scr) for i=1,12 do scv["S"..i].Range=300 scv["S"..i].Power=100  end --scv["S"..i].Cooldown=1
+
+--///////////////////////// GￃﾜNLￃﾜK HEDￄﾰYELER
+spawn(function() while getgenv().mypro do
+game:GetService("ReplicatedStorage").Remote.Event.ForverPack["[C-S]TryClaimForverPack"]:FireServer(1)
+game:GetService("ReplicatedStorage").Remote.Event.Exchange["[C-S]TryExchange"]:FireServer("DC1")
+for i=1,12 do game:GetService("ReplicatedStorage").Remote.Event.Reward["[C-S]TryGetReward"]:FireServer(i) wait(.1) end wait(30) end end)
+
+--///////////////////////// MOB BONUSLARI DEￄﾞￄﾰￅﾞￄﾰM
+scr=game:GetService("ReplicatedStorage").Config.MobHelper.MobConfig  scv=require(scr)
+for i=1,40 do scv["M"..i].Damage=10 scv["M"..i].Range=0  scv["M"..i].AttackRange=0 scv["M"..i].Speed=0.01 scv["M"..i].TrackRange=0 
+scv["M"..i].Rarity="Boss" scv["M"..i].Drop=9707384 scv["M"..i].AttackAnimation="105455976222532" scv["M"..i].DropTable=scv["BM8"].DropTable end
+for i=1,17 do scv["RM"..i].Damage=10 scv["RM"..i].Range=0  scv["RM"..i].AttackRange=0 scv["RM"..i].Speed=0.01 scv["RM"..i].TrackRange=0 
+scv["RM"..i].Rarity="Boss" scv["RM"..i].Drop=9707384 scv["RM"..i].AttackAnimation="105455976222532" scv["RM"..i].DropTable=scv["BM8"].DropTable end
+for i=1,8 do scv["BM"..i].Damage=10 scv["BM"..i].Range=0  scv["BM"..i].AttackRange=0 scv["BM"..i].Speed=0.01 scv["BM"..i].TrackRange=0 
+scv["BM"..i].Rarity="Boss" scv["BM"..i].Drop=9707384 scv["BM"..i].AttackAnimation="105455976222532" scv["BM"..i].DropTable=scv["BM8"].DropTable end
+for i=1,2 do scv["M1_"..i].Damage=10 scv["M1_"..i].Range=0  scv["M1_"..i].AttackRange=0 scv["M1_"..i].Speed=0.01 scv["M1_"..i].TrackRange=0 
+scv["M1_"..i].Rarity="Boss" scv["M1_"..i].Drop=9707384 scv["M1_"..i].AttackAnimation="105455976222532" scv["M1_"..i].DropTable=scv["BM8"].DropTable end
+
+		
+
+
+game.Workspace.AAA.Sp8.Size=Vector3.new(1000,5,1000) game.Workspace.AAA.Sp8.CFrame=CFrame.new(20490,260,377) --world 8  50 m derin zemin  
+  
+
+			  
+		  
+			  
+			  
+--///////////////////////// DROP SANSI BONUSLARI DEￄﾞￄﾰￅﾞￄﾰM
+scr=game:GetService("ReplicatedStorage").Config.DungeonDropHelper.DungeonDropConfig  scv=require(scr) 
+for i=1,25 do scv["D"..i].ItemId="R14" scv["D"..i].ItemType="Relic" scv["D"..i].DropChance=0.15 end  
+			  
+--///////////////////////// DUNGEON MOB BONUSLARI DEￄﾞￄﾰￅﾞￄﾰM		  
+scr=game:GetService("ReplicatedStorage").Config.DungeonHelper.DungeonConfig  scv=require(scr) 
+for i=1,160 do scv[i].MobHealthBoost=1.001 scv[i].MobDamageBoost=1.001 scv[i].DropBoost=9 scv[i].LegendaryRelicDrop=true scv[i].LegendaryGemDrop=true end
+
+--///////////////////////// DUNGEON DROP BONUSLARI DEￄﾞￄﾰￅﾞￄﾰM
+scr=game:GetService("ReplicatedStorage").Config.SockectHelper.SocketConfig  scv=require(scr) 
+for i=1,19 do scv["G"..i].DropChance=0.18 end 
+
+--///////////////////////// KALKAN AKTIF IKEN SKIL BASABILIRSIN
+for i,v in pairs(require(game:GetService("ReplicatedStorage").GuiUtils.SkillTree)) do 
+
+if tostring(i)=="relase" then
+hookfunction(v,function(i) sno=game.ReplicatedStorage.Remote.Function.SkillTree:WaitForChild("[C-S]GetSkillData"):InvokeServer()["use"][i]
+game.ReplicatedStorage.Remote.Event.SkillTree:WaitForChild("[C-S]TryReleaseSkill"):FireServer(sno) end) end end
+
+--///////////////////////// YAKINDAKI MOBLARA NORMAL VURABILIRSIN
+for i,v in pairs(require(game:GetService("ReplicatedStorage").GuiUtils.Combat)) do if tostring(i)=="findNearMobList" then
+hookfunction(v,function(p24,p25) v26={} for _,v27 in p25:GetChildren()do v35=v27.Name table.insert(v26, v35) end return v26 end)end end
+
+
+--///////////////////////// YAKINDAKI MOBLARA SKILL VURABILIRSIN
+for i,v in pairs(require(game:GetService("ReplicatedStorage").GuiUtils.Combat)) do 
+if tostring(i)=="findNearMobListSkill" then
+hookfunction(v,function(p46,p47,p48) v49={} for _,v50 in p47:GetChildren()do v58=v50.Name table.insert(v49, v58) end return v49 end)end end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--///////////////////////// FONKSIYON EDITLEME
+local script =game:GetService("ReplicatedStorage").GuiUtils.Combat
+t1=require(script)
+--print(tostring(t1))
+
+for i,v in pairs(t1) do
+if tostring(i)=="findNearMobListSkill" then
+--print(tostring(i))
+--print(tostring(v))
+--print("--")
+
+hookfunction(v,function(p46, p47, p48)
+--print("myfunc")
+
+	local v49 = {}
+	for _, v50 in p47:GetChildren() do
+		if p46 and (p46.Parent and (p46.PrimaryPart and (v50 and (v50.Parent and (v50.PrimaryPart and not v50:GetAttribute("Dead")))))) then
+			local v51 = p46.PrimaryPart.Position
+			local v52 = v50.PrimaryPart.Position
+			local v53 = v51.X
+			local v54 = v51.Z
+			local v55 = Vector3.new(v53, 0, v54)
+			local v56 = v52.X
+			local v57 = v52.Z
+			if (v55 - Vector3.new(v56, 0, v57)).Magnitude <= 300 then
+				local v58 = v50.Name
+				table.insert(v49, v58)
+			end
+		end
+	end
+	return v49
+
+
+
+end)
+
+end end
+
+
+
+
+
+
+--///////////////////////////////////////// SKILL BUYUK HACK CALISIYOR
+
+guc=150 hiz=0.01
+
+for snox=1,12 do
+
+local script =game:GetService("ReplicatedStorage").SkillUntils["S"..snox]
+t1=require(script)
+--print(tostring(t1))
+
+for i,v in pairs(t1) do
+if tostring(i)=="release" then
+--print(tostring(i))
+--print(tostring(v))
+--print("--")
+
+
+
+hookfunction(v,function(p_u_11)
+--print("myfunc")
+--/////////////////////////////////////////
+
+
+
+
+--Decompiled by Medal, I take no credit I only Made The dumper and I I.. I iron man
+local v1 = {}
+local v_u_2 = require(game.ReplicatedStorage.Utils.VFXFunctions)
+local v_u_3 = require(game.ReplicatedStorage.Packages.Trove)
+local v_u_4 = game.Players.LocalPlayer
+local v_u_5 = require(game.ReplicatedStorage.Utils.Distance)
+local v_u_6 = require(game.ReplicatedStorage.Config.SkillHelper)
+game:GetService("TweenService")
+local v_u_7 = game.ReplicatedStorage.Assets.SkillVFX:WaitForChild("S1")
+local v_u_8 = require(game.ReplicatedStorage.GuiUtils.Combat)
+local v_u_9 = require(game.ReplicatedStorage.Utils.SoundPlayer)
+local v_u_10 = game.ReplicatedStorage.Remote.Event.Skill:WaitForChild("[C-S]SkillDamage")
+
+	-- upvalues: (copy) v_u_4, (copy) v_u_5, (copy) v_u_3, (copy) v_u_7, (copy) v_u_2, (copy) v_u_8, (copy) v_u_6, (copy) v_u_10, (copy) v_u_9
+	local v_u_12 = p_u_11.Character
+	if v_u_12 then
+		if v_u_12.Parent then
+			if v_u_12:FindFirstChild("Humanoid") then
+				if v_u_12:FindFirstChild("HumanoidRootPart") then
+					if p_u_11:GetAttribute("Health") < 0 then
+						return
+					else
+						local v13 = v_u_12:WaitForChild("Humanoid")
+						local v_u_14 = v_u_12:WaitForChild("HumanoidRootPart")
+						if p_u_11 == v_u_4 or (not v_u_4.Character or (not v_u_4.Character.Parent or (not v_u_4.Character.PrimaryPart or v_u_5.getDistance(v_u_14.Position, v_u_4.Character.PrimaryPart.Position) <= 100))) then
+							local v15 = v_u_3.new()
+							local v_u_16 = v_u_7:WaitForChild("Skill1"):Clone()
+							local v17 = Instance.new("RigidConstraint")
+							v17.Attachment0 = v_u_16:WaitForChild("Rig")
+							v17.Attachment1 = v_u_14:WaitForChild("RootAttachment")
+							v17.Parent = v_u_16
+							v_u_16.Parent = game.Workspace.Fx
+							v15:Add(v_u_16)
+							local v18 = v13:LoadAnimation((v_u_7:WaitForChild("Animation")))
+							v15:Add(v18)
+							v18:Play()
+							v15:Add(v18:GetMarkerReachedSignal("Attack"):Connect(function()
+								-- upvalues: (ref) v_u_2, (copy) v_u_16
+								v_u_2.EmitDescendants(v_u_16)
+							end))
+							
+							
+							v15:Add(v18:GetMarkerReachedSignal("Hit1"):Connect(function()
+								-- upvalues: (ref) v_u_8, (copy) v_u_12, (ref) v_u_6, (copy) p_u_11, (ref) v_u_4, (ref) v_u_10, (copy) v_u_14, (ref) v_u_9, (ref) v_u_7, (ref) v_u_2
+								local v19 = game.Workspace.Live.MobModel
+								local v20 = v_u_8.findNearMobListSkill(v_u_12, v19, v_u_6.getRange("S"..snox))
+								if p_u_11 == v_u_4 then
+
+for igx=1,guc do 
+									v_u_10:FireServer("S"..snox, v20)
+wait(hiz) end
+                                 
+								
+
+
+								end
+								for _, v21 in v20 do
+									local v_u_22 = v19:FindFirstChild(v21)
+									if v_u_22 then
+										local v23 = {
+											["KnockbackType"] = "Velocity",
+											["MaxForce"] = Vector3.new(50000000, 500000, 50000000),
+											["Velocity"] = v_u_14.CFrame.LookVector * 10 + Vector3.new(0, 6, 0),
+											["Time"] = 0.3
+										}
+										v_u_8.Knockback(v_u_22, v23)
+										if p_u_11 == v_u_4 then
+											task.spawn(function()
+												-- upvalues: (ref) v_u_9, (copy) v_u_22
+												v_u_9.playSoundInPart("WeaponHit", v_u_22)
+											end)
+										end
+										local v24 = v_u_7:WaitForChild("Hit"):Clone()
+										v24.CFrame = v_u_22.PrimaryPart.CFrame
+										v24.Parent = game.Workspace.Fx
+										game.Debris:AddItem(v24, 2)
+										v_u_2.EmitDescendants(v24)
+									end
+								end
+							end))
+							
+							
+							
+							
+							v15:Add(v18:GetMarkerReachedSignal("Hit2"):Connect(function()
+								-- upvalues: (ref) v_u_8, (copy) v_u_12, (ref) v_u_6, (copy) p_u_11, (ref) v_u_4, (ref) v_u_10, (copy) v_u_14, (ref) v_u_9, (ref) v_u_7, (ref) v_u_2
+								local v25 = game.Workspace.Live.MobModel
+								local v26 = v_u_8.findNearMobListSkill(v_u_12, v25, v_u_6.getRange("S"..snox))
+								if p_u_11 == v_u_4 then
+                                    for igx=1,guc do 
+									v_u_10:FireServer("S"..snox, v26)
+wait(hiz) end
+                                 
+								end
+								for _, v27 in v26 do
+									local v_u_28 = v25:FindFirstChild(v27)
+									if v_u_28 then
+										local v29 = {
+											["KnockbackType"] = "Velocity",
+											["MaxForce"] = Vector3.new(50000000, 500000, 50000000),
+											["Velocity"] = v_u_14.CFrame.LookVector * 10 + Vector3.new(0, 6, 0),
+											["Time"] = 0.3
+										}
+										v_u_8.Knockback(v_u_28, v29)
+										if p_u_11 == v_u_4 then
+											task.spawn(function()
+												-- upvalues: (ref) v_u_9, (copy) v_u_28
+												v_u_9.playSoundInPart("WeaponHit", v_u_28)
+											end)
+										end
+										local v30 = v_u_7:WaitForChild("Hit"):Clone()
+										v30.CFrame = v_u_28.PrimaryPart.CFrame
+										v30.Parent = game.Workspace.Fx
+										v_u_2.EmitDescendants(v30)
+										game.Debris:AddItem(v30, 2)
+									end
+								end
+							end))
+							v18.Stopped:Wait()
+							v15:Destroy()
+						end
+					end
+				else
+					return
+				end
+			else
+				return
+			end
+		else
+			return
+		end
+	else
+		return
+	end
+
+
+
+
+
+--/////////////////////////////////////////
+end)
+
+
+
+
+
+
+
+
+end end
+
+--local f1=t1:GetChildren()[1]
+--print(tostring(f1))
+
+--local senv = getsenv(script)
+--local func = senv.findNearMobList
+--hookfunction(func,function(...)
+--print("deneme")
+--return 0
+--end)
+
+
+
+
+
+
+
+
+
+
+
+print("S"..snox.." YUKLENDI")
+
+
+end
+
+
+--///////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function pausebekle() wait(.3) 
+
+for i=1,100 do wait(.1) pbs=0 for i,v in pairs(game.CoreGui.RobloxNetworkPauseNotification:GetChildren()) do pbs+=1 end
+if pbs==0 then break end end 
+
+end
+
+
+Btn[4][TX]="KALKAN"
+spawn(function() while getgenv().mypro do wait(.5) if Btn[4][ST]==BSRD then
+
+ReplicatedStorage.Remote.Event.Combat.Block:FireServer(true)
+
+end end end)
+
+
+
+
+Btn[6][TX]="ITEMM"
+virtualUser:CaptureController()
+spawn(function() while getgenv().mypro do wait(.2) if Btn[6][ST]==BSRD then
+
+if game.workspace:FindFirstChild(pname):FindFirstChild("HumanoidRootPart") then
+HRTIC=game.workspace:FindFirstChild(pname):FindFirstChild("HumanoidRootPart").CFrame end
+
+for i,v in pairs(workspace.Live.DropItem:GetChildren()) do v.CFrame=HRTIC end 
+for i=1,2 do virtualUser:SetKeyDown("e") wait(.01) virtualUser:SetKeyUp("e") wait(.01) end
+end end end)
+
+
+
+
+
+Btn[7][TX]="MOB"
+spawn(function() while getgenv().mypro do wait(.2) if Btn[7][ST]==BSRD then
+for i,v in pairs(workspace.Live.MobModel:GetDescendants()) do if tostring(v.Name)=="HumanoidRootPart" then
+	v.CFrame = LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame 
+end end
+end end end)
+
+
+
+
+Btn[8][TX]="E-AYAK"
+Btn[8].MouseButton1Down:connect(function() 
+
+if Btn[8][TX]=="E-AYAK" then Btn[8][TX]="E-ZIRH" 
+elseif Btn[8][TX]=="E-ZIRH" then Btn[8][TX]="E-SILH" 
+elseif Btn[8][TX]=="E-SILH" then Btn[8][TX]="E-LOOT"
+elseif Btn[8][TX]=="E-LOOT" then Btn[8][TX]="E-AYAK" end
+
+ end)
+spawn(function() efs=0 while getgenv().mypro do wait(.01) if Btn[8][ST]==BSRD then
+
+--scbox[VS]=true
+
+--"Looting III" "Efficenicy III" "Sharpness V" "LifeSteal II" "Fire_aspect II"
+if Btn[8][TX]=="E-ZIRH" or Btn[8][TX]=="E-AYAK" then  e1="Strength V" e2="Protection V" e3="Evasion III" end
+if Btn[8][TX]=="E-SILH" then e1="Sweeping III" e2="Crit III" e3="Fire_aspect II" end 
+--if Btn[8][TX]=="E-SILH" then e1="Sweeping III" e2="Crit III" e3="Fire_aspect II" e4="Sharpness V" e5="Looting III" e6="Fire_aspect II" end 
+if Btn[8][TX]=="E-LOOT" then e1="Looting III" e2="Fire_aspect II" e3="LifeSteal II" end 
+
+
+
+
+ef1=0 ef2=0  ef3=0 say=0 efs+=1
+eo1=LocalPlayer.PlayerGui.Main.Enchant.Main.Info.List.Right[1].ShowButton.Val.Text
+eo2=LocalPlayer.PlayerGui.Main.Enchant.Main.Info.List.Right[2].ShowButton.Val.Text
+eo3=LocalPlayer.PlayerGui.Main.Enchant.Main.Info.List.Right[3].ShowButton.Val.Text
+scbox[TX]="" syaz(eo1) syaz(eo2) syaz(eo3) syaz("---")
+
+if Btn[8][TX]=="E-AYAK" then ReplicatedStorage.Remote.Event.Enchant["[C-S]TryFrushEnchantResult"]:FireServer({["enchant"] ={},["id"]="I86"},"Foot")   end
+if Btn[8][TX]=="E-ZIRH" then ReplicatedStorage.Remote.Event.Enchant["[C-S]TryFrushEnchantResult"]:FireServer({["enchant"] ={},["id"]="I86"},"Armour") end
+if Btn[8][TX]=="E-SILH" then ReplicatedStorage.Remote.Event.Enchant["[C-S]TryFrushEnchantResult"]:FireServer({["enchant"] ={},["id"]="I86"},"Weapon") end
+if Btn[8][TX]=="E-LOOT" then ReplicatedStorage.Remote.Event.Enchant["[C-S]TryFrushEnchantResult"]:FireServer({["enchant"] ={},["id"]="I86"},"Weapon") end
+
+wait(.3)
+repeat wait(.05) say+=1 
+
+ek1=LocalPlayer.PlayerGui.Main.Enchant.Main.Info.List.Right[1].ShowButton.Val.Text
+ek2=LocalPlayer.PlayerGui.Main.Enchant.Main.Info.List.Right[2].ShowButton.Val.Text
+ek3=LocalPlayer.PlayerGui.Main.Enchant.Main.Info.List.Right[3].ShowButton.Val.Text
+
+until eo1~=ek1 or eo2~=ek2 or eo3~=ek3 or say>25
+
+syaz(ek1) syaz(ek2) syaz(ek3) syaz("---------") 
+syaz(efs)
+
+if string.find(ek1,e1) or string.find(ek2,e1) or string.find(ek3,e1) then ef1=1 end
+if string.find(ek1,e2) or string.find(ek2,e2) or string.find(ek3,e2) then ef2=1 end
+if string.find(ek1,e3) or string.find(ek2,e3) or string.find(ek3,e3) then ef3=1 end
+--if string.find(ek1,e4) or string.find(ek2,e4) or string.find(ek3,e4) then ef3=1 end
+--if string.find(ek1,e5) or string.find(ek2,e5) or string.find(ek3,e5) then ef3=1 end
+--if string.find(ek1,e6) or string.find(ek2,e6) or string.find(ek3,e6) then ef3=1 end
+
+if ef1==1 and ef2==1 and ef3==1 then Btn[8][ST]=BSR syaz("buldu") efs=0 else syaz("bulamadￄﾱ") end
+
+
+
+end end end)
+
+
+
+
+
+getgenv().AutoHit = true
+
+--local HumanoidRootPart
+
+local function updateCharacter()
+	local char = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+	HumanoidRootPart = char:WaitForChild("HumanoidRootPart")
+end
+
+updateCharacter() --mobb=0
+LocalPlayer.CharacterAdded:Connect(updateCharacter)
+
+local function getClosestMob() moby=0 mobu=0 magg=9999
+	local closest, dist = nil, math.huge 
+	for _, mob in ipairs(Workspace.Live.MobModel:GetChildren()) do if mob.Humanoid.WalkSpeed==0 then syaz(tostring(mob.Name)) mob:Destroy() end
+		if mob:FindFirstChild("HumanoidRootPart") and mob:FindFirstChild("Humanoid") and mob.Humanoid.Health > 0 then mobhrt=mob.HumanoidRootPart
+			local mag = (mobhrt.Position - HumanoidRootPart.Position).Magnitude
+			if mag<45 then moby=1 end  --ssyaz(tostring(mob.Name))
+			if mag>45 and mag<magg then magg=mag mobu=1 mobc=mobhrt.CFrame end
+			if mag < dist then 
+				dist = mag
+				closest = mob
+			end
+		end
+	end
+	return closest
+end
+
+
+
+Btn[5][TX]="ATAK"
+task.spawn(function()
+	while getgenv().AutoHit do atak=5
+		task.wait() if Btn[5][ST]==BSRD then
+		if HumanoidRootPart then
+			local target = getClosestMob()
+			if target then
+				atak=10
+				ReplicatedStorage:WaitForChild("Remote"):WaitForChild("Event"):WaitForChild("Combat"):WaitForChild("M1"):FireServer({ target:GetAttribute("UUID") or target.Name })
+			end
+		end end
+		--ssyaz(tostring(atak))
+		--wait(1)
+	end 
+end)
+
+
+
+
+Btn[9][TX]="H-SKL"
+Btn[9].MouseButton1Down:connect(function()if Btn[9][TX]=="H-SKL" then Btn[9][TX]="Y-SKL" elseif Btn[9][TX]=="Y-SKL" then Btn[9][TX]="CY-SKL"
+elseif Btn[9][TX]=="CY-SKL" then Btn[9][TX]="H-SKL" end end)
+spawn(function() while getgenv().mypro do wait(.2) if Btn[9][ST]==BSRD then
+
+
+if Btn[9][TX]=="H-SKL" then Hskilbas() end
+if Btn[9][TX]=="Y-SKL" then Yskilbas() end
+if Btn[9][TX]=="CY-SKL" then CYskilbas() end
+
+
+end end end)
+
+
+
+
+
+
+--Btn[9][TX]="Y SKL" sh=.2
+--Btn[9].MouseButton1Down:connect(function() skilbas() end) 
+function skilbas()
+
+for i=1,12 do sno=tostring("S"..i) ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryUnEquipSkill"]:FireServer(sno) wait(.1) end
+ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer(sno)   wait(sh)
+
+for i=1,12 do sno=tostring("S"..(13-i)) 
+
+ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer(sno)   wait(sh) 
+ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryReleaseSkill"]:FireServer(sno) wait(sh) 
+ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryUnEquipSkill"]:FireServer(sno) wait(sh)
+
+end
+
+ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer(sno)   wait(sh)
+end
+
+
+
+function Hskilbas()
+
+
+sh=.1
+
+for i=1,12 do ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryUnEquipSkill"]:FireServer("S"..i) wait(.01) end
+ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer("S6")   wait(sh)
+ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryReleaseSkill"]:FireServer("S6") wait(sh)
+ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer("S6")   wait(sh)
+ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryReleaseSkill"]:FireServer("S6") wait(sh)
+
+
+for i=1,6 do sno1=tostring("S"..(14-(i*2))) sno2=tostring("S"..(14-(i*2+1))) if Btn[9][ST]==BSR then break end
+
+
+
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryReleaseSkill"]:FireServer(sno1) wait(sh/2)
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryReleaseSkill"]:FireServer(sno1) wait(sh/2) 
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryReleaseSkill"]:FireServer(sno2) wait(sh/2)
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryReleaseSkill"]:FireServer(sno2) wait(sh/2)  
+	if Btn[9][ST]==BSR then break end
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryUnEquipSkill"]:FireServer(sno1) wait(sh/2)
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryUnEquipSkill"]:FireServer(sno1) wait(sh/2)
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryUnEquipSkill"]:FireServer(sno2) wait(sh/2)
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryUnEquipSkill"]:FireServer(sno2) wait(sh/2)
+	if i<6 then 
+	if Btn[9][ST]==BSR then break end
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer(tostring("S"..(14-((i+1)*2))   )) wait(sh/2)
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer(tostring("S"..(14-((i+1)*2))   )) wait(sh/2)
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer(tostring("S"..(14-((i+1)*2+1)) )) wait(sh/2)
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer(tostring("S"..(14-((i+1)*2+1)) )) wait(sh/2) end
+	if i>5 then 
+	if Btn[9][ST]==BSR then break end
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer("S12") wait(sh/2)
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer("S12") wait(sh/2)
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer("S11") wait(sh/2)
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer("S11") wait(sh/2) end
+
+end end
+
+
+function Yskilbas()
+
+sh=1
+
+for i=1,6 do sno1=tostring("S"..(14-(i*2))) sno2=tostring("S"..(14-(i*2+1))) 
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryReleaseSkill"]:FireServer(sno1) wait(sh) 
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryUnEquipSkill"]:FireServer(sno1) wait(sh/2)
+	
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryReleaseSkill"]:FireServer(sno2) wait(sh) 
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryUnEquipSkill"]:FireServer(sno2) wait(sh/2)
+	if i<6 then 
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer(tostring("S"..(14-((i+1)*2))   )) wait(sh/2)
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer(tostring("S"..(14-((i+1)*2+1)) )) wait(sh/2) end
+	if i>5 then 
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer("S12") wait(sh)
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]:FireServer("S11") wait(sh) end
+
+end end
+
+
+function CYskilbas()
+
+sh= -.2 + 3
+
+snot={1,2,3,5,6,7,9,10,11,12} --10 adet
+
+for i=1,10 do if Btn[9][ST]==BSR then break end 
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryUnEquipSkill"]:FireServer("S"..snot[i]) wait(sh/3)
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryEquipSkill"]  :FireServer("S"..snot[i]) wait(sh/3) 
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryReleaseSkill"]:FireServer("S"..snot[i]) wait(sh/3)
+	ReplicatedStorage.Remote.Event.SkillTree["[C-S]TryUnEquipSkill"]:FireServer("S"..snot[i])
+end
+
+
+end
+
+
+
+
+
+
+
+
+
+Btn[10][TX]="ITM SIL"
+spawn(function() Lt={} while getgenv().mypro do wait(5) if Btn[10][ST]==BSRD then lts=0
+
+Secretx=0 Legendaryx=0 Epicx=1 Rarex=1 Commonx=1
+
+for i,v in pairs(Players.tacet036.PlayerGui.Main.Backpack.Main.Info.List.Equip:GetDescendants()) do n=tostring(v.Name)
+--for i,v in pairs(Players.tacet036.PlayerGui.Main.Forging.Main.Info.Forge.ScrollingFrame.List:GetDescendants()) do n=tostring(v.Name) syaz(n) wait(.0000001)
+
+--if n=="Legendary" then syaz(tostring(v.Parent.Parent.Parent.Parent)) end
+--if string.find(n,"Common") then syaz(n) syaz(tostring(v.Parent.Parent.Parent.Parent)) end
+
+
+if Commonx==1    and n=="Common"    then v.Name="Secret" itemid=tostring(v.Parent.Parent.Parent.Parent) Lt[itemid]="" lts+=1 end
+if Rarex==1      and n=="Rare"      then v.Name="Secret" itemid=tostring(v.Parent.Parent.Parent.Parent) Lt[itemid]="" lts+=1 end
+if Epicx==1      and n=="Epic"      then v.Name="Secret" itemid=tostring(v.Parent.Parent.Parent.Parent) Lt[itemid]="" lts+=1 end
+if Legendaryx==1 and n=="Legendary" then itemid=tostring(v.Parent.Parent.Parent.Parent) Lt[itemid]="" lts+=1 end
+if Secretx==1    and n=="Secret"    then itemid=tostring(v.Parent.Parent.Parent.Parent) Lt[itemid]="" lts+=1 end
+
+end
+
+if lts>0 then ReplicatedStorage.Remote.Event.Item["[C-S]DeleteList"]:FireServer(Lt) end
+
+
+
+end end end)
+
+
+-- Script generated by R2Sv2
+-- R2Sv2 developed by Luckyxero
+ 
+
+
+
+
+-- FORGE LOG ,roll kullan,yￄﾱldￄﾱz kullan
+--ReplicatedStorage.Remote.Function.Forging["[C-S]TryForge"]:InvokeServer("de75131e-f193-4dd7-950e-dfa3e00e387c",false,false)
+
+function sabitparca()
+
+if not workspace:FindFirstChild("AAA") then f=ins("Folder",workspace) f.Name="AAA" end
+for i,v in pairs(Workspace.AAA:GetChildren()) do v:Destroy() end
+for i=1,10 do p=ins("Part") p[PR]=Workspace.AAA p.Name="Sp"..i p.Anchored=true p.Size=Vector3.new(20,1,20) end
+
+end
+
+
+
+
+
+
+
+Btn[11][TX]="ZEMIN"
+Btn[11].MouseButton1Down:connect(function()
+
+Workspace.AAA.Sp1.CFrame=CFrame.new(Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")[POS].x,HRT[POS].y-2,Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")[POS].z)
+wait(.5)
+	
+end)
+
+
+
+
+
+Btn[12][TX]="TEXT"
+Btn[12].MouseButton1Down:connect(function() textbul(scbox[TX]) end) 
+--Btn[12].MouseButton2Down:connect(function() textb= end) 
+function textbul(f)
+
+tm=1
+nm=1
+
+if tm==1 then for i,v in pairs(game:GetDescendants()) do if v:IsA("TextLabel") and string.find(tostring(v.Text),f) then 
+syaz("-----") 
+syaz(tostring(v.Text)) 
+syaz(tostring(v.Name)) 
+syaz(tostring(v.Parent)) 
+syaz(tostring(v.Parent.Parent)) 
+syaz(tostring(v.Parent.Parent.Parent)) 
+syaz(tostring(v.Parent.Parent.Parent.Parent)) 
+if v.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent)) end
+if v.Parent.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent.Parent)) end
+if v.Parent.Parent.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent.Parent.Parent)) end
+if v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent)) end
+if v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent)) end
+if v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent)) end
+
+end end end
+
+if nm==1 then for i,v in pairs(game:GetDescendants()) do n=tostring(v.Name)
+if string.find(n,f) then 
+syaz("-----") 
+syaz(tostring(v.Name)) 
+syaz(tostring(v.Parent)) 
+syaz(tostring(v.Parent.Parent)) 
+syaz(tostring(v.Parent.Parent.Parent)) 
+syaz(tostring(v.Parent.Parent.Parent.Parent)) 
+if v.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent)) end
+if v.Parent.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent.Parent)) end
+if v.Parent.Parent.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent.Parent.Parent)) end
+if v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent)) end
+if v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent)) end
+if v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent)) end
+end end end
+
+
+end
+
+
+
+Btn[15][TX]="DATA"
+Btn[15].MouseButton1Down:connect(function() databul(scbox[TX]) end) 
+function databul(f)
+
+syaz("data arama basladￄﾱ")
+for i,v in pairs(game:GetDescendants()) do if string.find(tostring(v.ClassName),"Value") and string.find(tostring(v.Value),f) then 
+syaz("-----") 
+syaz(tostring(v.Value)) 
+syaz(tostring(v.Name)) 
+syaz(tostring(v.Parent)) 
+syaz(tostring(v.Parent.Parent)) 
+--syaz(tostring(v.Parent.Parent.Parent)) 
+--syaz(tostring(v.Parent.Parent.Parent.Parent)) 
+--if v.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent)) end
+--if v.Parent.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent.Parent)) end
+--if v.Parent.Parent.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent.Parent.Parent)) end
+--if v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent)) end
+--if v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent)) end
+--if v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent then syaz(tostring(v.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent)) end
+
+end end
+syaz("data arama bitti")
+
+end
+
+
+
+
+
+
+Btn[13][TX]="DNGN"
+spawn(function() while getgenv().mypro do wait(1) if Btn[13][ST]==BSRD then kp=0 kp1u=0 kp2u=0
+
+for i,v in pairs(Workspace.Dungeons:GetChildren()) do if tostring(v.Name)=="tacet036" then 
+for ii,vv in pairs(v.Door:GetDescendants()) do sn=tostring(vv.Name) if sn=="Show" then  kp+=1
+if kp==1 then kp1u=(vv[POS]-Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")[POS]).magnitude kp1v=vv end if kp==2 then kp2u=(vv[POS]-Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")[POS]).magnitude kp2v=vv end
+end end end end
+
+if kp==0 then ReplicatedStorage.Remote.Event.Dungeon["[C-S]StartDungeon"]:FireServer(51) end --101
+if kp==1 then git(kp1v[POS].x-7,kp1v[POS].y-30,kp1v[POS].z) end
+if kp>1 and kp1u<kp2u then git(kp1v[POS].x-7,kp1v[POS].y-30,kp1v[POS].z) end
+if kp>1 and kp2u<kp1u then git(kp2v[POS].x-7,kp2v[POS].y-30,kp2v[POS].z) end
+
+end end end)
+
+
+Btn[14][TX]="BOSS"
+spawn(function() while getgenv().mypro do wait(1) if Btn[14][ST]==BSRD then
+
+gitb(17396,186,-7) wait(4) --7
+gitb(13212,-15,-407) wait(3) --6
+gitb(8010,196,-928) wait(2)  --5
+gitb(5450,49,-465) wait(2) --4
+gitb(3130,23,-441) wait(2) --3
+gitb(1022,27,-452) wait(2) --2
+gitb(-198,36,804) wait(2) --1
+
+
+
+
+
+end end end)
+
+
+
+
+--Btn[16][TX]="FARM"
+function   farmmm()
+
+gitb( -82,32 ,-24 ) wait(1)
+gitb( -149,36,190 ) wait(1)
+gitb( -26,36 ,188 ) wait(1)
+gitb( -5,36 , 336) wait(1)
+gitb( 52,38 ,432 ) wait(1)
+gitb( -217,38 ,431 ) wait(1)
+gitb( 11,44 ,661 ) wait(1)
+gitb( -171,44 , 639) wait(1)
+gitb( -149,36 ,779 ) wait(1)
+gitb( -12,36 , 789) wait(1)
+gitb( 1089,24 , 332) wait(1) -- 2
+gitb( 957, 24,332 ) wait(1)
+gitb( 1020, 24, 62) wait(1)
+gitb( 1019,24 ,-252 ) wait(1)
+gitb( 1023,24 , -404) wait(1)
+gitb(3134 ,23 ,239 ) wait(1)
+gitb(3131 , 23,139 ) wait(1)
+gitb( 3131, 23,34 ) wait(1)
+gitb( 3132, 23,-212 ) wait(1)
+gitb( 3131, 23,-426 ) wait(1)
+gitb( 5558,25 ,126 ) wait(1)
+gitb( 5421,49 , 112) wait(1)
+gitb( 5448, 49, -146) wait(1)
+gitb(5320 , 61,-242 ) wait(1)
+gitb(5455 ,49 , -465) wait(1)
+gitb( 7996,181 ,226 ) wait(1)
+gitb( 7990, 180, -164) wait(1)
+gitb( 7998, 180,-508 ) wait(1)
+gitb( 8158,195 ,-521 ) wait(1)
+gitb( 7849,195 ,-517 ) wait(1)
+gitb( 8002, 179,-679 ) wait(1)
+gitb( 8000, 196,-915 ) wait(3) --5 boss
+gitb( 13295, -14, -76) wait(1)
+gitb( 13115, -14,-79 ) wait(1)
+gitb( 13211,-15 , -214) wait(4)
+gitb( 13339, -14,-294 ) wait(2)
+gitb( 13108,-14 ,-355 ) wait(2)
+gitb(13211 ,-15 , -414) wait(4) --6 boss skil koy
+gitb( 13362,-19 ,-432 ) wait(1)
+gitb( 17395,176 ,207 ) wait(2)
+gitb( 17397, 186, 82) wait(4) -- yarￄﾱm boss
+gitb(17395 , 186, -7) skilbasv2() wait(2) skilbasv2() wait(5) --boss skil
+gitb( 17336,162 ,105 ) wait(2)
+gitb(17259 ,164 ,257 ) wait(2)
+gitb( 17527,164 ,240 ) wait(2)
+gitb(17454 , 162,105 ) wait(2)
+gitb( 17517, 167, 109) wait(2)
+
+
+
+
+
+
+
+
+end
+
+
+
+
+
+
+
+
+
+
+
+Btn[25][TX]="TOWN"    Btn[25].MouseButton1Down:connect(function() git(-83,25,-179) end) 
+Btn[26][TX]="DNGN" Btn[26].MouseButton1Down:connect(function() git(-2045,188,4091) end)
+Btn[27][TX]="WRLD1"  Btn[27].MouseButton1Down:connect(function() git(-198,36,804) end)
+Btn[28][TX]="WRLD2"  Btn[28].MouseButton1Down:connect(function() git(1022,27,-452) end)
+Btn[29][TX]="WRLD3"  Btn[29].MouseButton1Down:connect(function() git(3130,23,-441) end)
+Btn[30][TX]="WRLD4"  Btn[30].MouseButton1Down:connect(function() git(5450,49,-465) end)
+Btn[31][TX]="WRLD5"  Btn[31].MouseButton1Down:connect(function() git(8010,196,-928) end)
+Btn[32][TX]="WRLD6"  Btn[32].MouseButton1Down:connect(function() git(13212,-15,-407) end)
+Btn[33][TX]="WRLD7"  Btn[33].MouseButton1Down:connect(function() git(17396,186,-7) end)
+
+
+
+
+
+Btn[17][TX]="GITT" gsayx=0
+spawn(function() while getgenv().mypro do wait(.5) if Btn[17][ST]==BSRD then
+
+
+
+gsayx+=1
+--syaz(gsayx)
+
+if gsayx>100 then gsayx=0 git(20490,263.6,275) yaz("sifirlandi") end
+--if moby==0 and mobu==1 then git(mobc.x,mobc.y,mobc.z) end
+--syaz("1")
+ git(mobc.x,263.6,mobc.z) 
+--syaz("2")
+
+
+
+
+
+
+
+
+---Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame=CFrame.new(x,y,z) end
+
+
+
+--function git(x,y,z) Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame=CFrame.new(x,y,z) end
+--function gitb(x,y,z) git(x,y,z) pausebekle() end
+--function sgit(x,y,z) game.Workspace.AAA.Sp10.CFrame=CFrame.new(x,y-3.6,z) wait(.2) git(x,y,z) end
+
+
+
+--mobhrt=mobv:WaitForChild("HumanoidRootPart")
+--Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame=CFrame.new(mobhrt.CFrame.x,mobhrt.CFrame.y-30,mobhrt.CFrame.z)
+
+
+
+end end end)
+
+
+function  bilgidegistir()
+
+for i,v in pairs(game:GetDescendants()) do if v:IsA("TextLabel") and tostring(v.Text)=="Common" then v.Text="Secret" end end
+for i,v in pairs(game:GetDescendants()) do if tostring(v.Name)=="Common" then v.Name="Secret" end end
+for i,v in pairs(game:GetDescendants()) do if string.find(tostring(v.ClassName),"Value") then v.Value=999 end end
+
+
+
+end
+
+
+
+Btn[16][TX]="EGG 5"
+spawn(function() while getgenv().mypro do wait(.01) if Btn[16][ST]==BSRD then
+
+for i=1,10 do game:GetService("ReplicatedStorage").Remote.Function.Luck["[C-S]DoLuck"]:InvokeServer("Egg5",1) wait(.01) end
+
+
+
+-- KORU FONKSIYONU
+--hp=tonumber(game:GetService("Players").LocalPlayer.PlayerGui.Hud.Bottom.Main.Health.HealthBar.Val.Text:match("%d+")) ssyaz(tostring(hp))
+--if hp<2000000 then koru=1 mykoor() kgit(myx,myy-980,myz) sgit(myx,myy-1000,myz) kgit(myx,myy-1000,myz)
+
+--for i=1,9999 do wait(.01)
+--hp=tonumber(game:GetService("Players").LocalPlayer.PlayerGui.Hud.Bottom.Main.Health.HealthBar.Val.Text:match("%d+"))  ssyaz(tostring(hp))
+--if hp>2000000 then koru=0 kgit(myx,myy,myz) break else kgit(myx,myy-1000,myz) end end end
+
+
+
+
+
+end end end)
+
+
+function  datadegistir()
+
+
+-- table.clear(planterst.plantername)
+-- table.clear(planterst.planterid)
+   for i,v in pairs(debug.getupvalues(   require(game:GetService("ReplicatedStorage").LocalPlanters)    .LoadPlanter)[4]) do 
+  --      if v.GrowthPercent == 1 and v.IsMine then
+  --          table.insert(planterst.plantername, v.Type)
+ --           table.insert(planterst.planterid, v.ActorID)
+ --       end
+end
+
+
+
+
+
+
+
+syaz("bitti")
+
+end
+
+
+
+
+Btn[34][TX]="BOS-SPWN"
+spawn(function() while getgenv().mypro do wait(.1) if Btn[34][ST]==BSRD then
+
+firesignal(game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn.OnClientEvent,"M40") wait(.1)
+firesignal(game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn.OnClientEvent,"M38") wait(.1)
+firesignal(game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn.OnClientEvent,"M37") wait(.1)
+firesignal(game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn.OnClientEvent,"M23") wait(.1)
+firesignal(game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn.OnClientEvent,"M21") wait(.1)
+firesignal(game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn.OnClientEvent,"BM8") wait(.1)
+firesignal(game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn.OnClientEvent,"RM6") wait(.1)
+firesignal(game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn.OnClientEvent,"RM16") wait(.1)
+firesignal(game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn.OnClientEvent,"RM17") wait(.1)
+firesignal(game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn.OnClientEvent,"M38") wait(.1)
+
+game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn:FireServer("M40") wait(.1)
+game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn:FireServer("M38") wait(.1)
+game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn:FireServer("M37") wait(.1)
+game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn:FireServer("M23") wait(.1)
+game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn:FireServer("M21") wait(.1)
+game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn:FireServer("BM8") wait(.1)
+game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn:FireServer("RM6") wait(.1)
+game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn:FireServer("RM16") wait(.1)
+game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn:FireServer("RM17") wait(.1)
+game:GetService("ReplicatedStorage").Remote.Event.Combat.BossSpawn:FireServer("M38") wait(.1)
+
+
+
+end end end)
+
+
+
+Btn[35][TX]="GM BAK" 
+spawn(function() while getgenv().mypro do wait(3) if Btn[35][ST]==BSRD then gm=0
+
+syaz("gm")
+for i1,v1 in pairs(game.Players:GetChildren())  do v1n1=tostring(v.Name)
+for i2,v2 in pairs(game.workspace:GetChildren())do v2n2=tostring(vv.Name)
+for i3,v3 in pairs(game.workspace:GetChildren())do v3n2=tostring(vv.Name)
+
+
+
+
+
+if n1==n2 and n2~=game.Players.LocalPlayer.Name then  syaz(n2)
+gmuzk = (vv:WaitForChild("HumanoidRootPart").Position - Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude
+
+syaz(tostring(gmuzk))
+
+--vv:WaitForChild("HumanoidRootPart").CFrame = MyC 
+
+
+ --Position.new(17396,176,163)
+
+
+
+
+
+
+end end end end
+	
+
+
+
+
+
+end end end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Btn[18][TX]="DENEME"    Btn[18].MouseButton1Down:connect(function() deneme() end) 
+function  deneme()
+
+--for i,v in pairs(game:GetDescendants()) do if v:IsA("TextLabel") and tostring(v.Text)=="Common" then v.Text="Secret" end end
+--for i,v in pairs(game:GetDescendants()) do if tostring(v.Name)=="Common" then v.Name="Secret" end end
+--for i,v in pairs(game:GetDescendants()) do if string.find(tostring(v.ClassName),"Value") then v.Value=999 end end
+
+
+
+
+--maxpollen1=tonumber(v.Text:match("%d+"))
+
+
+
+syaz("hp")
+ 
+
+hp=tonumber(game:GetService("Players").LocalPlayer.PlayerGui.Hud.Bottom.Main.Health.HealthBar.Val.Text:match("%d+")) syaz(tostring(hp))
+
+
+
+
+
+yaz("bitti")
+
+end
+
+
+function dungeonsans()
+
+--DUNGEON DROP CHANCE ORJINAL
+-- v0[D21].DropChance=0 
+-- v0[D11].DropChance=0.015 
+-- v0[D18].DropChance=0.0025 
+-- v0[D15].DropChance=0.0025 
+-- v0[D25].DropChance=0.0001 
+-- v0[D20].DropChance=0 
+-- v0[D19].DropChance=0 
+-- v0[D10].DropChance=0.03 
+-- v0[D24].DropChance=0.0001 
+-- v0[D14].DropChance=0.015 
+-- v0[D13].DropChance=0.03 
+-- v0[D3].DropChance=0.1 
+-- v0[D1].DropChance=0.05 
+-- v0[D7].DropChance=0.03 
+-- v0[D6].DropChance=0.0025 
+-- v0[D5].DropChance=0.015 
+-- v0[D4].DropChance=0.03 
+-- v0[D8].DropChance=0.015 
+-- v0[D12].DropChance=0.0025 
+-- v0[D22].DropChance=0 
+-- v0[D23].DropChance=0 
+-- v0[D17].DropChance=0.015 
+-- v0[D2].DropChance=0.00001 
+-- v0[D9].DropChance=0.0025 
+-- v0[D16].DropChance=0.03"
+
+
+scriptp=game:GetService("ReplicatedStorage").Config.DungeonDropHelper.DungeonDropConfig
+v0=require(scriptp)
+
+-- v0[D22].DropChance=0 
+-- v0[D23].DropChance=0 
+-- v0[D18].DropChance=0.0025 
+-- v0[D15].DropChance=0.0025 
+-- v0[D25].DropChance=0.0001
+
+
+
+syaz(tostring(v0[8]))
+--v0["D1"].DropChance=1
+--for i,v in pairs(v0) do
+--syaz(tostring(v0[i].DropChance))
+--v0[i].DropChance=1
+
+
+end
+
+
+
+
+function enyakinmob()
+
+
+maxd=99999
+for i,mob in pairs(game.Workspace.Live.MobModel:GetChildren()) do 
+if mob:FindFirstChild("HumanoidRootPart") then 
+mag=(mob.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+if mag<maxd then maxd=mag end 
+end 
+end
+
+print(maxd)
+return maxd
+
+
+end
+
+
+function mobskilldamage()
+
+--vuruyor amaￃﾧalￄﾱￅﾟmￄﾱyor
+mobls={}
+for i,mob in pairs(Workspace.Live.MobModel:GetChildren()) do
+table.insert(mobls,tostring(mob))
+end
+print (tostring(mobls))
+game.ReplicatedStorage.Remote.Event.Skill:WaitForChild("[C-S]SkillDamage"):FireServer("S12",mobls)
+
+
+
+
+
+end
+
+
+
+
+
+
+function sescal()
+
+
+require(game.ReplicatedStorage.Utils.SoundPlayer).playSound("Pick")
+
+
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
+yaz("YUKLEDI")
