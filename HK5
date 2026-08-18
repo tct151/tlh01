@@ -1,0 +1,74 @@
+-- getupvalue(getsenv(game:GetService("Players").LocalPlayer.PlayerGui.MainVui.NewLocal).Reload, 3).Debounce = 0
+-- for i,v in pairs(debug.getupvalues(require(game:GetService("ReplicatedStorage").LocalPlanters).LoadPlanter)[4]) do 
+-- for i,v in pairs(Workspace:GetChildren()) do   for i,v in pairs(game:GetDescendants()) do   v:FindFirstChild("farmed")
+
+i      = 0  for k,v in pairs(game.CoreGui:GetChildren())do if tostring(v.Name)=="MainV" then i = 1 game.CoreGui.MainV.scbox.Text="" end end if i == 0 then
+ins    = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
+UD2    = UDim2.new    POS="Position"   BGT="BackgroundTransparency" BSR =Enum.ButtonStyle.RobloxRoundDefaultButton 
+C3N    = Color3.new   PR ="Parent"     ST="Style"  VS="Visible"     EFF=Enum.Font.Fantasy EFD=Enum.FrameStyle.DropShadow 
+MainV  = ins("ScreenGui")  MainV[PR]=game.CoreGui MainV.Name="MainV"
+KapatB = ins("TextButton") KapatB[PR]=MainV KapatB.Text="+"    KapatB[POS]=UD2(0,2,0,32) KapatB.Size=UD2(0,31,0,31) KapatB.Font=EFF KapatB[TSZ]=30 KapatB.Visible = true KapatB.Style=BSR
+scbox  = ins("TextBox")    scbox[PR]=MainV scbox[POS]=UD2(0,5,0,100)   scbox.Size=UD2(0,360,0,657) scbox.ClearTextOnFocus=false scbox.MultiLine=true scbox.Font = EFF scbox[TSZ]=17 scbox[TC3]=C3N(10,0,0) scbox[VS]=true scbox.Name="scbox"
+KapatB.MouseButton1Down:connect(function() MainV:Destroy() end) end 
+function yaz(msg) game.StarterGui:SetCore('SendNotification',{Title='MYBOT';Text=msg;Duration=3;}) end
+function syaz(msg) game.CoreGui.MainV.scbox.Text=game.CoreGui.MainV.scbox.Text.." \n" ..msg end
+
+
+syaz("--------------------------")
+
+local Configs = game:GetService("ReplicatedStorage"):WaitForChild("Configs")
+local GameConfig = require(Configs:WaitForChild("GameConfig"))
+local RarityConfig = require(Configs:WaitForChild("RarityConfig"))
+local BeeConfig = require(Configs:WaitForChild("BeeConfig"))
+local UpgradeConfig = require(Configs:WaitForChild("UpgradeConfig"))
+
+
+
+
+
+for name, value in pairs(BeeConfig) do
+	if tostring(name)=="IsRollEventActive" then
+		syaz(tostring(value()))
+
+	
+hookfunction(v,function(i) 
+
+return true
+
+end)
+
+	
+	
+		
+    	--syaz(tostring(name).."="..syaz(tostring(value)))
+	end
+end
+
+
+for name, value in pairs(BeeConfig) do
+	if tostring(name)=="IsRollEventActive" then
+		syaz(tostring(value()))
+
+	
+    	--syaz(tostring(name).."="..syaz(tostring(value)))
+	end
+end
+
+
+
+
+--syaz(GameConfig.BaseLuck)
+
+
+
+
+
+
+
+
+
+--GameConfig.BaseLuck=50
+--GameConfig.Gamma1=50 
+--GameConfig.Gamma2=50
+syaz("--- son")
+
