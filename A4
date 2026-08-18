@@ -1,0 +1,16 @@
+
+
+for i,v in pairs(require(game:GetService("ReplicatedStorage").CollectiblesAnimator)) do 
+if tostring(i)=="Update" then  print("fun buldu")
+hookfunction(v,function() 
+
+print("nnnn")
+
+
+
+
+end) end end
+
+print("bitti")
+
+
