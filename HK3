@@ -8,6 +8,7 @@ for i,v in pairs(require(game:GetService("ReplicatedStorage").Scripts.Services.T
 if tostring(i)=="init" then
 
 print("fun buldu")
+
 --//////////////////////////////////////////////////////////////////////////////////////////////////////////
 hookfunction(v,function(p1) 
 
@@ -40,11 +41,11 @@ local t2 = {
     invalid = { "Couldn\'t send that trade request", "error" }
 }
 
-local function group(p1) --[[ group | Line: 54 ]]
+local function group(m1) --[[ group | Line: 54 ]]
     local t = {}
     local t2 = {}
 
-    for v1, v2 in p1 do
+    for v1, v2 in m1 do
         local v6 = v2.BeeId .. "|" .. (v2.Mutation or "") .. "|" .. (v2.Trait or "") .. "|" .. tostring(v2.Level or 0)
         local v7 = t[v6]
 
@@ -69,16 +70,16 @@ local function group(p1) --[[ group | Line: 54 ]]
     return t2
 end
 
-local function tileSortName(p1) --[[ tileSortName | Line: 79 | Upvalues: BeeConfig (copy), TraitConfig (copy) ]]
-    local v1 = BeeConfig.Get(p1.BeeId)
-    local v2 = BeeConfig.Get(p1.BeeId) and v1.Name or p1.BeeId
-    local v3 = TraitConfig.GetPrefix(p1.Trait)
+local function tileSortName(m1) --[[ tileSortName | Line: 79 | Upvalues: BeeConfig (copy), TraitConfig (copy) ]]
+    local v1 = BeeConfig.Get(m1.BeeId)
+    local v2 = BeeConfig.Get(m1.BeeId) and v1.Name or m1.BeeId
+    local v3 = TraitConfig.GetPrefix(m1.Trait)
 
     if v3 ~= "" then
         v2 = v3 .. " " .. v2
     end
 
-    local Mutation = p1.Mutation
+    local Mutation = m1.Mutation
 
     if Mutation and Mutation ~= "" then
         v2 = Mutation .. " " .. v2
@@ -87,19 +88,19 @@ local function tileSortName(p1) --[[ tileSortName | Line: 79 | Upvalues: BeeConf
     return string.lower(v2)
 end
 
-local function sortedTiles(p1) --[[ sortedTiles | Line: 100 | Upvalues: tileSortName (copy) ]]
-    local v1 = table.clone(p1)
+local function sortedTiles(m1) --[[ sortedTiles | Line: 100 | Upvalues: tileSortName (copy) ]]
+    local v1 = table.clone(m1)
 
-    table.sort(v1, function(p13, p23) --[[ Line: 102 | Upvalues: tileSortName (ref) ]]
-        local v1 = tileSortName(p13)
+    table.sort(v1, function(m13, p23) --[[ Line: 102 | Upvalues: tileSortName (ref) ]]
+        local v1 = tileSortName(m13)
         local v2 = tileSortName(p23)
 
         if v1 == v2 then
-            local v3 = p13.Level or 0
+            local v3 = m13.Level or 0
             local v4 = p23.Level or 0
 
             if v3 == v4 then
-                local v5 = tostring(p13.BeeId)
+                local v5 = tostring(m13.BeeId)
 
                 return v5 < tostring(p23.BeeId)
             end
@@ -115,7 +116,7 @@ end
 
 local v2 = Color3.fromRGB(120, 120, 130)
 
-local function makeTile(p1, p2, p3, p4, p5, p6, p7, p8, p9) --[[ makeTile | Line: 118 | Upvalues: BeeConfig (copy), MutationConfig (copy), TraitConfig (copy), v2 (copy), RarityConfig (copy), v1 (copy) ]]
+local function makeTile(m1, p2, p3, p4, p5, p6, p7, p8, p9) --[[ makeTile | Line: 118 | Upvalues: BeeConfig (copy), MutationConfig (copy), TraitConfig (copy), v2 (copy), RarityConfig (copy), v1 (copy) ]]
     local v12 = BeeConfig.Get(p2)
     local v22 = p3 and p3 ~= "" and MutationConfig.Get(p3) or nil
     local v3 = p4 and p4 ~= "" and TraitConfig.Get(p4) or nil
@@ -168,13 +169,13 @@ local function makeTile(p1, p2, p3, p4, p5, p6, p7, p8, p9) --[[ makeTile | Line
     UIStroke.Thickness = if p7 then 3 else 1.5
     UIStroke.Color = if p9 then v2 elseif p7 then v1 else Color3.fromRGB(90, 90, 110)
     UIStroke.Parent = BeeTile
-    BeeTile.Parent = p1
+    BeeTile.Parent = m1
 
     return BeeTile
 end
 
-local function clearTiles(p1) --[[ clearTiles | Line: 172 ]]
-    for v1, v2 in p1:GetChildren() do
+local function clearTiles(m1) --[[ clearTiles | Line: 172 ]]
+    for v1, v2 in m1:GetChildren() do
         if v2:IsA("TextButton") and v2.Name == "BeeTile" then
             v2:Destroy()
         end
