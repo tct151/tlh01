@@ -1,0 +1,26 @@
+
+
+for i,v in pairs(require(game:GetService("ReplicatedStorage").Collectibles)) do 
+if tostring(i)=="Update" then  print("fun buldu")
+hookfunction(v,function() 
+
+print("nnnn")
+    local ok, result = pcall(privateUpdate)
+
+    if ok then
+        return
+    end
+
+    print("sdfoiuhnwofew90efjw98ejf0i")
+    print(result)
+    warn(result)
+
+
+
+
+
+end) end end
+
+print("bitti")
+
+
