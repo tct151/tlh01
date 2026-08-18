@@ -1,0 +1,35 @@
+
+
+for i,v in pairs(require(game:GetService("ReplicatedStorage").Collectibles)) do 
+if tostring(i)=="Make" then  print("fun buldu")
+hookfunction(v,function(p1) 
+
+print("make") 
+
+
+
+end) end end
+
+print("bitti")
+
+
+
+
+for i,v in pairs(require(game:GetService("ReplicatedStorage").CollectiblesAnimator)) do 
+if tostring(i)=="Update" then  print("fun buldu")
+hookfunction(v,function() 
+
+col=require(game:GetService("ReplicatedStorage").Collectibles)
+
+col.Make()
+print("zzz")
+
+
+
+
+end) end end
+
+print("bitti")
+
+
+
