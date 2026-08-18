@@ -31,7 +31,7 @@ for name, value in pairs(BeeConfig) do
 		syaz(tostring(value()))
 
 	
-hookfunction(v,function(i) 
+hookfunction(value,function(i) 
 
 return true
 
