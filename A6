@@ -6,8 +6,6 @@ hookfunction(v,function(p1)
 
 print("make") 
 
-
-
 end) end end
 
 print("bitti")
@@ -17,9 +15,11 @@ print("bitti")
 
 for i,v in pairs(require(game:GetService("ReplicatedStorage").CollectiblesAnimator)) do 
 if tostring(i)=="Update" then  print("fun buldu")
-hookfunction(v,function() 
 
 col=require(game:GetService("ReplicatedStorage").Collectibles)
+
+hookfunction(v,function() 
+
 
 col.Make()
 print("zzz")
