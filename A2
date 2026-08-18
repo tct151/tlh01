@@ -1,0 +1,14 @@
+
+
+for i,v in pairs(require(game:GetService("ReplicatedStorage").Collectibles)) do 
+if tostring(i)=="Collect" then  print("fun buldu")
+hookfunction(v,function(p1,p2) 
+
+print(p1) print(p2) print("---")
+return require(game.ServerStorage.CollectiblesServer).Collect(p1, p2)
+
+end) end end
+
+print("bitti")
+
+
