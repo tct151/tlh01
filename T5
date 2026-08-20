@@ -72,7 +72,12 @@ Btn[42][TX]="GETR"
 Btn[51][TX]="SPIN"
 Btn[52][TX]="HBOX"
 Btn[53][TX]="TEKME"
+Btn[54][TX]="ATAK"
 Btn[60][TX]="ADMIN"
+
+
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GUI-Offical/FileTest/refs/heads/main/Grab%20R6.txt"))()
 
 
 
@@ -132,8 +137,11 @@ Btn[30].MouseButton2Down:connect(function() game.Workspace.AAA.Sp1:Destroy()  Bt
 Btn[51].MouseButton1Down:connect(function() spinsc() yaz("SPIN ACILDI") Btn[51][ST]=BSRD end) 
 Btn[52].MouseButton1Down:connect(function() hitboxsc() yaz("HITBOX ACILDI") Btn[52][ST]=BSRD end) 
 Btn[53].MouseButton1Down:connect(function() loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-THE-REAL-dropkick-177199"))() Btn[53][ST]=BSRD end) 
+Btn[54].MouseButton1Down:connect(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/GUI-Offical/FileTest/refs/heads/main/Grab%20R6.txt"))() Btn[54][ST]=BSRD end) 
 
 Btn[60].MouseButton1Down:connect(function() loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Sky-Hub-10706"))() yaz("SKY ADMIN ACILDI") Btn[60][ST]=BSRD end) 
+
+
 
 
 
