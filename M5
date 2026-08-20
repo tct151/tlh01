@@ -66,7 +66,7 @@ Btn[26][TX]="ZIPLA"
 Btn[27][TX]="GIZLI"
 Btn[28][TX]="GM"
 Btn[29][TX]="DASH"
-Btn[30][TX]="ZEMN"
+Btn[30][TX]="ATAK"
 Btn[31][TX]="CAM"
 Btn[32][TX]="F CAM"
 Btn[33][TX]="SERV"
@@ -140,7 +140,7 @@ Btn[32].MouseButton1Down:connect(function() loadstring(game:HttpGet("https://pas
 Btn[33].MouseButton1Down:connect(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe%20Viewer"))() end) 
 
 
-Btn[30].MouseButton1Down:connect(function() ZEMINKOY() game.Workspace.AAA.Sp1.Size=Vector3.new(5,1,5)  Btn[30][ST]=BSRD  end)
+Btn[30].MouseButton1Down:connect(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/GUI-Offical/FileTest/refs/heads/main/Grab%20R6.txt"))() Btn[30][ST]=BSRD  end)
 
 
 
