@@ -1,0 +1,231 @@
+
+
+
+--https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM
+
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM"))()
+
+
+
+sxx = game.workspace.CurrentCamera.ViewportSize.X
+ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
+UD2 = UDim2.new    POS="Position"   BGT="BackgroundTransparency" SZ="Size" BSR=Enum.ButtonStyle.RobloxRoundDefaultButton 
+C3N = Color3.new   VN=Vector3.new   PR="Parent"      ST="Style"  VS="Visible"     EFF=Enum.Font.Fantasy EFD=Enum.FrameStyle.DropShadow  
+YzL=Color3.fromRGB(74,46,27) YzY=Color3.fromRGB(0,255,0)
+
+ext=true Btnrm={}
+
+MainGRM = ins("ScreenGui")  MainGRM[PR]=game.CoreGui MainGRM.Name="MainGRM"
+MainFRM = ins("Frame")      MainFRM[PR]=MainGRM
+BtnrmFRM  = ins("Frame")      BtnrmFRM[PR] =MainFRM
+
+local KapaB   = ins("TextButton") KapaB[PR]=MainGRM KapaB.Text="X"    KapaB[POS]=UD2(0,5,0,-5) KapaB.Size=UD2(0,40,0,40) KapaB.Font=EFF KapaB[TSZ]=20 
+KapaB.Visible = true KapaB.Style=BSR KapaB[TC3]=C3N(1,1,0)
+local OpenB   = ins("TextButton") OpenB[PR]=MainGRM OpenB[TX]="<<"    OpenB[POS]=UD2(0,42,0,-5) OpenB.Size=UD2(0,40,0,40) OpenB.Font=EFF OpenB[TSZ]=20 
+OpenB.Visible = true OpenB.Style=BSR OpenB[TC3]=C3N(1,1,0)
+
+scb=ins("TextBox") scb[PR]=MainFRM scb[POS]=UD2(0,10,0,100) scb.Size=UD2(0,1200,0,500) scb.ClearTextOnFocus=false scb.MultiLine=true scb.Font=EFF scb[TSZ]=15 scb[TX]=""
+
+for i =1,15  do Btnrm[i]=ins("TextButton") Btnrm[i][PR]=BtnrmFRM Btnrm[i][POS]=UD2(0,i*sxx/20+160,0,-55) Btnrm[i][TX]=i
+Btnrm[i][ST]=BSR Btnrm[i].Font=EFF Btnrm[i][TSZ]=16 Btnrm[i][SZ]=UD2(0,sxx/19,0,35) Btnrm[i][TC3]=C3N(1,1,0) Btnrm[i][TC3]=YzL end
+
+for i =16,30 do Btnrm[i]=ins("TextButton") Btnrm[i][PR]=BtnrmFRM Btnrm[i][POS]=UD2(0,(i-15)*sxx/20+160,0,-24) Btnrm[i][TX]=i
+Btnrm[i][ST]=BSR Btnrm[i].Font=EFF Btnrm[i][TSZ]=16 Btnrm[i][SZ]=UD2(0,sxx/19,0,35) Btnrm[i][TC3]=C3N(1,1,0) Btnrm[i][TC3]=YzL end
+
+
+KapaB.MouseButton1Down:connect(function() for i=1,30 do Btnrm[i][ST]=BSR end ext=false MainGRM:Destroy() end)
+OpenB.MouseButton1Down:connect(function() if MainFRM[VS]==true then MainFRM[VS]=false OpenB[TX]=">>" else MainFRM[VS]=true OpenB[TX]="<<" end end)
+
+Btnrm[1].MouseButton1Down:connect(function() if Btnrm[1][ST]==BSR then scb[VS]=true Btnrm[1][ST]=BSRD else scb[VS]=false Btnrm[1][ST]=BSR end end)	
+Btnrm[2].MouseButton1Down:connect(function() Sira=Sira-1 Btnrm[17][TX]=Sira end)
+Btnrm[3].MouseButton1Down:connect(function() Sira=Sira+1 Btnrm[17][TX]=Sira end)
+Btnrm[4].MouseButton1Down:connect(function() Goster() end)
+Btnrm[5].MouseButton1Down:connect(function() yaz("BOS BIRAKILDI") end)
+Btnrm[6].MouseButton1Down:connect(function() setclipboard(scb[TX]) yaz("COPY") end)
+
+
+Btnrm[13].MouseButton1Down:connect(function() yaz("YONT 1 GETREG BASLADI") yontem1() yaz("YONT 1 BASARILI") Btnrm[13][ST]=BSRD end)
+Btnrm[14].MouseButton1Down:connect(function() yaz("YONT 2 GETGC BASLADI")  yontem2() yaz("YONT 2 BASARILI") Btnrm[14][ST]=BSRD end)
+Btnrm[15].MouseButton1Down:connect(function() if Btnrm[15][ST]==BSR then Bekle=1 Btnrm[15][ST]=BSRD yaz("BEKLEME MODU") else Bekle=0 Btnrm[15][ST]=BSR yaz("DEVAM MODU") end end)
+Btnrm[18].MouseButton1Down:connect(function() Sira=SonArg Btnrm[17][TX]=Sira end)
+
+
+
+function yaz(msg) game.StarterGui:SetCore('SendNotification',{Title='BILGI';Text=msg;Duration=2;}) end
+function syaz(msg) scb[TX]=scb.Text.." \n" ..msg end
+function Goster()   scb[TX]="" for i=1,#GlobalArg[Sira] do syaz("Arg "..i.." : "..tostring(GlobalArg[Sira][i])) end end
+--function Execute() loadstring(kod)  end
+
+
+
+
+
+
+
+Btnrm[1][TX]="EKRN"
+Btnrm[2][TX]="<<<"
+Btnrm[3][TX]=">>>"
+Btnrm[4][TX]="GOR"
+Btnrm[5][TX]="EXE"
+Btnrm[6][TX]="COPY"
+
+
+Btnrm[13][TX]="YNT1"
+Btnrm[14][TX]="YNT2"
+Btnrm[15][TX]="DUR"
+Btnrm[18][TX]="SON"
+
+
+
+
+print("///////////////////////////////////////// BASLADI")
+
+func={} funcorj={} Bilgi={}
+
+uygula=0 GlobalArg={} SonArg=0 Bekle=0 Sira=1
+
+
+-- ANDROID 10000 SONUC
+function ann()
+
+for _, v in ipairs(getgc()) do
+    if type(v) == "function" then
+        table.insert(func, v)
+    end
+end
+print("Android getgc ile func say : "..#func)
+yaz("Android getgc ile func say : "..tostring(#func))
+syaz("Android getgc ile func say : "..tostring(#func))
+end
+
+
+-- PC 116000 SONUC CIKTI
+function pcc()
+local success, registry = pcall(function()
+    return getreg()
+end)
+
+if success and registry then
+    for _, v in pairs(registry) do
+        if type(v) == "function" then
+            func[#func + 1] = v
+        elseif type(v) == "table" then
+            for _, subV in pairs(v) do
+                if type(subV) == "function" then
+                    func[#func + 1] = subV
+                end
+            end
+        end
+    end
+end
+print("Bilgisayar registry ile func say : "..#func)
+end
+
+
+function yontem1() fs=#func
+if fs>0 then 
+if uygula>fs then uygula=fs end
+
+
+for i=1,fs do Bilgi[i][1]=1 GlobalArg[i]={} end
+
+for i=1,fs do
+
+	funcorj[i]=func[i]             
+	func[i] = function(...) local args={...}
+	
+
+
+		
+	if Bilgi[i][1]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i][1]=0 print(fs .." / ".. SonArg) end
+		
+
+
+
+
+
+		
+		return funcorj[i](unpack(args))
+    end
+
+end
+print(uygula.." Adet Yontem1 Uygulandi")
+end
+end
+
+
+
+
+function yontem2() fs=#func
+
+uygula = #func
+--uygula = 10
+ann()	
+--pcc()
+--yontem1()
+--yontem2()
+
+
+
+
+if fs>0 then
+if uygula>fs then uygula=fs end
+for i=1,fs do Bilgi[i][1]=1 GlobalArg[i]={} end
+
+
+for i=1,uygula do
+
+	funcorj[i]=func[i]
+	hookfunction(func[i],function(...) 
+	
+	
+	
+
+	if Bilgi[i][1]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i][1]=0 print(fs .." / ".. SonArg) end
+		
+		
+		
+		--table.insert(GlobalArg,func[i])
+		
+		
+		--GlobalArg={...}
+		--func[i][2] 
+		
+		
+		
+		--print("1")  
+		
+		
+		
+		return funcorj[i](unpack(args))
+	
+	end)
+end
+print(uygula.." Adet Yontem2 Uygulandi")
+yaz(tostring(uygula).." Adet Yontem2 Uygulandi")
+syaz(tostring(uygula).." Adet Yontem2 Uygulandi")
+
+end
+end
+
+
+spawn(function() while ext do task.wait(.2) Btnrm[16][TX]=SonArg Btnrm[17][TX]=Sira end end)
+
+
+
+
+
+
+--eskideneme3 = hookfunction(deneme3, function(...)
+  
+  
+  
+	
+
+
+
+
+
+
+
+print("///////////////////////////////////////////////////   UYGULANDI    ")
