@@ -179,7 +179,7 @@ for i=1,#func do
 	
 	
 
-	if Bilgi[i]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i]=0 print(#func .." / ".. SonArg) end
+	if Bilgi[i]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i]=0 end
 		
 		
 		
