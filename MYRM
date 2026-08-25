@@ -157,7 +157,7 @@ end
 
 function yontem2() 
 
-uygula = #func
+--uygula = #func
 --uygula = 10
 ann()	
 --pcc()
@@ -169,6 +169,7 @@ syaz("1")
 
 
 fs=#func
+uygula = #func
 if fs>0 then
 if uygula>fs then uygula=fs end
 for i=1,fs do Bilgi[i][1]=1 GlobalArg[i]={} end
