@@ -94,7 +94,7 @@ for _, v in ipairs(getgc()) do
     end
 end
 print("Android getgc ile func say : "..#func)
-yaz("Android getgc ile func say : "..tostring(#func))
+--yaz("Android getgc ile func say : "..tostring(#func))
 syaz("Android getgc ile func say : "..tostring(#func))
 end
 
@@ -202,7 +202,7 @@ for i=1,uygula do
 	end)
 end
 print(uygula.." Adet Yontem2 Uygulandi")
-yaz(tostring(uygula).." Adet Yontem2 Uygulandi")
+--yaz(tostring(uygula).." Adet Yontem2 Uygulandi")
 syaz(tostring(uygula).." Adet Yontem2 Uygulandi")
 
 end
