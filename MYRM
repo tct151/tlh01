@@ -170,7 +170,8 @@ syaz("1")
 
 fs=#func
 uygula = #func
-if fs>0 then
+syaz(tostring(uygula))
+if fs>0 then syaz("11")
 if uygula>fs then uygula=fs end
 for i=1,fs do Bilgi[i][1]=1 GlobalArg[i]={} end
 
