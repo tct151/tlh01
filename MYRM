@@ -1,7 +1,4 @@
 
-
-
-
 --https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM
 
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM"))()
@@ -172,7 +169,7 @@ syaz(tostring(#func))
 if #func>0 then syaz("11")
 
 for i=1,#func do Bilgi[i]=1 GlobalArg[i]={} end
-
+ll=0
 syaz("2")
 for i=1,#func do
 
@@ -201,6 +198,9 @@ for i=1,#func do
 		return funcorj[i](unpack(args))
 	
 	end)
+	---ll=ll+1
+	---f ll>100 then task.wait() ll=0 end
+	
 end
 syaz("3")
 print(#func.." Adet Yontem2 Uygulandi")
