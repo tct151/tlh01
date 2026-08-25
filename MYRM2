@@ -172,7 +172,7 @@ syaz(tostring(#func))
 if #func>0 then syaz("11")
 
 for i=1,#func do Bilgi[i]=1 GlobalArg[i]={} end
-
+ll=0
 syaz("2")
 for i=1,#func do
 
@@ -201,8 +201,8 @@ for i=1,#func do
 		return funcorj[i](unpack(args))
 	
 	end)
-	
-	task.wait()
+	ll=ll+1
+	if ll>100 then task.wait() ll=0 end
 	
 end
 syaz("3")
