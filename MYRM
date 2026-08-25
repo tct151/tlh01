@@ -122,12 +122,12 @@ print("Bilgisayar registry ile func say : "..#func)
 end
 
 
-function yontem1() #func=#func
+function yontem1()
 if #func>0 then 
 
 
 
-for i=1,#func do Bilgi[i][1]=1 GlobalArg[i]={} end
+for i=1,#func do Bilgi[i]=1 GlobalArg[i]={} end
 
 for i=1,#func do
 
@@ -137,7 +137,7 @@ for i=1,#func do
 
 
 		
-	if Bilgi[i][1]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i][1]=0 syaz(#func .." / ".. SonArg) end
+	if Bilgi[i]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i]=0 syaz(tostring(#func) .." / ".. tostring(SonArg)) end
 		
 
 
@@ -171,7 +171,7 @@ syaz(tostring(#func))
 
 if #func>0 then syaz("11")
 
-for i=1,#func do Bilgi[i][1]=1 GlobalArg[i]={} end
+for i=1,#func do Bilgi[i]=1 GlobalArg[i]={} end
 
 syaz("2")
 for i=1,#func do
@@ -182,7 +182,7 @@ for i=1,#func do
 	
 	
 
-	if Bilgi[i][1]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i][1]=0 print(#func .." / ".. SonArg) end
+	if Bilgi[i]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i]=0 print(#func .." / ".. SonArg) end
 		
 		
 		
