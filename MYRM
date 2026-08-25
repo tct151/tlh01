@@ -83,7 +83,7 @@ print("///////////////////////////////////////// BASLADI")
 
 func={} funcorj={} Bilgi={}
 
-uygula=0 GlobalArg={} SonArg=0 Bekle=0 Sira=1
+GlobalArg={} SonArg=0 Bekle=0 Sira=1
 
 
 -- ANDROID 10000 SONUC
@@ -122,14 +122,14 @@ print("Bilgisayar registry ile func say : "..#func)
 end
 
 
-function yontem1() fs=#func
-if fs>0 then 
-if uygula>fs then uygula=fs end
+function yontem1() #func=#func
+if #func>0 then 
 
 
-for i=1,fs do Bilgi[i][1]=1 GlobalArg[i]={} end
 
-for i=1,fs do
+for i=1,#func do Bilgi[i][1]=1 GlobalArg[i]={} end
+
+for i=1,#func do
 
 	funcorj[i]=func[i]             
 	func[i] = function(...) local args={...}
@@ -137,7 +137,7 @@ for i=1,fs do
 
 
 		
-	if Bilgi[i][1]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i][1]=0 syaz(fs .." / ".. SonArg) end
+	if Bilgi[i][1]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i][1]=0 syaz(#func .." / ".. SonArg) end
 		
 
 
@@ -149,7 +149,7 @@ for i=1,fs do
     end
 
 end
-print(uygula.." Adet Yontem1 Uygulandi")
+print(#func.." Adet Yontem1 Uygulandi")
 end
 end
 
@@ -158,26 +158,23 @@ end
 
 function yontem2() 
 
---uygula = #func
---uygula = 10
+
+
 ann()	
---pcc()
---yontem1()
---yontem2()
+
 
 
 syaz("1")
 
 
-fs=#func
-uygula = #func
-syaz(tostring(uygula))
-if fs>0 then syaz("11")
-if uygula>fs then uygula=fs end
-for i=1,fs do Bilgi[i][1]=1 GlobalArg[i]={} end
+syaz(tostring(#func))
+
+if #func>0 then syaz("11")
+
+for i=1,#func do Bilgi[i][1]=1 GlobalArg[i]={} end
 
 syaz("2")
-for i=1,uygula do
+for i=1,#func do
 
 	funcorj[i]=func[i]
 	hookfunction(func[i],function(...) 
@@ -185,7 +182,7 @@ for i=1,uygula do
 	
 	
 
-	if Bilgi[i][1]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i][1]=0 print(fs .." / ".. SonArg) end
+	if Bilgi[i][1]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i][1]=0 print(#func .." / ".. SonArg) end
 		
 		
 		
@@ -206,9 +203,9 @@ for i=1,uygula do
 	end)
 end
 syaz("3")
-print(uygula.." Adet Yontem2 Uygulandi")
---yaz(tostring(uygula).." Adet Yontem2 Uygulandi")
-syaz(tostring(uygula).." Adet Yontem2 Uygulandi")
+print(#func.." Adet Yontem2 Uygulandi")
+--yaz(tostring(#func).." Adet Yontem2 Uygulandi")
+syaz(tostring(#func).." Adet Yontem2 Uygulandi")
 
 end
 end
