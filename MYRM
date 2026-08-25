@@ -24,7 +24,7 @@ KapaB.Visible = true KapaB.Style=BSR KapaB[TC3]=C3N(1,1,0)
 local OpenB   = ins("TextButton") OpenB[PR]=MainGRM OpenB[TX]="<<"    OpenB[POS]=UD2(0,42,0,-5) OpenB.Size=UD2(0,40,0,40) OpenB.Font=EFF OpenB[TSZ]=20 
 OpenB.Visible = true OpenB.Style=BSR OpenB[TC3]=C3N(1,1,0)
 
-scb=ins("TextBox") scb[PR]=MainFRM scb[POS]=UD2(0,10,0,100) scb.Size=UD2(0,1200,0,500) scb.ClearTextOnFocus=false scb.MultiLine=true scb.Font=EFF scb[TSZ]=15 scb[TX]=""
+scb=ins("TextBox") scb[PR]=MainFRM scb[POS]=UD2(0,10,0,50) scb.Size=UD2(0,1200,0,300) scb.ClearTextOnFocus=false scb.MultiLine=true scb.Font=EFF scb[TSZ]=15 scb[TX]=""
 
 for i =1,15  do Btnrm[i]=ins("TextButton") Btnrm[i][PR]=BtnrmFRM Btnrm[i][POS]=UD2(0,i*sxx/20+160,0,-55) Btnrm[i][TX]=i
 Btnrm[i][ST]=BSR Btnrm[i].Font=EFF Btnrm[i][TSZ]=16 Btnrm[i][SZ]=UD2(0,sxx/19,0,35) Btnrm[i][TC3]=C3N(1,1,0) Btnrm[i][TC3]=YzL end
@@ -45,7 +45,7 @@ Btnrm[6].MouseButton1Down:connect(function() setclipboard(scb[TX]) yaz("COPY") e
 
 
 Btnrm[13].MouseButton1Down:connect(function() yaz("YONT 1 GETREG BASLADI") yontem1() yaz("YONT 1 BASARILI") Btnrm[13][ST]=BSRD end)
-Btnrm[14].MouseButton1Down:connect(function() yaz("YONT 2 GETGC BASLADI")  yontem2() yaz("YONT 2 BASARILI") Btnrm[14][ST]=BSRD end)
+Btnrm[14].MouseButton1Down:connect(function() syaz("YONT 2 GETGC BASLADI")  yontem2() syaz("YONT 2 BASARILI") Btnrm[14][ST]=BSRD end)
 Btnrm[15].MouseButton1Down:connect(function() if Btnrm[15][ST]==BSR then Bekle=1 Btnrm[15][ST]=BSRD yaz("BEKLEME MODU") else Bekle=0 Btnrm[15][ST]=BSR yaz("DEVAM MODU") end end)
 Btnrm[18].MouseButton1Down:connect(function() Sira=SonArg Btnrm[17][TX]=Sira end)
 
@@ -94,7 +94,6 @@ for _, v in ipairs(getgc()) do
     end
 end
 print("Android getgc ile func say : "..#func)
---yaz("Android getgc ile func say : "..tostring(#func))
 syaz("Android getgc ile func say : "..tostring(#func))
 end
 
@@ -137,7 +136,7 @@ for i=1,fs do
 
 
 		
-	if Bilgi[i][1]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i][1]=0 print(fs .." / ".. SonArg) end
+	if Bilgi[i][1]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i][1]=0 syaz(fs .." / ".. SonArg) end
 		
 
 
@@ -156,7 +155,7 @@ end
 
 
 
-function yontem2() fs=#func
+function yontem2() 
 
 uygula = #func
 --uygula = 10
@@ -166,13 +165,15 @@ ann()
 --yontem2()
 
 
+syaz("1")
 
 
+fs=#func
 if fs>0 then
 if uygula>fs then uygula=fs end
 for i=1,fs do Bilgi[i][1]=1 GlobalArg[i]={} end
 
-
+syaz("2")
 for i=1,uygula do
 
 	funcorj[i]=func[i]
@@ -201,6 +202,7 @@ for i=1,uygula do
 	
 	end)
 end
+syaz("3")
 print(uygula.." Adet Yontem2 Uygulandi")
 --yaz(tostring(uygula).." Adet Yontem2 Uygulandi")
 syaz(tostring(uygula).." Adet Yontem2 Uygulandi")
@@ -221,7 +223,7 @@ spawn(function() while ext do task.wait(.2) Btnrm[16][TX]=SonArg Btnrm[17][TX]=S
   
   
 	
-
+syaz("Android getgc ile func say : ")
 
 
 
