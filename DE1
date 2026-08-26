@@ -1,7 +1,0 @@
-print("basladi")			
-scr=game:GetService("ReplicatedStorage").Configs.BeeConfig  
-scv=require(scr) 
-for i,v in pairs(scv) do
-	print(tostring(i))
-end
-print("bitti")
