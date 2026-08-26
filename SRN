@@ -50,7 +50,7 @@ Btnrm[7][TX]="ATAK7"
 spawn(function() while ext do task.wait(.2) if Btnrm[1][ST]==BSRD then Atak1() end end end)
 spawn(function() while ext do task.wait(.2) if Btnrm[2][ST]==BSRD then Atak2() end end end)
 spawn(function() while ext do task.wait(.2) if Btnrm[3][ST]==BSRD then Atak3() end end end)
-spawn(function() while ext do task.wait(.2) if Btnrm[4][ST]==BSRD then Atak4() end end end)
+spawn(function() while ext do task.wait(.1) if Btnrm[4][ST]==BSRD then Atak4() end end end)
 spawn(function() while ext do task.wait(.2) if Btnrm[5][ST]==BSRD then Atak5() end end end)
 spawn(function() while ext do task.wait(.2) if Btnrm[6][ST]==BSRD then Atak6() end end end)
 spawn(function() while ext do task.wait(.2) if Btnrm[7][ST]==BSRD then Atak7() end end end)
@@ -118,19 +118,25 @@ end
 
 --/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function Atak4() HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
-	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt4(HRT,v) wait(.2) end end
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt4(HRT,v) task.wait() end end
 end
-function atesEt4(benimPart, hedefPart)
-    -- Hedefin veya boş parçanın konumunu alıp biraz ileri yön ekleyebiliriz
-    local pozisyon1 = benimPart.CFrame
-    local pozisyon2 = hedefPart.CFrame -- veya hedefPart.CFrame + (hedefPart.CFrame.LookVector * 2)
+function atesEt4(benimPart, bosPart)
 
+   local cf1 = benimPart.CFrame
+    local cf2 = bosPart.CFrame
+    
+    -- [1] = Senin yerinden, bosa doğru bakan CFrame (Açısı bosa çevrildi)
+    local yeniCf1 = CFrame.new(cf1.Position, cf2.Position)
+    
     local args = {
-        [1] = pozisyon1,
-        [2] = pozisyon2
+        [1] = CFrame.new(yeniCf1.Position) * CFrame.Angles(yeniCf1:ToEulerAnglesXYZ()),
+        [2] = CFrame.new(cf2.Position) * CFrame.Angles(cf2:ToEulerAnglesXYZ())
     }
     
     game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
+
+
+
 end
 
 
