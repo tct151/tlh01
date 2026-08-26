@@ -1,1 +1,239 @@
-loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-dev-product-33218"))()
+
+
+
+
+
+sxx = game.workspace.CurrentCamera.ViewportSize.X
+ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
+UD2 = UDim2.new    POS="Position"   BGT="BackgroundTransparency" SZ="Size" BSR=Enum.ButtonStyle.RobloxRoundDefaultButton 
+C3N = Color3.new   VN=Vector3.new   PR="Parent"      ST="Style"  VS="Visible"     EFF=Enum.Font.Fantasy EFD=Enum.FrameStyle.DropShadow  
+YzL=Color3.fromRGB(74,46,27) YzY=Color3.fromRGB(0,255,0)
+
+ext=true Btnrm={}
+
+MainGRM = ins("ScreenGui")  MainGRM[PR]=game.CoreGui MainGRM.Name="MainGRM"
+MainFRM = ins("Frame")      MainFRM[PR]=MainGRM
+BtnrmFRM  = ins("Frame")      BtnrmFRM[PR] =MainFRM
+
+local KapaB   = ins("TextButton") KapaB[PR]=MainGRM KapaB.Text="X"    KapaB[POS]=UD2(0,5,0,-5) KapaB.Size=UD2(0,40,0,40) KapaB.Font=EFF KapaB[TSZ]=20 
+KapaB.Visible = true KapaB.Style=BSR KapaB[TC3]=C3N(1,1,0)
+local OpenB   = ins("TextButton") OpenB[PR]=MainGRM OpenB[TX]="<<"    OpenB[POS]=UD2(0,42,0,-5) OpenB.Size=UD2(0,40,0,40) OpenB.Font=EFF OpenB[TSZ]=20 
+OpenB.Visible = true OpenB.Style=BSR OpenB[TC3]=C3N(1,1,0)
+
+--scb=ins("TextBox") scb[PR]=MainFRM scb[POS]=UD2(0,10,0,50) scb.Size=UD2(0,1200,0,300) scb.ClearTextOnFocus=false scb.MultiLine=true scb.Font=EFF scb[TSZ]=15 scb[TX]=""
+
+for i =1,15  do Btnrm[i]=ins("TextButton") Btnrm[i][PR]=BtnrmFRM Btnrm[i][POS]=UD2(0,i*sxx/20+160,0,-55) Btnrm[i][TX]=i
+Btnrm[i][ST]=BSR Btnrm[i].Font=EFF Btnrm[i][TSZ]=16 Btnrm[i][SZ]=UD2(0,sxx/19,0,35) Btnrm[i][TC3]=C3N(1,1,0) Btnrm[i][TC3]=YzL end
+
+KapaB.MouseButton1Down:connect(function() for i=1,15 do Btnrm[i][ST]=BSR end ext=false MainGRM:Destroy() end)
+OpenB.MouseButton1Down:connect(function() if MainFRM[VS]==true then MainFRM[VS]=false OpenB[TX]=">>" else MainFRM[VS]=true OpenB[TX]="<<" end end)
+
+function yaz(msg) game.StarterGui:SetCore('SendNotification',{Title='BILGI';Text=msg;Duration=2;}) end
+function syaz(msg) scb[TX]=scb.Text.." \n" ..msg end
+
+
+for i=1,15 do Btnrm[i].MouseButton1Down:connect(function() if Btnrm[i][ST]==BSR then Btnrm[i][ST]=BSRD else Btnrm[i][ST]=BSR end end) end
+
+
+Btnrm[1][TX]="ATAK1"
+Btnrm[2][TX]="ATAK2"
+Btnrm[3][TX]="ATAK3"
+Btnrm[4][TX]="ATAK4"
+Btnrm[5][TX]="ATAK5"
+Btnrm[6][TX]="ATAK6"
+Btnrm[7][TX]="ATAK7"
+
+
+
+
+
+spawn(function() while ext do task.wait(.2) if Btnrm[1][ST]==BSRD then Atak1() end end end)
+spawn(function() while ext do task.wait(.2) if Btnrm[2][ST]==BSRD then Atak2() end end end)
+spawn(function() while ext do task.wait(.2) if Btnrm[3][ST]==BSRD then Atak3() end end end)
+spawn(function() while ext do task.wait(.2) if Btnrm[4][ST]==BSRD then Atak4() end end end)
+spawn(function() while ext do task.wait(.2) if Btnrm[5][ST]==BSRD then Atak5() end end end)
+spawn(function() while ext do task.wait(.2) if Btnrm[6][ST]==BSRD then Atak6() end end end)
+spawn(function() while ext do task.wait(.2) if Btnrm[7][ST]==BSRD then Atak7() end end end)
+
+
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Atak1() HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt1(HRT,v) wait(.2) end end
+end
+function atesEt1(benimPart, hedefPart)
+    -- Hedefin veya boş parçanın konumunu alıp biraz ileri yön ekleyebiliriz
+    local pozisyon1 = benimPart.CFrame
+    local pozisyon2 = hedefPart.CFrame -- veya hedefPart.CFrame + (hedefPart.CFrame.LookVector * 2)
+
+    local args = {
+        [1] = pozisyon1,
+        [2] = pozisyon2
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
+end
+
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Atak2() HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt2(v) wait(.2) end end
+end
+function atesEt2(bosPart)
+
+    local args = {
+        [1] = bosPart.CFrame,
+        [2] = bosPart.CFrame
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
+
+end
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Atak3() HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt3(HRT,v) wait(.2) end end
+end
+function atesEt3(benimPart, bosPart)
+
+    local cf1 = benimPart.CFrame
+    local cf2 = bosPart.CFrame
+    
+    -- [1] = Senin yerinden, bosa doğru bakan CFrame (Açısı bosa çevrildi)
+    local yeniCf1 = CFrame.new(cf1.Position, cf2.Position)
+    
+    local args = {
+        [1] = CFrame.new(yeniCf1.Position) * CFrame.Angles(yeniCf1:ToEulerAnglesXYZ()),
+        [2] = CFrame.new(cf2.Position) * CFrame.Angles(cf2:ToEulerAnglesXYZ())
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
+
+
+end
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Atak4() HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt4(HRT,v) wait(.2) end end
+end
+function atesEt4(benimPart, hedefPart)
+    -- Hedefin veya boş parçanın konumunu alıp biraz ileri yön ekleyebiliriz
+    local pozisyon1 = benimPart.CFrame
+    local pozisyon2 = hedefPart.CFrame -- veya hedefPart.CFrame + (hedefPart.CFrame.LookVector * 2)
+
+    local args = {
+        [1] = pozisyon1,
+        [2] = pozisyon2
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
+end
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Atak5() HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt5(HRT,v) wait(.2) end end
+end
+function atesEt5(benimPart, hedefPart)
+    -- Hedefin veya boş parçanın konumunu alıp biraz ileri yön ekleyebiliriz
+    local pozisyon1 = benimPart.CFrame
+    local pozisyon2 = hedefPart.CFrame -- veya hedefPart.CFrame + (hedefPart.CFrame.LookVector * 2)
+
+    local args = {
+        [1] = pozisyon1,
+        [2] = pozisyon2
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
+end
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Atak6() HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt6(HRT,v) wait(.2) end end
+end
+function atesEt6(benimPart, hedefPart)
+    -- Hedefin veya boş parçanın konumunu alıp biraz ileri yön ekleyebiliriz
+    local pozisyon1 = benimPart.CFrame
+    local pozisyon2 = hedefPart.CFrame -- veya hedefPart.CFrame + (hedefPart.CFrame.LookVector * 2)
+
+    local args = {
+        [1] = pozisyon1,
+        [2] = pozisyon2
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
+end
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Atak7() HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt7(HRT,v) wait(.2) end end
+end
+function atesEt7(benimPart, hedefPart)
+    -- Hedefin veya boş parçanın konumunu alıp biraz ileri yön ekleyebiliriz
+    local pozisyon1 = benimPart.CFrame
+    local pozisyon2 = hedefPart.CFrame -- veya hedefPart.CFrame + (hedefPart.CFrame.LookVector * 2)
+
+    local args = {
+        [1] = pozisyon1,
+        [2] = pozisyon2
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+yaz("SIREN YUKLENDI")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
