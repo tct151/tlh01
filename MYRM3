@@ -375,7 +375,7 @@ end
   
   
   -- Yardımcı Fonksiyon: Bir tablonun içindeki tüm alt tabloları özyinelemeli (recursive) olarak toplar
-local function getAllSubTables(tbl, visited, resultList)
+function getAllSubTables(tbl, visited, resultList)
     visited = visited or {}
     resultList = resultList or {}
     
@@ -396,7 +396,7 @@ local function getAllSubTables(tbl, visited, resultList)
 end
 
 -- 1. Fonksiyon: gc'deki tüm ana tabloları ve onların içindeki tüm alt tabloları 1. array'e toplar
-local function getTablesFromFuncs1()
+function getTablesFromFuncs1()
     local array1 = {}
     local visited = {}
     
@@ -410,7 +410,7 @@ local function getTablesFromFuncs1()
 end
 
 -- 2. Fonksiyon: Aynı işlemi 2. array için yapar
-local function getTablesFromFuncs2()
+function getTablesFromFuncs2()
     local array2 = {}
     local visited = {}
     
@@ -429,7 +429,7 @@ end
   
   
 	
-syaz("MYRM3 14")
+syaz("MYRM3 15")
 
 
 
