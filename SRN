@@ -55,7 +55,7 @@ spawn(function() while ext do task.wait(.2) if Btnrm[5][ST]==BSRD then Sandik() 
 spawn(function() while ext do task.wait(20) if Btnrm[6][ST]==BSRD then yaz("AFK AKTIF") Afk() end end end)
 
 
-Btn[7].MouseButton1Down:connect(function() Btnrm[7][ST]==BSRD Silah() yaz("TUM SILAHLAR ALINDI") wait(1) Btnrm[7][ST]==BSR end)
+Btnrm[7].MouseButton1Down:connect(function() Btnrm[7][ST]=BSRD Silah() yaz("TUM SILAHLAR ALINDI") wait(1) Btnrm[7][ST]=BSR end)
 
 
 
