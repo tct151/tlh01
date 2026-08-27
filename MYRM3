@@ -261,7 +261,7 @@ function getTablesFromFuncs22()
 end
 
 -- 3. Fonksiyon: İki array'i karşılaştırıp birinci array'de olup ikinci array'de olmayan (farklı olan) tabloları 3. array'e toplar
-function compareAndGetDiff(arr1, arr2)
+function compareAndGetDiff2(arr1, arr2)
     local array3 = {}
     local lookup = {}
     
@@ -283,7 +283,7 @@ end
 
 
 
-function getTablesFromFuncs1()
+function getTablesFromFuncs13()
     local array1 = {}
     for _, obj in ipairs(getgc(true)) do
         if type(obj) == "table" then
@@ -294,7 +294,7 @@ function getTablesFromFuncs1()
 end
 
 
-function getTablesFromFuncs2()
+function getTablesFromFuncs23()
     local array2 = {}
     for _, obj in ipairs(getgc(true)) do
         if type(obj) == "table" then
@@ -308,14 +308,75 @@ end
 
  
   
-  
+-- İki tablonun içeriğinin aynı olup olmadığını kontrol eden yardımcı fonksiyon
+function areTablesEqual(t1, t2)
+    if t1 == t2 then return true end
+    if type(t1) ~= "table" or type(t2) ~= "table" then return false end
+    
+    -- t1'deki anahtarları ve değerleri t2 ile kıyasla
+    for k, v in pairs(t1) do
+        if type(v) == "table" and type(t2[k]) == "table" then
+            if not areTablesEqual(v, t2[k]) then return false end
+        else
+            if t2[k] ~= v then return false end
+        end
+    end
+    
+    -- t2'de olup t1'de olmayan ekstra bir şey var mı kontrol et
+    for k, _ in pairs(t2) do
+        if t1[k] == nil then return false end
+    end
+    
+    return true
+end
+
+-- 1. Fonksiyon: Bellekteki tüm tabloları 1. array'e toplar
+function getTablesFromFuncs1()
+    local array1 = {}
+    for _, obj in ipairs(getgc(true)) do
+        if type(obj) == "table" then
+            table.insert(array1, obj)
+        end
+    end
+    return array1
+end
+
+-- 2. Fonksiyon: Bellekteki tüm tabloları 2. array'e toplar
+function getTablesFromFuncs2()
+    local array2 = {}
+    for _, obj in ipairs(getgc(true)) do
+        if type(obj) == "table" then
+            table.insert(array2, obj)
+        end
+    end
+    return array2
+end
+
+-- 3. Fonksiyon: Aynı bellekteki tabloların içeriğini karşılaştırıp değişenleri 3. array'e toplar
+function compareAndGetDiff(arr1, arr2)
+    local array3 = {}
+    
+    -- İki array'in aynı boyutta olduğunu varsayarak eşleşen index'leri veya referansları kıyaslıyoruz
+    -- Burada mantık olarak aynı tablonun önceki ve sonraki hâlini kıyaslamak istiyoruz.
+    for i = 1, math.min(#arr1, #arr2) do
+        local tbl1 = arr1[i]
+        local tbl2 = arr2[i]
+        
+        -- Eğer aynı tablo referansındakilerin içeriği değişdiyse
+        if tbl1 == tbl2 and not areTablesEqual(tbl1, tbl2) then
+            table.insert(array3, tbl1)
+        end
+    end
+    
+    return array3
+end
   
   
   
   
   
 	
-syaz("MYRM3 YUKLENDI")
+syaz("MYRM3 13")
 
 
 
