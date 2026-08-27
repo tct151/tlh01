@@ -39,8 +39,8 @@ Btnrm[1][TX]="ATAK1"
 Btnrm[2][TX]="ATAK2"
 Btnrm[3][TX]="ATAK3"
 Btnrm[4][TX]="ATAK4"
-Btnrm[5][TX]="ATAK5"
-Btnrm[6][TX]="ATAK6"
+Btnrm[5][TX]="SANDK"
+Btnrm[6][TX]="AFK"
 Btnrm[7][TX]="ATAK7"
 
 
@@ -51,8 +51,8 @@ spawn(function() while ext do task.wait(.2) if Btnrm[1][ST]==BSRD then Atak1() e
 spawn(function() while ext do task.wait(.2) if Btnrm[2][ST]==BSRD then Atak2() end end end)
 spawn(function() while ext do task.wait(.2) if Btnrm[3][ST]==BSRD then Atak3() end end end)
 spawn(function() while ext do task.wait(.1) if Btnrm[4][ST]==BSRD then Atak4() end end end)
-spawn(function() while ext do task.wait(.2) if Btnrm[5][ST]==BSRD then Atak5() end end end)
-spawn(function() while ext do task.wait(.2) if Btnrm[6][ST]==BSRD then Atak6() end end end)
+spawn(function() while ext do task.wait(.2) if Btnrm[5][ST]==BSRD then Sandik() end end end)
+spawn(function() while ext do task.wait(20) if Btnrm[6][ST]==BSRD then yaz("AFK AKTIF") Afk() end end end)
 spawn(function() while ext do task.wait(.2) if Btnrm[7][ST]==BSRD then Atak7() end end end)
 
 
@@ -117,15 +117,14 @@ end
 
 
 --/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function Atak4() HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
-	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt4(HRT,v) task.wait() end end
+function Atak4() local hrt=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+	if hrt then for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt4(hrt,v) task.wait() end end end
 end
-function atesEt4(benimPart, bosPart)
+function atesEt4(benimPart,bosPart)
 
-   local cf1 = benimPart.CFrame
+	local cf1 = benimPart.CFrame
     local cf2 = bosPart.CFrame
     
-    -- [1] = Senin yerinden, bosa doğru bakan CFrame (Açısı bosa çevrildi)
     local yeniCf1 = CFrame.new(cf1.Position, cf2.Position)
     
     local args = {
@@ -134,8 +133,6 @@ function atesEt4(benimPart, bosPart)
     }
     
     game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
-
-
 
 end
 
@@ -196,11 +193,29 @@ end
 
 
 
+function Afk()
+
+	vim=game:GetService("VirtualInputManager")if vim then
+    vim:SendKeyEvent(true, Enum.KeyCode.K,false,game) task.wait(0.5)
+    vim:SendKeyEvent(false, Enum.KeyCode.K, false, game)
+    else game:GetService('VirtualUser'):Button1Down(Vector2.new(0,0)) task.wait(0.5)
+    game:GetService('VirtualUser'):Button1Up(Vector2.new(0,0)) end
+
+end	
+	
 
 
 
+function Sandik() local hrt=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 
+if hrt then
+	for k,v in pairs(workspace.crates:GetDescendants()) do if v.Name=="ProximityPrompt" then 
+		for i=1,10 do hrt.CFrame=v.Parent.CFrame task.wait() fireproximityprompt(v) task.wait() end
+	end end
+end
+		
 
+end
 
 
 
