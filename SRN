@@ -41,7 +41,7 @@ Btnrm[3][TX]="ATAK3"
 Btnrm[4][TX]="ATAK4"
 Btnrm[5][TX]="SANDK"
 Btnrm[6][TX]="AFK"
-Btnrm[7][TX]="ATAK7"
+Btnrm[7][TX]="SILAH"
 
 
 
@@ -53,7 +53,9 @@ spawn(function() while ext do task.wait(.2) if Btnrm[3][ST]==BSRD then Atak3() e
 spawn(function() while ext do task.wait(.1) if Btnrm[4][ST]==BSRD then Atak4() end end end)
 spawn(function() while ext do task.wait(.2) if Btnrm[5][ST]==BSRD then Sandik() end end end)
 spawn(function() while ext do task.wait(20) if Btnrm[6][ST]==BSRD then yaz("AFK AKTIF") Afk() end end end)
-spawn(function() while ext do task.wait(.2) if Btnrm[7][ST]==BSRD then Atak7() end end end)
+
+
+Btn[7].MouseButton1Down:connect(function() Btnrm[7][ST]==BSRD Silah() yaz("TUM SILAHLAR ALINDI") wait(1) Btnrm[7][ST]==BSR end)
 
 
 
@@ -216,6 +218,22 @@ end
 		
 
 end
+
+
+
+
+function Silah() for k,v in pairs(game:GetService("ReplicatedStorage").gun_models:GetChildren()) do Silahal(v.Name) end end
+function Silahal(s)
+	game:GetService("ReplicatedStorage").remotes.Shop:FireServer(s)
+	local player = game.Players.LocalPlayer
+	local character = player.Character or player.CharacterAdded:Wait()
+	local tool = player.Backpack:FindFirstChild(s)
+	if tool then tool.Parent = character end
+end
+
+
+
+
 
 
 
