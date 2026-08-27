@@ -44,9 +44,9 @@ Btnrm[4].MouseButton1Down:connect(function() Goster() end)
 Btnrm[5].MouseButton1Down:connect(function() yaz("BOS BIRAKILDI") end)
 Btnrm[6].MouseButton1Down:connect(function() setclipboard(scb[TX]) yaz("COPY") end)
 
-Btnrm[10].MouseButton1Down:connect(function() arr1 = getTablesFromFuncs1() yaz("TBL 1") end)
-Btnrm[11].MouseButton1Down:connect(function() arr2 = getTablesFromFuncs2() yaz("TBL 2") end)
-Btnrm[12].MouseButton1Down:connect(function() diffArray = compareAndGetDiff(arr1, arr2) syaz("Farklı Tablo Sayısı "..tostring(#diffArray)) end)
+Btnrm[10].MouseButton1Down:connect(function() arr1 = getTablesFromFuncs1() syaz("TBL 1 : "..tostring(#arr1)) end)
+Btnrm[11].MouseButton1Down:connect(function() arr2 = getTablesFromFuncs2() syaz("TBL 2 : "..tostring(#arr2)) end)
+Btnrm[12].MouseButton1Down:connect(function() diffArray = compareAndGetDiff(arr1, arr2) syaz("Farklı Tablo : "..tostring(#diffArray)) end)
 
 
 Btnrm[13].MouseButton1Down:connect(function() yaz("YONT 1 GETREG BASLADI") yontem1() yaz("YONT 1 BASARILI") Btnrm[13][ST]=BSRD end)
