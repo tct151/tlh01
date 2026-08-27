@@ -89,47 +89,29 @@ Btnrm[18][TX]="SON"
 
 
 
-func={} funcorj={} Bilgi={}
-
-GlobalArg={} SonArg=0 Bekle=0 Sira=1
+func={} funcorj={} Bilgi={} GlobalArg={} SonArg=0 Bekle=0 Sira=1 Uygula=0 Tur=250
 
 
--- ANDROID 10000 SONUC
-function ann()
-
-for _, v in ipairs(getgc()) do
-    if type(v) == "function" then
-        table.insert(func, v)
-    end
+function Android() 
+	if #func>0 then return end 
+	for _,v in ipairs(getgc()) do if type(v)=="function" then table.insert(func,v) end end syaz("Android F:"..tostring(#func)) 
 end
-print("Android getgc ile func say : "..#func)
-syaz("Android getgc ile func say : "..tostring(#func))
+function Bilgisayar() 
+	local success, registry = pcall(function() return getreg() end)
+	if success and registry then
+		for _, v in pairs(registry) do
+			if type(v) == "function" then
+				func[#func + 1] = v
+			elseif type(v) == "table" then
+				for _, subV in pairs(v) do
+					if type(subV) == "function" then
+						func[#func + 1] = subV
+					end
+				end
+			end
+		end
+	end
 end
-
-
--- PC 116000 SONUC CIKTI
-function pcc()
-local success, registry = pcall(function()
-    return getreg()
-end)
-
-if success and registry then
-    for _, v in pairs(registry) do
-        if type(v) == "function" then
-            func[#func + 1] = v
-        elseif type(v) == "table" then
-            for _, subV in pairs(v) do
-                if type(subV) == "function" then
-                    func[#func + 1] = subV
-                end
-            end
-        end
-    end
-end
-print("Bilgisayar registry ile func say : "..#func)
-end
-
-
 function yontem1()
 if #func>0 then 
 
@@ -160,29 +142,19 @@ end
 print(#func.." Adet Yontem1 Uygulandi")
 end
 end
-
-
-
-
 function yontem2() 
 
 
+Android()	
+Uygula=Uygula+Tur syaz(tostring(Uygula-Tur).."-"..tostring(Uygula).." Uygulama Basladı")
+if Uygula>#func then Uygula=#func syaz("SON TUR")
 
-ann()	
-
-
-
-syaz("1")
-
-
-syaz(tostring(#func))
-
-if #func>0 then syaz("11")
+if #func>0 then
 
 for i=1,#func do Bilgi[i]=1 GlobalArg[i]={} end
-ll=0
-syaz("2")
-for i=1,#func do
+
+
+for Uygula-Tur+1,Uygula do
 
 	funcorj[i]=func[i]
 	hookfunction(func[i],function(...) 
@@ -209,14 +181,10 @@ for i=1,#func do
 		return funcorj[i](unpack(args))
 	
 	end)
-	ll=ll+1
-	if ll>100 then task.wait() ll=0 end
+
 	
 end
-syaz("3")
-print(#func.." Adet Yontem2 Uygulandi")
---yaz(tostring(#func).." Adet Yontem2 Uygulandi")
-syaz(tostring(#func).." Adet Yontem2 Uygulandi")
+syaz("Uygulama Bitti")
 
 end
 end
@@ -240,9 +208,6 @@ function getTablesFromFuncs11()
     end
     return array1
 end
-
-
-
 function getTablesFromFuncs22()
     local array2 = {}
     for _, obj in ipairs(getgc(true)) do
@@ -259,8 +224,6 @@ function getTablesFromFuncs22()
     end
     return array2
 end
-
--- 3. Fonksiyon: İki array'i karşılaştırıp birinci array'de olup ikinci array'de olmayan (farklı olan) tabloları 3. array'e toplar
 function compareAndGetDiff2(arr1, arr2)
     local array3 = {}
     local lookup = {}
@@ -279,10 +242,6 @@ function compareAndGetDiff2(arr1, arr2)
     
     return array3
 end
-
-
-
-
 function getTablesFromFuncs13()
     local array1 = {}
     for _, obj in ipairs(getgc(true)) do
@@ -292,8 +251,6 @@ function getTablesFromFuncs13()
     end
     return array1
 end
-
-
 function getTablesFromFuncs23()
     local array2 = {}
     for _, obj in ipairs(getgc(true)) do
@@ -303,13 +260,7 @@ function getTablesFromFuncs23()
     end
     return array2
 end
-
-
-
- 
-  
--- İki tablonun içeriğinin aynı olup olmadığını kontrol eden yardımcı fonksiyon
-function areTablesEqual(t1, t2)
+function areTablesEqual(t1,t2)
     if t1 == t2 then return true end
     if type(t1) ~= "table" or type(t2) ~= "table" then return false end
     
@@ -329,8 +280,6 @@ function areTablesEqual(t1, t2)
     
     return true
 end
-
--- 1. Fonksiyon: Bellekteki tüm tabloları 1. array'e toplar
 function getTablesFromFuncs14()
     local array1 = {}
     for _, obj in ipairs(getgc(true)) do
@@ -340,8 +289,6 @@ function getTablesFromFuncs14()
     end
     return array1
 end
-
--- 2. Fonksiyon: Bellekteki tüm tabloları 2. array'e toplar
 function getTablesFromFuncs24()
     local array2 = {}
     for _, obj in ipairs(getgc(true)) do
@@ -351,9 +298,7 @@ function getTablesFromFuncs24()
     end
     return array2
 end
-
--- 3. Fonksiyon: Aynı bellekteki tabloların içeriğini karşılaştırıp değişenleri 3. array'e toplar
-function compareAndGetDiff(arr1, arr2)
+function compareAndGetDiff(arr1,arr2)
     local array3 = {}
     
     -- İki array'in aynı boyutta olduğunu varsayarak eşleşen index'leri veya referansları kıyaslıyoruz
@@ -370,12 +315,7 @@ function compareAndGetDiff(arr1, arr2)
     
     return array3
 end
-  
-  
-  
-  
-  -- Yardımcı Fonksiyon: Bir tablonun içindeki tüm alt tabloları özyinelemeli (recursive) olarak toplar
-function getAllSubTables(tbl, visited, resultList)
+function getAllSubTables(tbl,visited,resultList)
     visited = visited or {}
     resultList = resultList or {}
     
@@ -394,8 +334,6 @@ function getAllSubTables(tbl, visited, resultList)
     
     return resultList
 end
-
--- 1. Fonksiyon: gc'deki tüm ana tabloları ve onların içindeki tüm alt tabloları 1. array'e toplar
 function getTablesFromFuncs1()
     local array1 = {}
     local visited = {}
@@ -408,8 +346,6 @@ function getTablesFromFuncs1()
     
     return array1
 end
-
--- 2. Fonksiyon: Aynı işlemi 2. array için yapar
 function getTablesFromFuncs2()
     local array2 = {}
     local visited = {}
@@ -424,13 +360,17 @@ function getTablesFromFuncs2()
 end
 
 
-
+  
+  
+  
+  
+  
   
   
   
   
 	
-syaz("MYRM3 15")
+syaz("MYRM3 16")
 
 
 
