@@ -222,10 +222,6 @@ end
 end
 
 
-
-
-
--- 1. Fonksiyon: getgc() ile tüm fonksiyonları tarar ve içindeki tabloları 1. array'e toplar
 function getTablesFromFuncs11()
     local array1 = {}
     -- true parametresi ile sadece fonksiyonları (veya tüm environment nesnelerini) tarıyoruz
@@ -245,7 +241,8 @@ function getTablesFromFuncs11()
     return array1
 end
 
--- 2. Fonksiyon: Aynı işlemi tekrarlayıp farklı bir anlık görüntü alarak 2. array'e toplar
+
+
 function getTablesFromFuncs22()
     local array2 = {}
     for _, obj in ipairs(getgc(true)) do
@@ -284,8 +281,9 @@ function compareAndGetDiff(arr1, arr2)
 end
 
 
--- 1. Fonksiyon: getgc() içindeki tüm tabloları direkt toplar
-local function getTablesFromFuncs1()
+
+
+function getTablesFromFuncs1()
     local array1 = {}
     for _, obj in ipairs(getgc(true)) do
         if type(obj) == "table" then
@@ -295,8 +293,8 @@ local function getTablesFromFuncs1()
     return array1
 end
 
--- 2. Fonksiyon: Aynı işlemi 2. array için yapar
-local function getTablesFromFuncs2()
+
+function getTablesFromFuncs2()
     local array2 = {}
     for _, obj in ipairs(getgc(true)) do
         if type(obj) == "table" then
@@ -307,16 +305,27 @@ local function getTablesFromFuncs2()
 end
 
 
---eskideneme3 = hookfunction(deneme3, function(...)
+
+ 
+  
+  
+  
+  
   
   
   
 	
-syaz("Android getgc ile func say : ")
+syaz("MYRM3 YUKLENDI")
 
 
 
 
 
 
-print("///////////////////////////////////////////////////   UYGULANDI    ")
+
+
+
+
+
+
+
