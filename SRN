@@ -36,19 +36,22 @@ for i=1,15 do Btnrm[i].MouseButton1Down:connect(function() if Btnrm[i][ST]==BSR 
 
 
 Btnrm[1][TX]="ATAK1"
-Btnrm[2][TX]="ATAK2"
+Btnrm[2][TX]="SAND2"
 Btnrm[3][TX]="ATAK3"
 Btnrm[4][TX]="ATAK4"
 Btnrm[5][TX]="SANDK"
 Btnrm[6][TX]="AFK"
 Btnrm[7][TX]="SILAH"
+Btnrm[8][TX]="ESP"
+Btnrm[9][TX]="DUVAR"
+
 
 
 
 
 
 spawn(function() while ext do task.wait(.2) if Btnrm[1][ST]==BSRD then Atak1() end end end)
-spawn(function() while ext do task.wait(.2) if Btnrm[2][ST]==BSRD then Atak2() end end end)
+spawn(function() while ext do task.wait(.2) if Btnrm[2][ST]==BSRD then Sandik2() end end end)
 spawn(function() while ext do task.wait(.2) if Btnrm[3][ST]==BSRD then Atak3() end end end)
 spawn(function() while ext do task.wait(.1) if Btnrm[4][ST]==BSRD then Atak4() end end end)
 spawn(function() while ext do task.wait(.2) if Btnrm[5][ST]==BSRD then Sandik() end end end)
@@ -56,25 +59,39 @@ spawn(function() while ext do task.wait(20) if Btnrm[6][ST]==BSRD then yaz("AFK 
 
 
 Btnrm[7].MouseButton1Down:connect(function() Btnrm[7][ST]=BSRD Silah() yaz("TUM SILAHLAR ALINDI") wait(1) Btnrm[7][ST]=BSR end)
-
-
+Btnrm[8].MouseButton1Down:connect(function() Btnrm[8][ST]=BSRD espp() yaz("ESP AKTIF") end)
+Btnrm[9].MouseButton1Down:connect(function() Duvar() end)
 
 
 --/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function Atak1() HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
-	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt1(HRT,v) wait(.2) end end
+function Atak1()
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt1(v) task.wait() end end
 end
-function atesEt1(benimPart, hedefPart)
-    -- Hedefin veya boş parçanın konumunu alıp biraz ileri yön ekleyebiliriz
-    local pozisyon1 = benimPart.CFrame
-    local pozisyon2 = hedefPart.CFrame -- veya hedefPart.CFrame + (hedefPart.CFrame.LookVector * 2)
+function atesEt1(bosPart)
 
+	benimPart=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+
+	if benimPart then
+	
+	
+	local off = CFrame.new(0, 30, 0)
+    local cf2 = bosPart.CFrame
+    local cf1 = cf2 * off
+	
+
+	
+	
+    local yeniCf1 = CFrame.new(cf1.Position, cf2.Position)
+    
     local args = {
-        [1] = pozisyon1,
-        [2] = pozisyon2
+        [1] = CFrame.new(yeniCf1.Position) * CFrame.Angles(yeniCf1:ToEulerAnglesXYZ()),
+        [2] = CFrame.new(cf2.Position) * CFrame.Angles(cf2:ToEulerAnglesXYZ())
     }
     
-    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args)) task.wait()
+
+	end
+	
 end
 
 
@@ -119,11 +136,15 @@ end
 
 
 --/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function Atak4() local hrt=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-	if hrt then for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt4(hrt,v) task.wait() end end end
+function Atak4()
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt4(v) task.wait() end end
 end
-function atesEt4(benimPart,bosPart)
+function atesEt4(bosPart)
 
+	benimPart=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+
+	if benimPart then
+	
 	local cf1 = benimPart.CFrame
     local cf2 = bosPart.CFrame
     
@@ -134,8 +155,10 @@ function atesEt4(benimPart,bosPart)
         [2] = CFrame.new(cf2.Position) * CFrame.Angles(cf2:ToEulerAnglesXYZ())
     }
     
-    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args)) task.wait()
 
+	end
+	
 end
 
 
@@ -208,18 +231,25 @@ end
 
 
 
-function Sandik() local hrt=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+function Sandik() 
 
-if hrt then
 	for k,v in pairs(workspace.crates:GetDescendants()) do if v.Name=="ProximityPrompt" then 
-		for i=1,10 do hrt.CFrame=v.Parent.CFrame task.wait() fireproximityprompt(v) task.wait() end
+		local s=0 for k,v in pairs(workspace.crates:GetChildren()) do s=s+1 end Btnrm[5][TX]="SAN-"..s
+		local hrt=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+		if hrt then for i=1,10 do hrt.CFrame=v.Parent.CFrame task.wait(.1) fireproximityprompt(v) task.wait(.1) end end
 	end end
-end
-		
 
 end
 
+function Sandik2() 
 
+	for k,v in pairs(workspace.crates:GetDescendants()) do if v.Name=="ProximityPrompt" then 
+		local s=0 for k,v in pairs(workspace.crates:GetChildren()) do s=s+1 end Btnrm[2][TX]="SAN-"..s
+		local hrt=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+		if hrt then for i=1,2 do hrt.CFrame=v.Parent.CFrame task.wait(.1) fireproximityprompt(v) task.wait(.1) end end
+	end end
+
+end
 
 
 function Silah() for k,v in pairs(game:GetService("ReplicatedStorage").gun_models:GetChildren()) do Silahal(v.Name) end end
@@ -231,6 +261,208 @@ function Silahal(s)
 	if tool then tool.Parent = character end
 end
 
+
+
+function espp()
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+_G.FriendColor = Color3.fromRGB(0, 0, 255)
+_G.EnemyColor = Color3.fromRGB(255, 0, 0)
+_G.UseTeamColor = true
+
+--------------------------------------------------------------------
+local Holder = Instance.new("Folder", game.CoreGui)
+Holder.Name = "ESP"
+
+local Box = Instance.new("BoxHandleAdornment")
+Box.Name = "nilBox"
+Box.Size = Vector3.new(1, 2, 1)
+Box.Color3 = Color3.new(100 / 255, 100 / 255, 100 / 255)
+Box.Transparency = 0.7
+Box.ZIndex = 0
+Box.AlwaysOnTop = false
+Box.Visible = false
+
+local NameTag = Instance.new("BillboardGui")
+NameTag.Name = "nilNameTag"
+NameTag.Enabled = false
+NameTag.Size = UDim2.new(0, 200, 0, 50)
+NameTag.AlwaysOnTop = true
+NameTag.StudsOffset = Vector3.new(0, 1.8, 0)
+local Tag = Instance.new("TextLabel", NameTag)
+Tag.Name = "Tag"
+Tag.BackgroundTransparency = 1
+Tag.Position = UDim2.new(0, -50, 0, 0)
+Tag.Size = UDim2.new(0, 300, 0, 20)
+Tag.TextSize = 15
+Tag.TextColor3 = Color3.new(100 / 255, 100 / 255, 100 / 255)
+Tag.TextStrokeColor3 = Color3.new(0 / 255, 0 / 255, 0 / 255)
+Tag.TextStrokeTransparency = 0.4
+Tag.Text = "nil"
+Tag.Font = Enum.Font.SourceSansBold
+Tag.TextScaled = false
+
+local LoadCharacter = function(v)
+	repeat wait() until v.Character ~= nil
+	v.Character:WaitForChild("Humanoid")
+	local vHolder = Holder:FindFirstChild(v.Name)
+	vHolder:ClearAllChildren()
+	local b = Box:Clone()
+	b.Name = v.Name .. "Box"
+	b.Adornee = v.Character
+	b.Parent = vHolder
+	local t = NameTag:Clone()
+	t.Name = v.Name .. "NameTag"
+	t.Enabled = true
+	t.Parent = vHolder
+	t.Adornee = v.Character:WaitForChild("Head", 5)
+	if not t.Adornee then
+		return UnloadCharacter(v)
+	end
+	t.Tag.Text = v.Name
+	b.Color3 = Color3.new(v.TeamColor.r, v.TeamColor.g, v.TeamColor.b)
+	t.Tag.TextColor3 = Color3.new(v.TeamColor.r, v.TeamColor.g, v.TeamColor.b)
+	local Update
+	local UpdateNameTag = function()
+		if not pcall(function()
+			v.Character.Humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+			local maxh = math.floor(v.Character.Humanoid.MaxHealth)
+			local h = math.floor(v.Character.Humanoid.Health)
+		end) then
+			Update:Disconnect()
+		end
+	end
+	UpdateNameTag()
+	Update = v.Character.Humanoid.Changed:Connect(UpdateNameTag)
+end
+
+local UnloadCharacter = function(v)
+	local vHolder = Holder:FindFirstChild(v.Name)
+	if vHolder and (vHolder:FindFirstChild(v.Name .. "Box") ~= nil or vHolder:FindFirstChild(v.Name .. "NameTag") ~= nil) then
+		vHolder:ClearAllChildren()
+	end
+end
+
+local LoadPlayer = function(v)
+	local vHolder = Instance.new("Folder", Holder)
+	vHolder.Name = v.Name
+	v.CharacterAdded:Connect(function()
+		pcall(LoadCharacter, v)
+	end)
+	v.CharacterRemoving:Connect(function()
+		pcall(UnloadCharacter, v)
+	end)
+	v.Changed:Connect(function(prop)
+		if prop == "TeamColor" then
+			UnloadCharacter(v)
+			wait()
+			LoadCharacter(v)
+		end
+	end)
+	LoadCharacter(v)
+end
+
+local UnloadPlayer = function(v)
+	UnloadCharacter(v)
+	local vHolder = Holder:FindFirstChild(v.Name)
+	if vHolder then
+		vHolder:Destroy()
+	end
+end
+
+for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+	spawn(function() pcall(LoadPlayer, v) end)
+end
+
+game:GetService("Players").PlayerAdded:Connect(function(v)
+	pcall(LoadPlayer, v)
+end)
+
+game:GetService("Players").PlayerRemoving:Connect(function(v)
+	pcall(UnloadPlayer, v)
+end)
+
+game:GetService("Players").LocalPlayer.NameDisplayDistance = 0
+
+if _G.Reantheajfdfjdgs then
+    return
+end
+
+_G.Reantheajfdfjdgs = ":suifayhgvsdghfsfkajewfrhk321rk213kjrgkhj432rj34f67df"
+
+local players = game:GetService("Players")
+local plr = players.LocalPlayer
+
+function esp(target, color)
+    if target.Character then
+        if not target.Character:FindFirstChild("GetReal") then
+            local highlight = Instance.new("Highlight")
+            highlight.RobloxLocked = true
+            highlight.Name = "GetReal"
+            highlight.Adornee = target.Character
+            highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+            highlight.FillColor = color
+            highlight.Parent = target.Character
+        else
+            target.Character.GetReal.FillColor = color
+        end
+    end
+end
+
+while task.wait() do
+    for i, v in pairs(players:GetPlayers()) do
+        if v ~= plr then
+            esp(v, _G.UseTeamColor and v.TeamColor.Color or ((plr.TeamColor == v.TeamColor) and _G.FriendColor or _G.EnemyColor))
+        end
+    end
+end
+
+
+end
+
+
+
+function Duvar()
+
+    isNoclipping = not isNoclipping
+    Btnrm[9][ST]=BSR
+    if isNoclipping then Btnrm[9][ST]=BSRD
+        print("Noclip Açıldı!")
+        -- Eğer eski bir bağlantı kalmışsa temizle
+        if NoclipConnection then NoclipConnection:Disconnect() end
+        
+        -- Sürekli çalışarak çarpışmaları kapatan döngü
+        NoclipConnection = RunService.Stepped:Connect(function()
+            if not isNoclipping then return end
+            local character = LocalPlayer.Character
+            if character then
+                for _, v in pairs(character:GetDescendants()) do
+                    if v:IsA("BasePart") then
+                        v.CanCollide = false
+                    end
+                end
+            end
+        end)
+    else
+        print("Noclip Kapatıldı (Clip)")
+        -- 1. Döngü bağlantısını tamamen kopar
+        if NoclipConnection then
+            NoclipConnection:Disconnect()
+            NoclipConnection = nil
+        end
+        
+        -- 2. Karakterin çarpışmalarını hemen eski haline getir
+        local character = LocalPlayer.Character
+        if character then
+            for _, v in pairs(character:GetDescendants()) do
+                if v:IsA("BasePart") then
+                    v.CanCollide = true
+                end
+            end
+        end
+    end
+end
 
 
 
