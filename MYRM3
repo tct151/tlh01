@@ -1,5 +1,7 @@
 
 
+
+
 --https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM"))()
 
@@ -89,7 +91,8 @@ Btnrm[18][TX]="SON"
 
 
 function Goster()   
-scb[TX]="" 
+--scb[TX]=""
+syaz("222") 
 repeat
 
 
@@ -180,7 +183,9 @@ for i=Uygula-Tur+1,Uygula do
 	
 	
 
-	if Bilgi[i]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i]=0 print(#func .." / ".. SonArg) end
+	if Bilgi[i]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i]=0 
+	--print(#func .." / ".. SonArg) 
+	end
 		
 		
 		
@@ -388,7 +393,7 @@ end
   
   
 	
-syaz("MYRM3 21")
+syaz("MYRM3 22")
 
 
 
