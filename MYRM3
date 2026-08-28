@@ -237,7 +237,7 @@ function yontem22()
     end
     syaz("Uygulama Bitti")
 end
-function yontem2()
+function yontem23()
     
     Android()    
     syaz("Toplam Fonksiyon: " .. tostring(#func) .. " - Hook İşlemi Başlıyor...") 
@@ -282,7 +282,55 @@ function yontem2()
         end)
     end
 end
+function yontem2()    
+    Android()    
+    syaz("Toplam Fonksiyon: " .. tostring(#func) .. " - Hook İşlemi Başlıyor...") 
+    task.wait(0.1)
+    
+    if #func > 0 then
+        for i = 1, #func do 
+            Bilgi[i] = 1  
+            GlobalArg[i] = {} 
+        end
 
+        task.spawn(function()
+            local batchSize = 50 -- 1 çok yavaşlatır ve anlık çakışmaya yol açar, 50 idealdir
+            local basarili = 0
+            
+            for i = 1, #func do
+                local hedefFunc = func[i]
+                funcorj[i] = hedefFunc
+                
+                local success, err = pcall(function()
+                    hookfunction(hedefFunc, function(...)    
+                        local args = {...}
+                        
+                        -- İleride açmak istersen burayı aktif edersin
+                        -- if Bilgi[i] == 1 and Bekle == 0 then 
+                        --     SonArg = SonArg + 1    
+                        --     GlobalArg[SonArg] = args 
+                        --     Bilgi[i] = 0 
+                        -- end
+                        
+                        return funcorj[i](unpack(args))
+                    end)
+                end)
+                
+                if success then
+                    basarili = basarili + 1
+                end
+                
+                if i % batchSize == 0 then
+                    task.wait() 
+                end
+
+                Btnrm[30][TX] = i
+            end
+            
+            syaz("Bitti! Başarılı Hook: " .. tostring(basarili) .. " / " .. tostring(#func))
+        end)
+    end
+end
 
 
 
@@ -467,7 +515,7 @@ end
   
   
 	
-syaz("MYRM3 40")
+syaz("MYRM3 42")
 
 
 
