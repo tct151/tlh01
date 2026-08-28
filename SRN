@@ -1,5 +1,5 @@
 
-VVV=12
+VVV=13
 
 
 sxx = game.workspace.CurrentCamera.ViewportSize.X
@@ -299,8 +299,8 @@ function SandikH()
     -- ProximityPrompt'ları bul ve işle
     for _, v in ipairs(cratesFolder:GetDescendants()) do 
         if v.Name == "ProximityPrompt" then
-        
-
+            local t = tick() 
+            repeat 
                 task.wait() 
                 if v and v.Parent and hrt then 
                     hrt.CFrame = v.Parent.CFrame 
@@ -308,11 +308,10 @@ function SandikH()
                     fireproximityprompt(v) 
                     task.wait() 
                 end
- 
+            until (tick()-t)>1.5 or v==nil or hrt==nil or (v ~= nil and v.Parent == nil)
         end 
     end 
 end
-
 
 
 
