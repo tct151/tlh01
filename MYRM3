@@ -98,7 +98,9 @@ repeat
 
 
 if #GlobalArg[Sira]>0 and Sira<=SonArg then
-for i=1,#GlobalArg[Sira] do syaz("Arg "..i.." : "..tostring(GlobalArg[Sira][i])) end break end
+
+syaz("Arg Sayısı: "..tostring(#GlobalArg[Sira]))
+for i=1,#GlobalArg[Sira] do syaz("Arg "..i.." : "..tostring(GlobalArg[Sira][i])) end return end
 
 
 
@@ -109,7 +111,7 @@ Sira=Sira+1 Btnrm[17][TX]=Sira
 
 
 until Sira>SonArg
-
+syaz("Arg Bulunamadı")
 
 end
 function Android() 
@@ -390,7 +392,7 @@ end
   
   
 	
-syaz("MYRM3 18")
+syaz("MYRM3 19")
 
 
 
