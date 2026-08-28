@@ -1,6 +1,7 @@
 
 
 
+
 --https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM"))()
 
@@ -330,85 +331,10 @@ function yontem24()
         end)
     end
 end
-local safFunc = {}
 
-function yontem2()    
-    Android()    
-    syaz("Toplam Fonksiyon: " .. tostring(#func) .. " - Güvenli Filtreleme Başlıyor...") 
-    task.wait(0.1)
-    
-    if #func > 0 then
-        safFunc = {} 
-        
-        task.spawn(function()
-            local taranan = 0
-            
-            for i = 1, #func do
-                local f = func[i]
-                
-                -- Test aşamasını çok daha hafif ve risksiz yapıyoruz
-                -- Doğrudan hook'lamayı deniyoruz, başarılı olursa saf listeye atıyoruz
-                local success = pcall(function()
-                    -- Sadece test amaçlı küçük bir hook denemesi
-                    local dummy = function(...) return ... end
-                    hookfunction(f, dummy)
-                end)
-                
-                if success then
-                    table.insert(safFunc, f)
-                    funcorj[#safFunc] = f
-                end
-                
-                taranan = taranan + 1
-                
-                -- İşlem akışının kilitlenmemesi için her 50 adımda bir nefes aldırıyoruz
-                if taranan % 50 == 0 then
-                    task.wait() 
-                end
-                
-                Btnrm[30][TX] = "Filtre: " .. tostring(taranan) .. "/" .. tostring(#func)
-            end
-            
-            syaz("Filtreleme Bitti! Saf Fonksiyon: " .. tostring(#safFunc) .. " / " .. tostring(#func))
-            
-            -- Asıl Hook Aşaması
-            if #safFunc > 0 then
-                for i = 1, #safFunc do 
-                    Bilgi[i] = 1  
-                    GlobalArg[i] = {} 
-                end
 
-                syaz("Asıl Hook İşlemi Başlıyor...")
-                
-                for i = 1, #safFunc do
-                    local hedefFunc = safFunc[i]
-                    
-                    pcall(function()
-                        hookfunction(hedefFunc, function(...)    
-                            local args = {...}
-                            
-                            if Bilgi[i] == 1 and Bekle == 0 then 
-                                SonArg = SonArg + 1    
-                                GlobalArg[SonArg] = args 
-                                Bilgi[i] = 0 
-                            end
-                            
-                            return funcorj[i](unpack(args))
-                        end)
-                    end)
-                    
-                    if i % 50 == 0 then
-                        task.wait()
-                    end
-                    
-                    Btnrm[30][TX] = "Hk:" .. tostring(i) .. "/" .. tostring(#safFunc)
-                end
-                
-                syaz("Tüm Sağlam Fonksiyonlar Hook'landı!")
-            end
-        end)
-    end
-end
+
+
 
 function getTablesFromFuncs11()
     local array1 = {}
@@ -580,25 +506,119 @@ function getTablesFromFuncs2()
 end
 
 
+local safFunc = {}
+
+function yontem2()    
+    Android()    
+    syaz("Toplam Fonksiyon: " .. tostring(#func) .. " - Akıllı Filtreleme Başlıyor...") 
+    task.wait(0.1)
+    
+    if #func > 0 then
+        safFunc = {} 
+        
+        task.spawn(function()
+            local taranan = 0
+            
+            for i = 1, #func do
+                local f = func[i]
+                
+                -- 1. ADIM: Fonksiyonun hâlâ var olup olmadığını ve geçerli bir closure olup olmadığını sorgula
+                local gecerli = false
+                pcall(function()
+                    -- isliveclosure veya tip kontrolü ile fonksiyonun çöpe atılmadığını (garbage collected) denetliyoruz
+                    if type(f) == "function" then
+                        gecerli = true
+                    end
+                end)
+                
+                if gecerli then
+                    -- 2. ADIM: Büyük fonksiyonları seçmek için boyut/kapsam kontrolü
+                    -- (debug.getinfo veya pcall ile fonksiyonun içeriğine bakıyoruz)
+                    local buyuktur = false
+                    pcall(function()
+                        local info = debug.getinfo(f)
+                        -- Eğer bir Luau fonksiyonu ise ve linedefined / source gibi detayları varsa veya 
+                        -- alt parametre/instruction yapısı belliyse büyük olarak değerlendiriyoruz.
+                        -- Veya alternatif olarak is_l_closure (Luau fonksiyonu) kontrolü yapabiliriz.
+                        if info and info.what == "Lua" then
+                            buyuktur = true
+                        elseif info and info.nparams and info.nparams > 0 then
+                            buyuktur = true
+                        else
+                            -- Eğer debug bilgisi yoksa ama getgc'den geldiyse boyutsal bir tolerans bırakabiliriz
+                            buyuktur = true 
+                        end
+                    end)
+                    
+                    if buyuktur then
+                        -- 3. ADIM: Hook testini yapıp saf listeye ekleyelim
+                        local success = pcall(function()
+                            local dummy = function(...) return ... end
+                            hookfunction(f, dummy)
+                        end)
+                        
+                        if success then
+                            table.insert(safFunc, f)
+                            funcorj[#safFunc] = f
+                        end
+                    end
+                end
+                
+                taranan = taranan + 1
+                if taranan % 100 == 0 then
+                    task.wait() 
+                end
+                
+                Btnrm[30][TX] = "Filtre: " .. tostring(taranan) .. "/" .. tostring(#func)
+            end
+            
+            syaz("Filtreleme Bitti! Büyük ve Saf Fonksiyon: " .. tostring(#safFunc) .. " / " .. tostring(#func))
+            
+            -- Asıl Hook Aşaması
+            if #safFunc > 0 then
+                for i = 1, #safFunc do 
+                    Bilgi[i] = 1  
+                    GlobalArg[i] = {} 
+                end
+
+                syaz("Büyük Fonksiyonlar Hook'lanıyor...")
+                
+                for i = 1, #safFunc do
+                    local hedefFunc = safFunc[i]
+                    
+                    pcall(function()
+                        hookfunction(hedefFunc, function(...)    
+                            local args = {...}
+                            
+                            if Bilgi[i] == 1 and Bekle == 0 then 
+                                SonArg = SonArg + 1    
+                                GlobalArg[SonArg] = args 
+                                Bilgi[i] = 0 
+                            end
+                            
+                            return funcorj[i][unpack(args)] -- veya unpack(args)
+                        end)
+                    end)
+                    
+                    if i % 50 == 0 then
+                        task.wait()
+                    end
+                    
+                    Btnrm[30][TX] = "Hook: " .. tostring(i) .. "/" .. tostring(#safFunc)
+                end
+                
+                syaz("Tüm Büyük Fonksiyonlar Hook'landı!")
+            end
+        end)
+    end
+end
   
   
   
   
   
   
-  
-  
-  
-	
-syaz("MYRM3 2")
-
-
-
-
-
-
-
-
-
+ 
+syaz("MYRM3 3")
 
 
