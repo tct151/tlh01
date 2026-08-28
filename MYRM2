@@ -3,18 +3,17 @@
 
 
 --https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM
-
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM"))()
 
 
+ext=true Btnrm={}
+func={} funcorj={} Bilgi={} GlobalArg={} SonArg=0 Bekle=0 Sira=1 Uygula=0 Tur=250
 
 sxx = game.workspace.CurrentCamera.ViewportSize.X
 ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
 UD2 = UDim2.new    POS="Position"   BGT="BackgroundTransparency" SZ="Size" BSR=Enum.ButtonStyle.RobloxRoundDefaultButton 
 C3N = Color3.new   VN=Vector3.new   PR="Parent"      ST="Style"  VS="Visible"     EFF=Enum.Font.Fantasy EFD=Enum.FrameStyle.DropShadow  
 YzL=Color3.fromRGB(74,46,27) YzY=Color3.fromRGB(0,255,0)
-
-ext=true Btnrm={}
 
 MainGRM = ins("ScreenGui")  MainGRM[PR]=game.CoreGui MainGRM.Name="MainGRM"
 MainFRM = ins("Frame")      MainFRM[PR]=MainGRM
@@ -25,7 +24,7 @@ KapaB.Visible = true KapaB.Style=BSR KapaB[TC3]=C3N(1,1,0)
 local OpenB   = ins("TextButton") OpenB[PR]=MainGRM OpenB[TX]="<<"    OpenB[POS]=UD2(0,42,0,-5) OpenB.Size=UD2(0,40,0,40) OpenB.Font=EFF OpenB[TSZ]=20 
 OpenB.Visible = true OpenB.Style=BSR OpenB[TC3]=C3N(1,1,0)
 
-scb=ins("TextBox") scb[PR]=MainFRM scb[POS]=UD2(0,10,0,50) scb.Size=UD2(0,1200,0,300) scb.ClearTextOnFocus=false scb.MultiLine=true scb.Font=EFF scb[TSZ]=15 scb[TX]=""
+scb=ins("TextBox") scb[PR]=MainFRM scb[POS]=UD2(0,10,0,50) scb.Size=UD2(0,800,0,150) scb.ClearTextOnFocus=false scb.MultiLine=true scb.Font=EFF scb[TSZ]=15 scb[TX]=""
 
 for i =1,15  do Btnrm[i]=ins("TextButton") Btnrm[i][PR]=BtnrmFRM Btnrm[i][POS]=UD2(0,i*sxx/20+160,0,-55) Btnrm[i][TX]=i
 Btnrm[i][ST]=BSR Btnrm[i].Font=EFF Btnrm[i][TSZ]=16 Btnrm[i][SZ]=UD2(0,sxx/19,0,35) Btnrm[i][TC3]=C3N(1,1,0) Btnrm[i][TC3]=YzL end
@@ -34,31 +33,36 @@ for i =16,30 do Btnrm[i]=ins("TextButton") Btnrm[i][PR]=BtnrmFRM Btnrm[i][POS]=U
 Btnrm[i][ST]=BSR Btnrm[i].Font=EFF Btnrm[i][TSZ]=16 Btnrm[i][SZ]=UD2(0,sxx/19,0,35) Btnrm[i][TC3]=C3N(1,1,0) Btnrm[i][TC3]=YzL end
 
 
-KapaB.MouseButton1Down:connect(function() for i=1,30 do Btnrm[i][ST]=BSR end ext=false MainGRM:Destroy() end)
-OpenB.MouseButton1Down:connect(function() if MainFRM[VS]==true then MainFRM[VS]=false OpenB[TX]=">>" else MainFRM[VS]=true OpenB[TX]="<<" end end)
+KapaB.MouseButton1Down:Connect(function() for i=1,30 do Btnrm[i][ST]=BSR end ext=false MainGRM:Destroy() end)
+OpenB.MouseButton1Down:Connect(function() if MainFRM[VS]==true then MainFRM[VS]=false OpenB[TX]=">>" else MainFRM[VS]=true OpenB[TX]="<<" end end)
 
-Btnrm[1].MouseButton1Down:connect(function() if Btnrm[1][ST]==BSR then scb[VS]=true Btnrm[1][ST]=BSRD else scb[VS]=false Btnrm[1][ST]=BSR end end)	
-Btnrm[2].MouseButton1Down:connect(function() Sira=Sira-1 Btnrm[17][TX]=Sira end)
-Btnrm[3].MouseButton1Down:connect(function() Sira=Sira+1 Btnrm[17][TX]=Sira end)
-Btnrm[4].MouseButton1Down:connect(function() Goster() end)
-Btnrm[5].MouseButton1Down:connect(function() yaz("BOS BIRAKILDI") end)
-Btnrm[6].MouseButton1Down:connect(function() setclipboard(scb[TX]) yaz("COPY") end)
+Btnrm[1].MouseButton1Down:Connect(function() if Btnrm[1][ST]==BSR then scb[VS]=true Btnrm[1][ST]=BSRD else scb[VS]=false Btnrm[1][ST]=BSR end end)	
+Btnrm[2].MouseButton1Down:Connect(function() Sira=Sira-1 Btnrm[17][TX]=Sira end)
+Btnrm[3].MouseButton1Down:Connect(function() Sira=Sira+1 Btnrm[17][TX]=Sira end)
+Btnrm[4].MouseButton1Down:Connect(function() Goster() end)
+Btnrm[5].MouseButton1Down:Connect(function() yaz("BOS BIRAKILDI") end)
+Btnrm[6].MouseButton1Down:Connect(function() setclipboard(scb[TX]) yaz("COPY") end)
+Btnrm[7].MouseButton1Down:Connect(function() Tur=Tur+50 yaz("Tur "..tostring(Tur)) end)
+
+Btnrm[10].MouseButton1Down:Connect(function() arr1 = getTablesFromFuncs1() syaz("TBL 1 : "..tostring(#arr1)) end)
+Btnrm[11].MouseButton1Down:Connect(function() arr2 = getTablesFromFuncs2() syaz("TBL 2 : "..tostring(#arr2)) end)
+Btnrm[12].MouseButton1Down:Connect(function() diffArray = compareAndGetDiff(arr1, arr2) syaz("Farklı Tablo : "..tostring(#diffArray)) end)
 
 
-Btnrm[13].MouseButton1Down:connect(function() yaz("YONT 1 GETREG BASLADI") yontem1() yaz("YONT 1 BASARILI") Btnrm[13][ST]=BSRD end)
-Btnrm[14].MouseButton1Down:connect(function() syaz("YONT 2 GETGC BASLADI")  yontem2() syaz("YONT 2 BASARILI") Btnrm[14][ST]=BSRD end)
-Btnrm[15].MouseButton1Down:connect(function() if Btnrm[15][ST]==BSR then Bekle=1 Btnrm[15][ST]=BSRD yaz("BEKLEME MODU") else Bekle=0 Btnrm[15][ST]=BSR yaz("DEVAM MODU") end end)
-Btnrm[18].MouseButton1Down:connect(function() Sira=SonArg Btnrm[17][TX]=Sira end)
+Btnrm[13].MouseButton1Down:Connect(function() yaz("YONT 1 GETREG BASLADI") yontem1() yaz("YONT 1 BASARILI") Btnrm[13][ST]=BSRD end)
+Btnrm[14].MouseButton1Down:Connect(function() syaz("YONT 2 GETGC BASLADI")  yontem2() syaz("YONT 2 BASARILI") Btnrm[14][ST]=BSRD end)
+Btnrm[15].MouseButton1Down:Connect(function() if Btnrm[15][ST]==BSR then Bekle=1 Btnrm[15][ST]=BSRD yaz("BEKLEME MODU") else Bekle=0 Btnrm[15][ST]=BSR yaz("DEVAM MODU") end end)
+Btnrm[18].MouseButton1Down:Connect(function() Sira=SonArg Btnrm[17][TX]=Sira end)
 
 
 
 function yaz(msg) game.StarterGui:SetCore('SendNotification',{Title='BILGI';Text=msg;Duration=2;}) end
 function syaz(msg) scb[TX]=scb.Text.." \n" ..msg end
-function Goster()   scb[TX]="" for i=1,#GlobalArg[Sira] do syaz("Arg "..i.." : "..tostring(GlobalArg[Sira][i])) end end
+
 --function Execute() loadstring(kod)  end
 
 
-
+spawn(function() while ext do task.wait(.2) Btnrm[16][TX]=SonArg Btnrm[17][TX]=Sira end end)
 
 
 
@@ -69,7 +73,12 @@ Btnrm[3][TX]=">>>"
 Btnrm[4][TX]="GOR"
 Btnrm[5][TX]="EXE"
 Btnrm[6][TX]="COPY"
+Btnrm[7][TX]="TUR"
 
+
+Btnrm[10][TX]="TBL1"
+Btnrm[11][TX]="TBL2"
+Btnrm[12][TX]="FARK"
 
 Btnrm[13][TX]="YNT1"
 Btnrm[14][TX]="YNT2"
@@ -79,49 +88,51 @@ Btnrm[18][TX]="SON"
 
 
 
-print("///////////////////////////////////////// BASLADI")
-
-func={} funcorj={} Bilgi={}
-
-GlobalArg={} SonArg=0 Bekle=0 Sira=1
 
 
--- ANDROID 10000 SONUC
-function ann()
+function Goster()   
+--scb[TX]=""
+syaz("222") 
+repeat
 
-for _, v in ipairs(getgc()) do
-    if type(v) == "function" then
-        table.insert(func, v)
-    end
+
+if #GlobalArg[Sira]>0 and Sira<=SonArg then
+
+syaz("Arg Sayısı: "..tostring(#GlobalArg[Sira]))
+for i=1,#GlobalArg[Sira] do syaz("Arg "..i.." : "..tostring(GlobalArg[Sira][i])) end return end
+
+
+
+
+
+Sira=Sira+1 Btnrm[17][TX]=Sira
+syaz("111")
+
+
+until Sira>SonArg
+syaz("Arg Bulunamadı")
+
 end
-print("Android getgc ile func say : "..#func)
-syaz("Android getgc ile func say : "..tostring(#func))
+function Android() 
+	if #func>0 then return end 
+	for _,v in ipairs(getgc()) do if type(v)=="function" then table.insert(func,v) end end syaz("Android F:"..tostring(#func)) 
 end
-
-
--- PC 116000 SONUC CIKTI
-function pcc()
-local success, registry = pcall(function()
-    return getreg()
-end)
-
-if success and registry then
-    for _, v in pairs(registry) do
-        if type(v) == "function" then
-            func[#func + 1] = v
-        elseif type(v) == "table" then
-            for _, subV in pairs(v) do
-                if type(subV) == "function" then
-                    func[#func + 1] = subV
-                end
-            end
-        end
-    end
+function Bilgisayar() 
+	local success, registry = pcall(function() return getreg() end)
+	if success and registry then
+		for _, v in pairs(registry) do
+			if type(v) == "function" then
+				func[#func + 1] = v
+			elseif type(v) == "table" then
+				for _, subV in pairs(v) do
+					if type(subV) == "function" then
+						func[#func + 1] = subV
+					end
+				end
+			end
+		end
+	end
 end
-print("Bilgisayar registry ile func say : "..#func)
-end
-
-
 function yontem1()
 if #func>0 then 
 
@@ -152,29 +163,19 @@ end
 print(#func.." Adet Yontem1 Uygulandi")
 end
 end
-
-
-
-
 function yontem2() 
 
 
+Android()	
+Uygula=Uygula+Tur syaz(tostring(Uygula-Tur).."-"..tostring(Uygula).." Uygulama Basladı")
+if Uygula>#func then Uygula=#func syaz("SON TUR") end
 
-ann()	
-
-
-
-syaz("1")
-
-
-syaz(tostring(#func))
-
-if #func>0 then syaz("11")
+if #func>0 then
 
 for i=1,#func do Bilgi[i]=1 GlobalArg[i]={} end
-ll=0
-syaz("2")
-for i=1,#func do
+
+
+for i=Uygula-Tur+1,Uygula do
 
 	funcorj[i]=func[i]
 	hookfunction(func[i],function(...) 
@@ -182,7 +183,9 @@ for i=1,#func do
 	
 	
 
-	if Bilgi[i]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i]=0 print(#func .." / ".. SonArg) end
+	if Bilgi[i]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i]=0 
+	--print(#func .." / ".. SonArg) 
+	end
 		
 		
 		
@@ -201,36 +204,204 @@ for i=1,#func do
 		return funcorj[i](unpack(args))
 	
 	end)
-	ll=ll+1
-	if ll>100 then task.wait() ll=0 end
+
 	
 end
-syaz("3")
-print(#func.." Adet Yontem2 Uygulandi")
---yaz(tostring(#func).." Adet Yontem2 Uygulandi")
-syaz(tostring(#func).." Adet Yontem2 Uygulandi")
+syaz("Uygulama Bitti")
 
 end
 end
 
 
-spawn(function() while ext do task.wait(.2) Btnrm[16][TX]=SonArg Btnrm[17][TX]=Sira end end)
+function getTablesFromFuncs11()
+    local array1 = {}
+    -- true parametresi ile sadece fonksiyonları (veya tüm environment nesnelerini) tarıyoruz
+    for _, obj in ipairs(getgc(true)) do
+        if type(obj) == "function" then
+            -- Fonksiyonun içindeki sabitleri (constants) kontrol et
+            local success, constants = pcall(debug.getconstants, obj)
+            if success and constants then
+                for _, constant in pairs(constants) do
+                    if type(constant) == "table" then
+                        table.insert(array1, constant)
+                    end
+                end
+            end
+        end
+    end
+    return array1
+end
+function getTablesFromFuncs22()
+    local array2 = {}
+    for _, obj in ipairs(getgc(true)) do
+        if type(obj) == "function" then
+            local success, constants = pcall(debug.getconstants, obj)
+            if success and constants then
+                for _, constant in pairs(constants) do
+                    if type(constant) == "table" then
+                        table.insert(array2, constant)
+                    end
+                end
+            end
+        end
+    end
+    return array2
+end
+function compareAndGetDiff2(arr1, arr2)
+    local array3 = {}
+    local lookup = {}
+    
+    -- 2. array'deki tabloları hızlı arama için kaydedelim
+    for _, tbl in ipairs(arr2) do
+        lookup[tbl] = true
+    end
+    
+    -- 1. array'de olup 2. array'de olmayanları seçelim
+    for _, tbl in ipairs(arr1) do
+        if not lookup[tbl] then
+            table.insert(array3, tbl)
+        end
+    end
+    
+    return array3
+end
+function getTablesFromFuncs13()
+    local array1 = {}
+    for _, obj in ipairs(getgc(true)) do
+        if type(obj) == "table" then
+            table.insert(array1, obj)
+        end
+    end
+    return array1
+end
+function getTablesFromFuncs23()
+    local array2 = {}
+    for _, obj in ipairs(getgc(true)) do
+        if type(obj) == "table" then
+            table.insert(array2, obj)
+        end
+    end
+    return array2
+end
+function areTablesEqual(t1,t2)
+    if t1 == t2 then return true end
+    if type(t1) ~= "table" or type(t2) ~= "table" then return false end
+    
+    -- t1'deki anahtarları ve değerleri t2 ile kıyasla
+    for k, v in pairs(t1) do
+        if type(v) == "table" and type(t2[k]) == "table" then
+            if not areTablesEqual(v, t2[k]) then return false end
+        else
+            if t2[k] ~= v then return false end
+        end
+    end
+    
+    -- t2'de olup t1'de olmayan ekstra bir şey var mı kontrol et
+    for k, _ in pairs(t2) do
+        if t1[k] == nil then return false end
+    end
+    
+    return true
+end
+function getTablesFromFuncs14()
+    local array1 = {}
+    for _, obj in ipairs(getgc(true)) do
+        if type(obj) == "table" then
+            table.insert(array1, obj)
+        end
+    end
+    return array1
+end
+function getTablesFromFuncs24()
+    local array2 = {}
+    for _, obj in ipairs(getgc(true)) do
+        if type(obj) == "table" then
+            table.insert(array2, obj)
+        end
+    end
+    return array2
+end
+function compareAndGetDiff(arr1,arr2)
+    local array3 = {}
+    
+    -- İki array'in aynı boyutta olduğunu varsayarak eşleşen index'leri veya referansları kıyaslıyoruz
+    -- Burada mantık olarak aynı tablonun önceki ve sonraki hâlini kıyaslamak istiyoruz.
+    for i = 1, math.min(#arr1, #arr2) do
+        local tbl1 = arr1[i]
+        local tbl2 = arr2[i]
+        
+        -- Eğer aynı tablo referansındakilerin içeriği değişdiyse
+        if tbl1 == tbl2 and not areTablesEqual(tbl1, tbl2) then
+            table.insert(array3, tbl1)
+        end
+    end
+    
+    return array3
+end
+function getAllSubTables(tbl,visited,resultList)
+    visited = visited or {}
+    resultList = resultList or {}
+    
+    if visited[tbl] then return resultList end
+    visited[tbl] = true
+    
+    -- Önce ana tabloyu ekle
+    table.insert(resultList, tbl)
+    
+    -- İçindeki değerleri tara
+    for _, v in pairs(tbl) do
+        if type(v) == "table" then
+            getAllSubTables(v, visited, resultList)
+        end
+    end
+    
+    return resultList
+end
+function getTablesFromFuncs1()
+    local array1 = {}
+    local visited = {}
+    
+    for _, obj in ipairs(getgc(true)) do
+        if type(obj) == "table" then
+            getAllSubTables(obj, visited, array1)
+        end
+    end
+    
+    return array1
+end
+function getTablesFromFuncs2()
+    local array2 = {}
+    local visited = {}
+    
+    for _, obj in ipairs(getgc(true)) do
+        if type(obj) == "table" then
+            getAllSubTables(obj, visited, array2)
+        end
+    end
+    
+    return array2
+end
 
 
-
-
-
-
---eskideneme3 = hookfunction(deneme3, function(...)
+  
+  
+  
+  
+  
+  
   
   
   
 	
-syaz("Android getgc ile func say : ")
+syaz("MYRM3 22")
 
 
 
 
 
 
-print("///////////////////////////////////////////////////   UYGULANDI    ")
+
+
+
+
+
