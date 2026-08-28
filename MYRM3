@@ -24,7 +24,7 @@ KapaB.Visible = true KapaB.Style=BSR KapaB[TC3]=C3N(1,1,0)
 local OpenB   = ins("TextButton") OpenB[PR]=MainGRM OpenB[TX]="<<"    OpenB[POS]=UD2(0,42,0,-5) OpenB.Size=UD2(0,40,0,40) OpenB.Font=EFF OpenB[TSZ]=20 
 OpenB.Visible = true OpenB.Style=BSR OpenB[TC3]=C3N(1,1,0)
 
-scb=ins("TextBox") scb[PR]=MainFRM scb[POS]=UD2(0,10,0,50) scb.Size=UD2(0,1200,0,300) scb.ClearTextOnFocus=false scb.MultiLine=true scb.Font=EFF scb[TSZ]=15 scb[TX]=""
+scb=ins("TextBox") scb[PR]=MainFRM scb[POS]=UD2(0,10,0,50) scb.Size=UD2(0,800,0,150) scb.ClearTextOnFocus=false scb.MultiLine=true scb.Font=EFF scb[TSZ]=15 scb[TX]=""
 
 for i =1,15  do Btnrm[i]=ins("TextButton") Btnrm[i][PR]=BtnrmFRM Btnrm[i][POS]=UD2(0,i*sxx/20+160,0,-55) Btnrm[i][TX]=i
 Btnrm[i][ST]=BSR Btnrm[i].Font=EFF Btnrm[i][TSZ]=16 Btnrm[i][SZ]=UD2(0,sxx/19,0,35) Btnrm[i][TC3]=C3N(1,1,0) Btnrm[i][TC3]=YzL end
@@ -105,7 +105,7 @@ for i=1,#GlobalArg[Sira] do syaz("Arg "..i.." : "..tostring(GlobalArg[Sira][i]))
 
 
 Sira=Sira+1 Btnrm[17][TX]=Sira
-
+syaz("111")
 
 
 until Sira>SonArg
@@ -390,7 +390,7 @@ end
   
   
 	
-syaz("MYRM3 20")
+syaz("MYRM3 21")
 
 
 
