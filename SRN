@@ -1,5 +1,5 @@
 
---V 12
+VVV=12
 
 
 sxx = game.workspace.CurrentCamera.ViewportSize.X
@@ -45,7 +45,7 @@ Btnrm[8][TX]="ESP"
 Btnrm[9][TX]="DUVAR"
 
 
-
+Btnrm[15][TX]="V"..VVV
 
 
 
