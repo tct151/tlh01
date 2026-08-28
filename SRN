@@ -241,27 +241,43 @@ function Sandikeski()
 
 end
 
+
+
+
+local Players = game:GetService("Players")
+
 function Sandik() 
+    local player = Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local hrt = character:FindFirstChild("HumanoidRootPart")
+    
+    if not hrt then return end
 
-
-	
-	for k,v in pairs(workspace.crates:GetDescendants()) do if v.Name=="ProximityPrompt" then hrt=nil
-	
-		local s=0 for k,v in pairs(workspace.crates:GetChildren()) do s=s+1 end Btnrm[5][TX]="SAN-"..s
-		
-		
-		local hrt=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-		local t=tick() repeat task.wait() if v~=nil and v.Parent and hrt~=nil then hrt.CFrame=v.Parent.CFrame task.wait() fireproximityprompt(v) task.wait() end
-		until (tick()-t)>3 or v==nil or hrt==nil or (v ~= nil and v.Parent == nil)
-	
-	
-	
-	end 
-
-		
-
+    -- Kasaları say
+    local cratesFolder = workspace:FindFirstChild("crates")
+    if not cratesFolder then return end
+    
+    local s = #cratesFolder:GetChildren()
+    if Btnrm and Btnrm[5] and TX then
+        Btnrm[5][TX] = "SAN-" .. s
+    end
+    
+    -- ProximityPrompt'ları bul ve işle
+    for _, v in ipairs(cratesFolder:GetDescendants()) do 
+        if v.Name == "ProximityPrompt" then
+            local t = tick() 
+            repeat 
+                task.wait() 
+                if v and v.Parent and hrt then 
+                    hrt.CFrame = v.Parent.CFrame 
+                    task.wait() 
+                    fireproximityprompt(v) 
+                    task.wait() 
+                end
+            until (tick()-t)>3 or v==nil or hrt==nil or (v ~= nil and v.Parent == nil)
+        end 
+    end 
 end
-
 
 
 
