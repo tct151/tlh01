@@ -1,5 +1,5 @@
 
-VVV=13
+VVV=14
 
 
 sxx = game.workspace.CurrentCamera.ViewportSize.X
@@ -273,7 +273,7 @@ function Sandik()
                     fireproximityprompt(v) 
                     task.wait() 
                 end
-            until (tick()-t)>3 or v==nil or hrt==nil or (v ~= nil and v.Parent == nil)
+            until (tick()-t)>0.6 or v==nil or hrt==nil or (v ~= nil and v.Parent == nil)
         end 
     end 
 end
@@ -308,7 +308,7 @@ function SandikH()
                     fireproximityprompt(v) 
                     task.wait() 
                 end
-            until (tick()-t)>1.5 or v==nil or hrt==nil or (v ~= nil and v.Parent == nil)
+            until (tick()-t)>.3 or v==nil or hrt==nil or (v ~= nil and v.Parent == nil)
         end 
     end 
 end
