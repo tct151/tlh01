@@ -90,27 +90,14 @@ Btnrm[18][TX]="SON"
 
 
 
-function Goster()   
---scb[TX]=""
-syaz("222") 
+function Goster()  
+ 
+scb[TX]=""
 repeat
-syaz("333") 
-
-if #GlobalArg>0 and #GlobalArg[Sira]~=nil and #GlobalArg[Sira]>0 and Sira<=SonArg then
-
-
-for i=1,#GlobalArg[Sira] do syaz("Arg "..i.." : "..tostring(GlobalArg[Sira][i])) end return end
-
-
-
-
-syaz("444") 
-Sira=Sira+1 Btnrm[17][TX]=Sira syaz("555") 
-syaz("666")
-
-
+	if #GlobalArg>0 and #GlobalArg[Sira]~=nil and #GlobalArg[Sira]>0 and Sira<=SonArg then
+	for i=1,#GlobalArg[Sira] do syaz("Arg "..i.." : "..tostring(GlobalArg[Sira][i])) end return end
+	Sira=Sira+1 Btnrm[17][TX]=Sira
 until Sira>SonArg
-syaz("777") 
 syaz("Arg Bulunamadı")
 
 end
@@ -394,7 +381,7 @@ end
   
   
 	
-syaz("MYRM3 26")
+syaz("MYRM3 27")
 
 
 
