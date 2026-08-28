@@ -505,87 +505,50 @@ function getTablesFromFuncs2()
     return array2
 end
 
-
 local safFunc = {}
 
 function yontem2()    
     Android()    
-    syaz("Toplam Fonksiyon: " .. tostring(#func) .. " - Akıllı Filtreleme Başlıyor...") 
+    syaz("Toplam Fonksiyon: " .. tostring(#func) .. " - İşlem Başlıyor...") 
     task.wait(0.1)
     
     if #func > 0 then
         safFunc = {} 
         
         task.spawn(function()
-            local taranan = 0
+            local eklenen = 0
             
+            -- Test aşamasıyla motoru yormadan, doğrudan Luau (Lua) fonksiyonlarını ayıklıyoruz
             for i = 1, #func do
                 local f = func[i]
                 
-                -- 1. ADIM: Fonksiyonun hâlâ var olup olmadığını ve geçerli bir closure olup olmadığını sorgula
-                local gecerli = false
-                pcall(function()
-                    -- isliveclosure veya tip kontrolü ile fonksiyonun çöpe atılmadığını (garbage collected) denetliyoruz
-                    if type(f) == "function" then
-                        gecerli = true
-                    end
-                end)
-                
-                if gecerli then
-                    -- 2. ADIM: Büyük fonksiyonları seçmek için boyut/kapsam kontrolü
-                    -- (debug.getinfo veya pcall ile fonksiyonun içeriğine bakıyoruz)
-                    local buyuktur = false
-                    pcall(function()
-                        local info = debug.getinfo(f)
-                        -- Eğer bir Luau fonksiyonu ise ve linedefined / source gibi detayları varsa veya 
-                        -- alt parametre/instruction yapısı belliyse büyük olarak değerlendiriyoruz.
-                        -- Veya alternatif olarak is_l_closure (Luau fonksiyonu) kontrolü yapabiliriz.
-                        if info and info.what == "Lua" then
-                            buyuktur = true
-                        elseif info and info.nparams and info.nparams > 0 then
-                            buyuktur = true
-                        else
-                            -- Eğer debug bilgisi yoksa ama getgc'den geldiyse boyutsal bir tolerans bırakabiliriz
-                            buyuktur = true 
-                        end
-                    end)
-                    
-                    if buyuktur then
-                        -- 3. ADIM: Hook testini yapıp saf listeye ekleyelim
-                        local success = pcall(function()
-                            local dummy = function(...) return ... end
-                            hookfunction(f, dummy)
-                        end)
-                        
-                        if success then
-                            table.insert(safFunc, f)
-                            funcorj[#safFunc] = f
-                        end
-                    end
+                if type(f) == "function" then
+                    -- Sadece geçerli fonksiyonları listeye alıyoruz
+                    table.insert(safFunc, f)
+                    funcorj[#safFunc] = f
+                    eklenen = eklenen + 1
                 end
                 
-                taranan = taranan + 1
-                if taranan % 100 == 0 then
-                    task.wait() 
+                if i % 500 == 0 then
+                    task.wait()
+                    Btnrm[30][TX] = "Seçim: " .. tostring(i) .. "/" .. tostring(#func)
                 end
-                
-                Btnrm[30][TX] = "Filtre: " .. tostring(taranan) .. "/" .. tostring(#func)
             end
             
-            syaz("Filtreleme Bitti! Büyük ve Saf Fonksiyon: " .. tostring(#safFunc) .. " / " .. tostring(#func))
+            syaz("Seçilen Fonksiyon: " .. tostring(#safFunc))
             
-            -- Asıl Hook Aşaması
             if #safFunc > 0 then
                 for i = 1, #safFunc do 
                     Bilgi[i] = 1  
                     GlobalArg[i] = {} 
                 end
 
-                syaz("Büyük Fonksiyonlar Hook'lanıyor...")
+                syaz("Asıl Hook İşlemi Başlıyor...")
                 
                 for i = 1, #safFunc do
                     local hedefFunc = safFunc[i]
                     
+                    -- pcall ile güvenli bir şekilde hook atıyoruz, hata veren sessizce geçilir
                     pcall(function()
                         hookfunction(hedefFunc, function(...)    
                             local args = {...}
@@ -596,29 +559,23 @@ function yontem2()
                                 Bilgi[i] = 0 
                             end
                             
-                            return funcorj[i][unpack(args)] -- veya unpack(args)
+                            return funcorj[i](unpack(args))
                         end)
                     end)
                     
-                    if i % 50 == 0 then
+                    if i % 100 == 0 then
                         task.wait()
+                        Btnrm[30][TX] = "Hook: " .. tostring(i) .. "/" .. tostring(#safFunc)
                     end
-                    
-                    Btnrm[30][TX] = "Hook: " .. tostring(i) .. "/" .. tostring(#safFunc)
                 end
                 
-                syaz("Tüm Büyük Fonksiyonlar Hook'landı!")
+                syaz("Hook İşlemi Tamamlandı!")
             end
         end)
     end
 end
   
-  
-  
-  
-  
-  
  
-syaz("MYRM3 3")
+syaz("MYRM3 4")
 
 
