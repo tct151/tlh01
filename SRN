@@ -1,5 +1,5 @@
 
-VVV=16
+VVV=17
 
 sxx = game.workspace.CurrentCamera.ViewportSize.X
 ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
@@ -49,10 +49,10 @@ Btnrm[15][TX]="V"..VVV
 
 
 spawn(function() while ext do task.wait(.2) if Btnrm[1][ST]==BSRD then Atak1() end end end)
-spawn(function() while ext do task.wait(.2) if Btnrm[2][ST]==BSRD then SandikH() end end end)
+spawn(function() while ext do task.wait(.1) if Btnrm[2][ST]==BSRD then SandikH() end end end)
 spawn(function() while ext do task.wait(.2) if Btnrm[3][ST]==BSRD then Atak3() end end end)
 spawn(function() while ext do task.wait(.1) if Btnrm[4][ST]==BSRD then Atak4() end end end)
-spawn(function() while ext do task.wait(.2) if Btnrm[5][ST]==BSRD then Sandik() end end end)
+spawn(function() while ext do task.wait(.1) if Btnrm[5][ST]==BSRD then Sandik() end end end)
 spawn(function() while ext do task.wait(20) if Btnrm[6][ST]==BSRD then yaz("AFK AKTIF") Afk() end end end)
 
 
@@ -245,6 +245,7 @@ end
 local Players = game:GetService("Players")
 
 function Sandik() 
+workspace.Gravity=0
     local player = Players.LocalPlayer
     local character = player.Character or player.CharacterAdded:Wait()
     local hrt = character:FindFirstChild("HumanoidRootPart")
@@ -275,11 +276,13 @@ function Sandik()
             until (tick()-t)>0.6 or v==nil or hrt==nil or (v ~= nil and v.Parent == nil)
         end 
     end 
+workspace.Gravity=150
 end
 
 
 
 function SandikH() 
+	workspace.Gravity=0
     local player = Players.LocalPlayer
     local character = player.Character or player.CharacterAdded:Wait()
     local hrt = character:FindFirstChild("HumanoidRootPart")
@@ -310,6 +313,7 @@ function SandikH()
             until (tick()-t)>.3 or v==nil or hrt==nil or (v ~= nil and v.Parent == nil)
         end 
     end 
+workspace.Gravity=150
 end
 
 
