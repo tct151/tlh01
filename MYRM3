@@ -148,14 +148,14 @@ function yontem2()
 
 Android()	
 Uygula=Uygula+Tur syaz(tostring(Uygula-Tur).."-"..tostring(Uygula).." Uygulama Basladı")
-if Uygula>#func then Uygula=#func syaz("SON TUR")
+if Uygula>#func then Uygula=#func syaz("SON TUR") end
 
 if #func>0 then
 
 for i=1,#func do Bilgi[i]=1 GlobalArg[i]={} end
 
 
-for Uygula-Tur+1,Uygula do
+for i=Uygula-Tur+1,Uygula do
 
 	funcorj[i]=func[i]
 	hookfunction(func[i],function(...) 
