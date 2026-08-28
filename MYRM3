@@ -1,6 +1,7 @@
 
 
 
+
 --https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM"))()
 
@@ -42,6 +43,7 @@ Btnrm[4].MouseButton1Down:Connect(function() Goster() end)
 Btnrm[5].MouseButton1Down:Connect(function() yaz("BOS BIRAKILDI") end)
 Btnrm[6].MouseButton1Down:Connect(function() setclipboard(scb[TX]) yaz("COPY") end)
 Btnrm[7].MouseButton1Down:Connect(function() Tur=Tur+50 yaz("Tur "..tostring(Tur)) end)
+Btnrm[8].MouseButton1Down:Connect(function() Tur=999999 yaz("TAMAMINA UYGULAR") end)
 
 Btnrm[10].MouseButton1Down:Connect(function() arr1 = getTablesFromFuncs1() syaz("TBL 1 : "..tostring(#arr1)) end)
 Btnrm[11].MouseButton1Down:Connect(function() arr2 = getTablesFromFuncs2() syaz("TBL 2 : "..tostring(#arr2)) end)
@@ -73,7 +75,7 @@ Btnrm[4][TX]="GOR"
 Btnrm[5][TX]="EXE"
 Btnrm[6][TX]="COPY"
 Btnrm[7][TX]="TUR"
-
+Btnrm[8][TX]="HEPSI"
 
 Btnrm[10][TX]="TBL1"
 Btnrm[11][TX]="TBL2"
@@ -154,15 +156,17 @@ function yontem2()
 
 
 Android()	
-Uygula=Uygula+Tur syaz(tostring(Uygula-Tur).."-"..tostring(Uygula).." Uygulama Basladı")
-if Uygula>#func then Uygula=#func syaz("SON TUR") end
+--Uygula=Uygula+Tur syaz(tostring(Uygula-Tur).."-"..tostring(Uygula).." Uygulama Basladı")
+
 
 if #func>0 then
 
+--if Uygula>#func then Uygula=#func syaz("SON TUR") end
 for i=1,#func do Bilgi[i]=1 GlobalArg[i]={} end
 
-
-for i=Uygula-Tur+1,Uygula do
+syaz(tostring(#func).." Uygulama Basladı")
+for i=1,#func do
+--for i=Uygula-Tur+1,Uygula do
 
 	funcorj[i]=func[i]
 	hookfunction(func[i],function(...) 
@@ -170,7 +174,7 @@ for i=Uygula-Tur+1,Uygula do
 	
 	
 
-	if Bilgi[i]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]=args Bilgi[i]=0 
+	if Bilgi[i]==1 and Bekle==0 then SonArg=SonArg+1 GlobalArg[SonArg]={} GlobalArg[SonArg]=args Bilgi[i]=0 
 	--print(#func .." / ".. SonArg) 
 	end
 		
@@ -380,7 +384,7 @@ end
   
   
 	
-syaz("MYRM3 27")
+syaz("MYRM3 28")
 
 
 
