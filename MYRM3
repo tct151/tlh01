@@ -96,9 +96,9 @@ syaz("222")
 repeat
 syaz("333") 
 
-if #GlobalArg>0 and #GlobalArg[Sira]>0 and Sira<=SonArg then
+if #GlobalArg>0 and #GlobalArg[Sira]~=nil and #GlobalArg[Sira]>0 and Sira<=SonArg then
 
-syaz("Arg Sayısı: "..tostring(#GlobalArg[Sira]))
+
 for i=1,#GlobalArg[Sira] do syaz("Arg "..i.." : "..tostring(GlobalArg[Sira][i])) end return end
 
 
@@ -394,7 +394,7 @@ end
   
   
 	
-syaz("MYRM3 25")
+syaz("MYRM3 26")
 
 
 
