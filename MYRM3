@@ -152,7 +152,7 @@ end
 print(#func.." Adet Yontem1 Uygulandi")
 end
 end
-function yontem2() 
+function yontem21() 
 
 
 Android()	
@@ -174,9 +174,9 @@ for i=1,#func do
 	
 	
 
-	if Bilgi[i]==1 and Bekle==0 then SonArg=SonArg+1 
+	--if Bilgi[i]==1 and Bekle==0 then SonArg=SonArg+1 
 	--GlobalArg[SonArg]={} GlobalArg[SonArg]=args Bilgi[i]=0 
-	end
+	--end
 		
 		
 		
@@ -202,7 +202,41 @@ end
 syaz("Uygulama Bitti")
 
 end
+function yontem2()    
+    Android()    
+    syaz("Fonksiyon Sayısı "..tostring(#func)) 
+    task.wait(.1)
+    
+    if #func > 0 then
+        for i = 1, #func do 
+            Bilgi[i] = 1 
+            GlobalArg[i] = {} 
+        end
 
+        for i = 1, #func do
+            funcorj[i] = func[i]
+            
+            -- pcall kullanarak hook edilemeyen fonksiyonların scripti durdurmasını engelliyoruz
+            local success, err = pcall(function()
+                hookfunction(func[i], function(...)    
+                    local args = {...}
+                    
+                    if Bilgi[i] == 1 and Bekle == 0 then 
+                        SonArg = SonArg + 1    
+                        GlobalArg[SonArg] = args 
+                        Bilgi[i] = 0 
+                        print(#func .. " / " .. SonArg) 
+                    end
+                    
+                    return funcorj[i](unpack(args))
+                end)
+            end)
+            
+            -- İsteğe bağlı: Hata verenleri loglayabilirsin ama döngünün kesilmemesi önemlidir
+        end
+    end
+    syaz("Uygulama Bitti")
+end
 
 function getTablesFromFuncs11()
     local array1 = {}
@@ -384,7 +418,7 @@ end
   
   
 	
-syaz("MYRM3 31")
+syaz("MYRM3 32")
 
 
 
