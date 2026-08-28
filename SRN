@@ -1,6 +1,6 @@
 
 
-
+--V 12
 
 
 sxx = game.workspace.CurrentCamera.ViewportSize.X
@@ -51,7 +51,7 @@ Btnrm[9][TX]="DUVAR"
 
 
 spawn(function() while ext do task.wait(.2) if Btnrm[1][ST]==BSRD then Atak1() end end end)
-spawn(function() while ext do task.wait(.2) if Btnrm[2][ST]==BSRD then Sandik2() end end end)
+spawn(function() while ext do task.wait(.2) if Btnrm[2][ST]==BSRD then SandikH() end end end)
 spawn(function() while ext do task.wait(.2) if Btnrm[3][ST]==BSRD then Atak3() end end end)
 spawn(function() while ext do task.wait(.1) if Btnrm[4][ST]==BSRD then Atak4() end end end)
 spawn(function() while ext do task.wait(.2) if Btnrm[5][ST]==BSRD then Sandik() end end end)
@@ -278,6 +278,42 @@ function Sandik()
         end 
     end 
 end
+
+
+
+function SandikH() 
+    local player = Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local hrt = character:FindFirstChild("HumanoidRootPart")
+    
+    if not hrt then return end
+
+    -- Kasaları say
+    local cratesFolder = workspace:FindFirstChild("crates")
+    if not cratesFolder then return end
+    
+    local s = #cratesFolder:GetChildren()
+    if Btnrm and Btnrm[5] and TX then
+        Btnrm[5][TX] = "SAN-" .. s
+    end
+    
+    -- ProximityPrompt'ları bul ve işle
+    for _, v in ipairs(cratesFolder:GetDescendants()) do 
+        if v.Name == "ProximityPrompt" then
+        
+
+                task.wait() 
+                if v and v.Parent and hrt then 
+                    hrt.CFrame = v.Parent.CFrame 
+                    task.wait() 
+                    fireproximityprompt(v) 
+                    task.wait() 
+                end
+ 
+        end 
+    end 
+end
+
 
 
 
