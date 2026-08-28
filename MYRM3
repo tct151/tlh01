@@ -1,6 +1,7 @@
 
 
 
+
 --https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM"))()
 
@@ -50,7 +51,7 @@ Btnrm[12].MouseButton1Down:Connect(function() diffArray = compareAndGetDiff(arr1
 
 
 Btnrm[13].MouseButton1Down:Connect(function() yaz("YONT 1 GETREG BASLADI") yontem1() yaz("YONT 1 BASARILI") Btnrm[13][ST]=BSRD end)
-Btnrm[14].MouseButton1Down:Connect(function() syaz("YONT 2 GETGC BASLADI")  yontem2() syaz("YONT 2 BASARILI") Btnrm[14][ST]=BSRD end)
+Btnrm[14].MouseButton1Down:Connect(function() yontem2() Btnrm[14][ST]=BSRD end)
 Btnrm[15].MouseButton1Down:Connect(function() if Btnrm[15][ST]==BSR then Bekle=1 Btnrm[15][ST]=BSRD yaz("BEKLEME MODU") else Bekle=0 Btnrm[15][ST]=BSR yaz("DEVAM MODU") end end)
 Btnrm[18].MouseButton1Down:Connect(function() Sira=SonArg Btnrm[17][TX]=Sira end)
 
@@ -157,13 +158,13 @@ function yontem2()
 Android()	
 --Uygula=Uygula+Tur syaz(tostring(Uygula-Tur).."-"..tostring(Uygula).." Uygulama Basladı")
 
-
+syaz("Fonksiyon Sayısı "..tostring(#func))
 if #func>0 then
 
 --if Uygula>#func then Uygula=#func syaz("SON TUR") end
 for i=1,#func do Bilgi[i]=1 GlobalArg[i]={} end
 
-syaz(tostring(#func).." Uygulama Basladı")
+
 for i=1,#func do
 --for i=Uygula-Tur+1,Uygula do
 
@@ -197,9 +198,9 @@ for i=1,#func do
 
 	
 end
+end
 syaz("Uygulama Bitti")
 
-end
 end
 
 
@@ -383,7 +384,7 @@ end
   
   
 	
-syaz("MYRM3 28")
+syaz("MYRM3 29")
 
 
 
