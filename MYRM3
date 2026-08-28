@@ -3,18 +3,17 @@
 
 
 --https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM
-
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/MYRM"))()
 
 
+ext=true Btnrm={}
+func={} funcorj={} Bilgi={} GlobalArg={} SonArg=0 Bekle=0 Sira=1 Uygula=0 Tur=250
 
 sxx = game.workspace.CurrentCamera.ViewportSize.X
 ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
 UD2 = UDim2.new    POS="Position"   BGT="BackgroundTransparency" SZ="Size" BSR=Enum.ButtonStyle.RobloxRoundDefaultButton 
 C3N = Color3.new   VN=Vector3.new   PR="Parent"      ST="Style"  VS="Visible"     EFF=Enum.Font.Fantasy EFD=Enum.FrameStyle.DropShadow  
 YzL=Color3.fromRGB(74,46,27) YzY=Color3.fromRGB(0,255,0)
-
-ext=true Btnrm={}
 
 MainGRM = ins("ScreenGui")  MainGRM[PR]=game.CoreGui MainGRM.Name="MainGRM"
 MainFRM = ins("Frame")      MainFRM[PR]=MainGRM
@@ -34,32 +33,32 @@ for i =16,30 do Btnrm[i]=ins("TextButton") Btnrm[i][PR]=BtnrmFRM Btnrm[i][POS]=U
 Btnrm[i][ST]=BSR Btnrm[i].Font=EFF Btnrm[i][TSZ]=16 Btnrm[i][SZ]=UD2(0,sxx/19,0,35) Btnrm[i][TC3]=C3N(1,1,0) Btnrm[i][TC3]=YzL end
 
 
-KapaB.MouseButton1Down:connect(function() for i=1,30 do Btnrm[i][ST]=BSR end ext=false MainGRM:Destroy() end)
-OpenB.MouseButton1Down:connect(function() if MainFRM[VS]==true then MainFRM[VS]=false OpenB[TX]=">>" else MainFRM[VS]=true OpenB[TX]="<<" end end)
+KapaB.MouseButton1Down:Connect(function() for i=1,30 do Btnrm[i][ST]=BSR end ext=false MainGRM:Destroy() end)
+OpenB.MouseButton1Down:Connect(function() if MainFRM[VS]==true then MainFRM[VS]=false OpenB[TX]=">>" else MainFRM[VS]=true OpenB[TX]="<<" end end)
 
-Btnrm[1].MouseButton1Down:connect(function() if Btnrm[1][ST]==BSR then scb[VS]=true Btnrm[1][ST]=BSRD else scb[VS]=false Btnrm[1][ST]=BSR end end)	
-Btnrm[2].MouseButton1Down:connect(function() Sira=Sira-1 Btnrm[17][TX]=Sira end)
-Btnrm[3].MouseButton1Down:connect(function() Sira=Sira+1 Btnrm[17][TX]=Sira end)
-Btnrm[4].MouseButton1Down:connect(function() Goster() end)
-Btnrm[5].MouseButton1Down:connect(function() yaz("BOS BIRAKILDI") end)
-Btnrm[6].MouseButton1Down:connect(function() setclipboard(scb[TX]) yaz("COPY") end)
-Btnrm[7].MouseButton1Down:connect(function() Tur=Tur+50 yaz("Tur "..tostring(Tur)) end)
+Btnrm[1].MouseButton1Down:Connect(function() if Btnrm[1][ST]==BSR then scb[VS]=true Btnrm[1][ST]=BSRD else scb[VS]=false Btnrm[1][ST]=BSR end end)	
+Btnrm[2].MouseButton1Down:Connect(function() Sira=Sira-1 Btnrm[17][TX]=Sira end)
+Btnrm[3].MouseButton1Down:Connect(function() Sira=Sira+1 Btnrm[17][TX]=Sira end)
+Btnrm[4].MouseButton1Down:Connect(function() Goster() end)
+Btnrm[5].MouseButton1Down:Connect(function() yaz("BOS BIRAKILDI") end)
+Btnrm[6].MouseButton1Down:Connect(function() setclipboard(scb[TX]) yaz("COPY") end)
+Btnrm[7].MouseButton1Down:Connect(function() Tur=Tur+50 yaz("Tur "..tostring(Tur)) end)
 
-Btnrm[10].MouseButton1Down:connect(function() arr1 = getTablesFromFuncs1() syaz("TBL 1 : "..tostring(#arr1)) end)
-Btnrm[11].MouseButton1Down:connect(function() arr2 = getTablesFromFuncs2() syaz("TBL 2 : "..tostring(#arr2)) end)
-Btnrm[12].MouseButton1Down:connect(function() diffArray = compareAndGetDiff(arr1, arr2) syaz("Farklı Tablo : "..tostring(#diffArray)) end)
+Btnrm[10].MouseButton1Down:Connect(function() arr1 = getTablesFromFuncs1() syaz("TBL 1 : "..tostring(#arr1)) end)
+Btnrm[11].MouseButton1Down:Connect(function() arr2 = getTablesFromFuncs2() syaz("TBL 2 : "..tostring(#arr2)) end)
+Btnrm[12].MouseButton1Down:Connect(function() diffArray = compareAndGetDiff(arr1, arr2) syaz("Farklı Tablo : "..tostring(#diffArray)) end)
 
 
-Btnrm[13].MouseButton1Down:connect(function() yaz("YONT 1 GETREG BASLADI") yontem1() yaz("YONT 1 BASARILI") Btnrm[13][ST]=BSRD end)
-Btnrm[14].MouseButton1Down:connect(function() syaz("YONT 2 GETGC BASLADI")  yontem2() syaz("YONT 2 BASARILI") Btnrm[14][ST]=BSRD end)
-Btnrm[15].MouseButton1Down:connect(function() if Btnrm[15][ST]==BSR then Bekle=1 Btnrm[15][ST]=BSRD yaz("BEKLEME MODU") else Bekle=0 Btnrm[15][ST]=BSR yaz("DEVAM MODU") end end)
-Btnrm[18].MouseButton1Down:connect(function() Sira=SonArg Btnrm[17][TX]=Sira end)
+Btnrm[13].MouseButton1Down:Connect(function() yaz("YONT 1 GETREG BASLADI") yontem1() yaz("YONT 1 BASARILI") Btnrm[13][ST]=BSRD end)
+Btnrm[14].MouseButton1Down:Connect(function() syaz("YONT 2 GETGC BASLADI")  yontem2() syaz("YONT 2 BASARILI") Btnrm[14][ST]=BSRD end)
+Btnrm[15].MouseButton1Down:Connect(function() if Btnrm[15][ST]==BSR then Bekle=1 Btnrm[15][ST]=BSRD yaz("BEKLEME MODU") else Bekle=0 Btnrm[15][ST]=BSR yaz("DEVAM MODU") end end)
+Btnrm[18].MouseButton1Down:Connect(function() Sira=SonArg Btnrm[17][TX]=Sira end)
 
 
 
 function yaz(msg) game.StarterGui:SetCore('SendNotification',{Title='BILGI';Text=msg;Duration=2;}) end
 function syaz(msg) scb[TX]=scb.Text.." \n" ..msg end
-function Goster()   scb[TX]="" for i=1,#GlobalArg[Sira] do syaz("Arg "..i.." : "..tostring(GlobalArg[Sira][i])) end end
+
 --function Execute() loadstring(kod)  end
 
 
@@ -90,7 +89,6 @@ Btnrm[18][TX]="SON"
 
 
 
-func={} funcorj={} Bilgi={} GlobalArg={} SonArg=0 Bekle=0 Sira=1 Uygula=0 Tur=250
 
 function Goster()   
 scb[TX]="" 
@@ -392,7 +390,7 @@ end
   
   
 	
-syaz("MYRM3 19")
+syaz("MYRM3 20")
 
 
 
