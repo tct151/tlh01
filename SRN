@@ -1,7 +1,6 @@
 
 VVV=14
 
-
 sxx = game.workspace.CurrentCamera.ViewportSize.X
 ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
 UD2 = UDim2.new    POS="Position"   BGT="BackgroundTransparency" SZ="Size" BSR=Enum.ButtonStyle.RobloxRoundDefaultButton 
