@@ -282,7 +282,7 @@ function yontem23()
         end)
     end
 end
-function yontem2()    
+function yontem24()    
     Android()    
     syaz("Toplam Fonksiyon: " .. tostring(#func) .. " - Hook İşlemi Başlıyor...") 
     task.wait(0.1)
@@ -331,7 +331,85 @@ function yontem2()
         end)
     end
 end
+local safFunc = {} -- Sadece hook'lanabilenleri tutacağımız liste
 
+function yontem2()    
+    Android()    
+    syaz("Toplam Fonksiyon: " .. tostring(#func) .. " - Uygunluk Taranıyor...") 
+    task.wait(0.1)
+    
+    if #func > 0 then
+        safFunc = {} -- Listeyi sıfırla
+        
+        -- Adım 1: Sadece hook'lanabilen (çalışan) fonksiyonları ayıkla
+        task.spawn(function()
+            local taranan = 0
+            
+            for i = 1, #func do
+                local f = func[i]
+                -- Kısa bir test hook'u ile fonksiyonun değiştirilebilir olup olmadığını deniyoruz
+                local success = pcall(function()
+                    local old = hookfunction(f, function(...)
+                        return old(...)
+                    end)
+                    -- Hemen geri eski haline alıyoruz ki mantık bozulmasın
+                    hookfunction(f, old)
+                end)
+                
+                if success then
+                    table.insert(safFunc, f)
+                    -- Orijinal fonksiyon eşlemesi için index'i kaydedebiliriz
+                    funcorj[#safFunc] = f
+                end
+                
+                taranan = taranan + 1
+                if taranan % 200 == 0 then
+                    task.wait() -- Arayüzü dondurmamak için minik es
+                end
+                
+                Btnrm[30][TX] = "Tarama: "..tostring(taranan)
+            end
+            
+            syaz("Tarama Bitti! Saf Fonksiyon: " .. tostring(#safFunc) .. " / " .. tostring(#func))
+            
+            -- Adım 2: Sadece sağlam olanlara asıl hook'u ve argüman yakalamayı uygulayalım
+            if #safFunc > 0 then
+                for i = 1, #safFunc do 
+                    Bilgi[i] = 1  
+                    GlobalArg[i] = {} 
+                end
+
+                syaz("Asıl Hook İşlemi Başlıyor...")
+                
+                for i = 1, #safFunc do
+                    local hedefFunc = safFunc[i]
+                    
+                    pcall(function()
+                        hookfunction(hedefFunc, function(...)    
+                            local args = {...}
+                            
+                            if Bilgi[i] == 1 and Bekle == 0 then 
+                                SonArg = SonArg + 1    
+                                GlobalArg[SonArg] = args 
+                                Bilgi[i] = 0 
+                            end
+                            
+                            return funcorj[i](unpack(args))
+                        end)
+                    end)
+                    
+                    if i % 50 == 0 then
+                        task.wait()
+                    end
+                    
+                    Btnrm[30][TX] = "Hook: "..tostring(i)
+                end
+                
+                syaz("Tüm Sağlam Fonksiyonlar Hook'landı!")
+            end
+        end)
+    end
+end
 
 
 
@@ -515,7 +593,7 @@ end
   
   
 	
-syaz("MYRM3 42")
+syaz("MYRM3 1")
 
 
 
