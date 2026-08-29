@@ -1,13 +1,18 @@
-print("A1--13  ")
+print("A1--16  ")
 
 
 
-scr = game:GetService("ReplicatedStorage").Collectors
+for i,v in pairs(debug.getupvalues(require(scr).GetStat)) do 
 
-c=debug.getupvalues(require(scr).GetStat).Scythe.Cooldown
-
-print(c)
+for ii,vv in pairs(v) do 
 
 
+
+print(i)
+print(v)
+print(v.Name)
+
+end
+end
 
 print("SON")
