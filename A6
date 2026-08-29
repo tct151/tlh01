@@ -1,27 +1,9 @@
 
---A6 4
+--A6 5
 
+scr=game:GetService("ReplicatedStorage").Collectors  scv=require(scr)
 
-for i,v in pairs(require(game:GetService("ReplicatedStorage").Collectors.LocalCollect)) do if tostring(i)=="GetCollectorCooldown" then
-print("Function Bulundu")
-hookfunction(v,function() 
-	local v1 = require(game.ReplicatedStorage.ClientStatCache):Get()
-
-	if not v1 then
-		return nil
-	end
-
-	local v2 = require(game.ReplicatedStorage.Collectors).GetStat(v1.EquippedCollector, "Cooldown")
-	local v3 = t.GetSwingSpeedMultiplier()
-
-	if v3 ~= 1 then
-		v2 = v2 / v3
-	end
-
-	return v2
-end) end end
-print("islem uygulandi")
-
+print(scv.Scythe.Cooldown)
 
 
 
