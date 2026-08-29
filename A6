@@ -1,21 +1,25 @@
 
 
-print("A6--11  ")
-
+print("A6--12  ")
 
 local scr = game:GetService("ReplicatedStorage").Collectors
 local scv = require(scr)
 
-for key, value in pairs(scv) do
-    print("Anahtar:", key, "| Değer Tipi:", type(value))
-    
-    -- Eğer içeriği bir tablo ise alt elemanlarını da yazdıralım
-    if type(value) == "table" then
-        for subKey, subValue in pairs(value) do
-            print("   ->", subKey, ":", tostring(subValue))
+local function searchForScythe(tbl, path)
+    for k, v in pairs(tbl) do
+        local currentPath = path .. " > " .. tostring(k)
+        if k == "Scythe" then
+            print("BULundu! Konum:", currentPath)
+            print("Scythe Cooldown:", v.Cooldown)
+            -- Değiştirmek istersen:
+            -- v.Cooldown = 0.2
+        elseif type(v) == "table" then
+            searchForScythe(v, currentPath)
         end
     end
 end
+
+searchForScythe(scv, "scv")
 
 print("SON")
 
