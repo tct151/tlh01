@@ -2,9 +2,9 @@
 
 print("A6--9  ")
 
-local v2 = require(game.ReplicatedStorage.Collectors).GetStat(v1.EquippedCollector, "Cooldown")
+--local v2 = require(game.ReplicatedStorage.Collectors).GetStat(v1.EquippedCollector, "Cooldown")
 
-print(v2)
+--print(v2)
 
 local scr = game:GetService("ReplicatedStorage").Collectors
 local scv = require(scr)
