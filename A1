@@ -1,55 +1,28 @@
+print("A1--10  ")
 
-for i,v in pairs(require(game:GetService("ReplicatedStorage").Collectibles["Token Link"])) do 
-if tostring(i)=="Effect" then
+--local v2 = require(game.ReplicatedStorage.Collectors).GetStat(v1.EquippedCollector, "Cooldown")
 
-print("fun buldu")
+--print(v2)
 
-hookfunction(v,function(p1, p2) 
+local scr = game:GetService("ReplicatedStorage").Collectors
+local scv = require(scr)
 
-
-for y=1,30 do wait(1)
-
-print("token efect")
-
-        p1.Collected = true
-
-        local Collectibles = require(game.ReplicatedStorage.Collectibles)
-        local v1 = Collectibles.FetchForTarget(p2.Player)
-        local ParticleTools = require(game.ReplicatedStorage.ParticleTools)
-        local Pos = p1.Pos
-        local count = 0
-
-        for i, v in ipairs(v1) do
-            if not v.Unlinkable and (not v.Collected and (not v.Type or v.Type ~= "Token Link" and v.Type ~= "Smile Token")) then
-                ParticleTools:MakeBeam(v.Pos, Pos, Color3.fromRGB(255, 255, 255), 0.5)
-                Collectibles.Collect(v, p2.Player)
-                count = count + 1
-            end
-        end
-
-        if not (count > 0) then
-            return
-        end
-
-        local sum = 25
-
-        if p1.Bee and p1.Bee.File then
-            sum = sum + 10 * (p1.Bee.File.Lvl - 1)
-        end
-
-        require(game.ReplicatedStorage.ItemPackages).Give({
-            Category = "Honey",
-            Alert = true,
-            Logged = false,
-            Source = "Token Link",
-            Amount = sum * count
-        }, p2.Stats, p2.Player)
-
+-- 1. Okuma (Scythe Cooldown değerini görmek için)
+if scv.Scythe then
+    print("Mevcut Scythe Cooldown:", scv.Scythe.Cooldown)
 end
-		
-		
-end) end end
 
-print("bitti")
+-- 2. Değiştirme (Örn: Cooldown değerini 0.2 yapmak için)
+scv.Scythe.Cooldown = 0.2
+print("Yeni Scythe Cooldown:", scv.Scythe.Cooldown)
+
+-- Tüm koleksiyoncuları ve cooldown değerlerini listelemek istersen (pairs ile):
+for name, data in pairs(scv) do
+    if type(data) == "table" and data.Cooldown then
+        print(name, "Cooldown:", data.Cooldown)
+    end
+end
 
 
+
+print("SON")
