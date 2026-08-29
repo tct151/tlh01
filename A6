@@ -1,25 +1,53 @@
+for i,v in pairs(require(game:GetService("ReplicatedStorage").Collectors.Prototype.ClientScriptTouch)) do if tostring(i)=="touchStarted" then
+print("Function Bulundu")
+hookfunction(v,function(p1,p2) 
+
+	print("i")
+
+	if p2 then
+		return
+	end
+
+	if v5 ~= nil then
+		return
+	end
+
+	v5 = p1
+
+	local v12 = p1
+	local v2 = nil
+
+	v2 = p1.Changed:Connect(function(p12) --[[ Line: 58 | Upvalues: p1 (copy), v12 (ref), v5 (ref), v2 (ref) ]]
+		if p12 ~= "UserInputState" or p1.UserInputState ~= Enum.UserInputState.End and p1.UserInputState ~= Enum.UserInputState.Cancel then
+			return
+		end
+
+		if v12 == v5 then
+			v5 = nil
+		end
+
+		v12 = nil
+		v2:Disconnect()
+	end)
+
+	while v12 ~= nil and v5 == v12 do
+		local v32 = v3
+		local v42 = ClientStatCache:Get().Transient.CollectorSpeed or 1
+
+		if v42 ~= 1 then
+			v32 = v32 / v42
+		end
+
+		if v4 + v32 - tick() < 0 then
+			toolanim:Clone().Parent = v1
+			LocalCollect.Run(v1)
+			v4 = tick()
+		end
+
+		task.wait()
+	end
 
 
-scr = game:GetService("ReplicatedStorage").Collectors
-
-for i,v in pairs(debug.getupvalues(require(scr).GetStat)) do 
-for ii,vv in pairs(v) do 
-if ii=="Dark Scythe" then
-for iii,vvv in pairs(vv) do print(ii) 
-if iii=="Cooldown" then
-
-
-print(i) 
-print(ii) 
-print(iii) 
-
-end
-end
-end
-end
-end
-
-
-print("SON")
-
+end) end end
+print("islem uygulandi")
 
