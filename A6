@@ -1,6 +1,6 @@
 
 
-print("A6--9  ")
+print("A6--10  ")
 
 --local v2 = require(game.ReplicatedStorage.Collectors).GetStat(v1.EquippedCollector, "Cooldown")
 
