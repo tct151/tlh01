@@ -1,18 +1,19 @@
 
-print("A1--17  ")
-
-
 
 scr = game:GetService("ReplicatedStorage").Collectors
 
 for i,v in pairs(debug.getupvalues(require(scr).GetStat)) do 
 for ii,vv in pairs(v) do 
 if ii=="Dark Scythe" then
-print(ii) 
 for iii,vvv in pairs(vv) do print(ii) 
+if iii=="Cooldown" then
 
+
+print(i) 
+print(ii) 
 print(iii) 
 
+end
 end
 end
 end
@@ -20,3 +21,5 @@ end
 
 
 print("SON")
+
+
