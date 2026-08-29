@@ -1,11 +1,15 @@
 
---A6 5
+--A6 6
 
 scr=game:GetService("ReplicatedStorage").Collectors  scv=require(scr)
 
-print(scv.Scythe.Cooldown)
+for k,v in ipairs(scv) do
 
 
+print(tostring(v))
+print(tostring(v.Name))
+
+end
 
 
 
