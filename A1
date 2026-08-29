@@ -10,7 +10,7 @@ for ii,vv in pairs(v) do
 
 print(i)
 print(v)
-print(v.Name)
+
 
 end
 end
