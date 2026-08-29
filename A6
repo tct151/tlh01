@@ -1,33 +1,22 @@
 
 
-print("A6--13  ")
-local scr = game:GetService("ReplicatedStorage").Collectors
-local scv = require(scr)
+print("A6--14  ")
 
--- Modülün içindeki fonksiyonlardan birini hedef alıyoruz (Örn: GetStat veya başka bir fonksiyon)
-local targetFunc = scv.GetStat -- Veya dosyadaki başka bir fonksiyon
 
-if targetFunc then
-    local i = 1
-    while true do
-        local name, value = debug.getupvalue(targetFunc, i)
-        if not name then break end
-        
-        -- Eğer upvalue bir tablo ise ve içinde Scythe arıyorsan
-        if type(value) == "table" then
-            if value.Scythe then
-                print("Scythe upvalue içinde bulundu!")
-                print("Eski Cooldown:", value.Scythe.Cooldown)
-                
-                -- Değeri burada değiştirebilirsin:
-                value.Scythe.Cooldown = 0.2
-                print("Yeni Cooldown:", value.Scythe.Cooldown)
-            end
-        end
-        
-        i = i + 1
-    end
+
+
+scr = game:GetService("ReplicatedStorage").Collectors
+
+for i,v in pairs(debug.getupvalues(require(scr).GetStat)) do 
+
+print(i)
+print(v)
+
+
 end
+
+
+
 
 print("SON")
 
