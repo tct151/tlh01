@@ -1,18 +1,26 @@
 
---A6 1
+--A6 2
 
 for i,v in pairs(require(game:GetService("ReplicatedStorage").Collectors.LocalCollect)) do if tostring(i)=="GetCollectorCooldown" then
 print("Function Bulundu")
 hookfunction(v,function() 
 
-	
-	local v2 = require(game.ReplicatedStorage.Collectors).GetStat(v1.EquippedCollector, "Cooldown")
-	print(v2)
-	v2 = v2 / 2
-	return v2
+local v1 = require(game.ReplicatedStorage.ClientStatCache):Get()
 
+	if not v1 then
+		return nil
+	end
+
+	local v2 = require(game.ReplicatedStorage.Collectors).GetStat(v1.EquippedCollector, "Cooldown")
+	local v3 = t.GetSwingSpeedMultiplier()
+
+	if v3 ~= 1 then
+		v2 = v2 / v3
+	end
+print(v2)
+	return v2
+	
 end) end end
 print("islem uygulandi")
-
 
 
