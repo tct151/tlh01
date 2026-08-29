@@ -1,16 +1,31 @@
 
 
-print("A6--7  ")
+print("A6--9  ")
 
-scr=game:GetService("ReplicatedStorage").Collectors  scv=require(scr)
+local v2 = require(game.ReplicatedStorage.Collectors).GetStat(v1.EquippedCollector, "Cooldown")
 
-for k,v in ipairs(scv) do
+print(v2)
 
+local scr = game:GetService("ReplicatedStorage").Collectors
+local scv = require(scr)
 
-print(tostring(v))
-print(tostring(v.Name))
-
+-- 1. Okuma (Scythe Cooldown değerini görmek için)
+if scv.Scythe then
+    print("Mevcut Scythe Cooldown:", scv.Scythe.Cooldown)
 end
+
+-- 2. Değiştirme (Örn: Cooldown değerini 0.2 yapmak için)
+scv.Scythe.Cooldown = 0.2
+print("Yeni Scythe Cooldown:", scv.Scythe.Cooldown)
+
+-- Tüm koleksiyoncuları ve cooldown değerlerini listelemek istersen (pairs ile):
+for name, data in pairs(scv) do
+    if type(data) == "table" and data.Cooldown then
+        print(name, "Cooldown:", data.Cooldown)
+    end
+end
+
+
 
 print("SON")
 
