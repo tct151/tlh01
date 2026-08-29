@@ -1,35 +1,18 @@
 
+--A6 1
 
-for i,v in pairs(require(game:GetService("ReplicatedStorage").Collectibles)) do 
-if tostring(i)=="Make" then  print("fun buldu")
-hookfunction(v,function(p1) 
-
-print("make") 
-
-end) end end
-
-print("bitti")
-
-
-
-
-for i,v in pairs(require(game:GetService("ReplicatedStorage").CollectiblesAnimator)) do 
-if tostring(i)=="Update" then  print("fun buldu")
-
-col=require(game:GetService("ReplicatedStorage").Collectibles)
-
+for i,v in pairs(require(game:GetService("ReplicatedStorage").Collectors.LocalCollect)) do if tostring(i)=="GetCollectorCooldown" then
+print("Function Bulundu")
 hookfunction(v,function() 
 
-
-col.Make()
-print("zzz")
-
-
-
+	
+	local v2 = require(game.ReplicatedStorage.Collectors).GetStat(v1.EquippedCollector, "Cooldown")
+	print(v2)
+	v2 = v2 / 2
+	return v2
 
 end) end end
-
-print("bitti")
+print("islem uygulandi")
 
 
 
