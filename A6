@@ -1,20 +1,13 @@
 
 
-print("A6--16  ")
+print("A6--17  ")
 
---(debug.getupvalues(require(scr).GetStat))
 
 for i,v in pairs(debug.getupvalues(require(scr).GetStat)) do 
 
---for ii,vv in pairs(v) do 
 
-
-
-print(i)
 print(v)
 
-
---end
 end
 
 
