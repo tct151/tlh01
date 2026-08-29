@@ -1,18 +1,19 @@
-print("A1--16  ")
+print("A1--12  ")
 
 
+
+scr = game:GetService("ReplicatedStorage").Collectors
 
 for i,v in pairs(debug.getupvalues(require(scr).GetStat)) do 
 
 for ii,vv in pairs(v) do 
 
 
-
-print(i)
-print(v)
+print(ii)
 
 
 end
 end
+
 
 print("SON")
