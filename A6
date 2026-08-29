@@ -1,15 +1,18 @@
 
 
-print("A6--17  ")
+print("A1--12  ")
 
+
+
+scr = game:GetService("ReplicatedStorage").Collectors
 
 for i,v in pairs(debug.getupvalues(require(scr).GetStat)) do 
 
-
+print(i)
 print(v)
 
-end
 
+end
 
 
 
