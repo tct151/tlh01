@@ -1,5 +1,6 @@
 
---A6 6
+
+print("A6--7  ")
 
 scr=game:GetService("ReplicatedStorage").Collectors  scv=require(scr)
 
@@ -11,7 +12,7 @@ print(tostring(v.Name))
 
 end
 
-
+print("SON")
 
 
 
