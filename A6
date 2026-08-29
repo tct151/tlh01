@@ -1,25 +1,33 @@
 
 
-print("A6--12  ")
-
+print("A6--13  ")
 local scr = game:GetService("ReplicatedStorage").Collectors
 local scv = require(scr)
 
-local function searchForScythe(tbl, path)
-    for k, v in pairs(tbl) do
-        local currentPath = path .. " > " .. tostring(k)
-        if k == "Scythe" then
-            print("BULundu! Konum:", currentPath)
-            print("Scythe Cooldown:", v.Cooldown)
-            -- Değiştirmek istersen:
-            -- v.Cooldown = 0.2
-        elseif type(v) == "table" then
-            searchForScythe(v, currentPath)
+-- Modülün içindeki fonksiyonlardan birini hedef alıyoruz (Örn: GetStat veya başka bir fonksiyon)
+local targetFunc = scv.GetStat -- Veya dosyadaki başka bir fonksiyon
+
+if targetFunc then
+    local i = 1
+    while true do
+        local name, value = debug.getupvalue(targetFunc, i)
+        if not name then break end
+        
+        -- Eğer upvalue bir tablo ise ve içinde Scythe arıyorsan
+        if type(value) == "table" then
+            if value.Scythe then
+                print("Scythe upvalue içinde bulundu!")
+                print("Eski Cooldown:", value.Scythe.Cooldown)
+                
+                -- Değeri burada değiştirebilirsin:
+                value.Scythe.Cooldown = 0.2
+                print("Yeni Cooldown:", value.Scythe.Cooldown)
+            end
         end
+        
+        i = i + 1
     end
 end
-
-searchForScythe(scv, "scv")
 
 print("SON")
 
