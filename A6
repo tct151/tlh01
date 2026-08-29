@@ -1,19 +1,18 @@
 
 
-print("A6--14  ")
-
+print("A6--15  ")
 
 
 
 scr = game:GetService("ReplicatedStorage").Collectors
 
-for i,v in pairs(debug.getupvalues(require(scr).GetStat)) do 
 
-print(i)
-print(v)
+d=require(scr).GetStat.Scythe.Cooldown
+print(d)
 
 
-end
+c=(debug.getupvalues(require(scr))).GetStat.Scythe.Cooldown
+print(c)
 
 
 
