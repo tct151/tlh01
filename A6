@@ -1,8 +1,8 @@
 game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)--console acsin
-print("basladi")
-for i,v in pairs(require(game:GetService("ReplicatedStorage").Collectibles)) do if tostring(i)=="Make" then print("Func Buldu")
-hookfunction(v,function(p1) 
-print("make")
+print("Collect")
+for i,v in pairs(require(game:GetService("ReplicatedStorage").Collectibles)) do if tostring(i)=="Collect" then print("Func Buldu")
+hookfunction(v,function(p1,p2) 
+print("Collect")
 
 end)
 print("Uygulandi")
