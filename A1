@@ -1,10 +1,17 @@
 print("A1--21")
 
 
-Tool=debug.getupvalues(require(game:GetService("ReplicatedStorage").Collectors).GetStat)["Dark Scythe"]
-print("Eski Cooldown:",Tool["Cooldown"])
-Tool["Cooldown"] = 0.1
-print("Eski Cooldown:",Tool["Cooldown"])
+local Func = require(game:GetService("ReplicatedStorage").Collectors).GetStat
+
+for _, upvalue in pairs(debug.getupvalues(Func)) do
+    if type(upvalue) == "table" and upvalue["Dark Scythe"] then
+        local target = upvalue["Dark Scythe"]
+        print("Eski Cooldown:", target["Cooldown"])
+        target["Cooldown"] = 0.1
+        print("Yeni Cooldown:", target["Cooldown"])
+        break
+    end
+end
 
 
 print("SON")
