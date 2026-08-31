@@ -1,5 +1,5 @@
 
-VVV=17
+VVV=18
 
 sxx = game.workspace.CurrentCamera.ViewportSize.X
 ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
@@ -36,7 +36,7 @@ for i=1,15 do Btnrm[i].MouseButton1Down:connect(function() if Btnrm[i][ST]==BSR 
 Btnrm[1][TX]=""
 Btnrm[2][TX]=""
 Btnrm[3][TX]=""
-Btnrm[4][TX]=""
+Btnrm[4][TX]="S2 TUM"
 Btnrm[5][TX]="SANDK"
 Btnrm[6][TX]="AFK"
 Btnrm[7][TX]=""
@@ -48,15 +48,15 @@ Btnrm[15][TX]="V"..VVV
 
 
 
-spawn(function() while ext do task.wait(.2) if Btnrm[1][ST]==BSRD then Atak1() end end end)
-spawn(function() while ext do task.wait(.1) if Btnrm[2][ST]==BSRD then SandikH() end end end)
-spawn(function() while ext do task.wait(.2) if Btnrm[3][ST]==BSRD then Atak3() end end end)
-spawn(function() while ext do task.wait(.1) if Btnrm[4][ST]==BSRD then Atak4() end end end)
+--spawn(function() while ext do task.wait(.2) if Btnrm[1][ST]==BSRD then Atak1() end end end)
+--spawn(function() while ext do task.wait(.1) if Btnrm[2][ST]==BSRD then SandikH() end end end)
+--spawn(function() while ext do task.wait(.2) if Btnrm[3][ST]==BSRD then Atak3() end end end)
+spawn(function() while ext do task.wait(.1) if Btnrm[4][ST]==BSRD then Sandik() end end end)
 spawn(function() while ext do task.wait(.1) if Btnrm[5][ST]==BSRD then Sandik() end end end)
 spawn(function() while ext do task.wait(20) if Btnrm[6][ST]==BSRD then yaz("AFK AKTIF") Afk() end end end)
 
 
-Btnrm[7].MouseButton1Down:connect(function() Btnrm[7][ST]=BSRD Silah() yaz("TUM SILAHLAR ALINDI") wait(1) Btnrm[7][ST]=BSR end)
+--Btnrm[7].MouseButton1Down:connect(function() Btnrm[7][ST]=BSRD Silah() yaz("TUM SILAHLAR ALINDI") wait(1) Btnrm[7][ST]=BSR end)
 Btnrm[8].MouseButton1Down:connect(function() Btnrm[8][ST]=BSRD espp() yaz("ESP AKTIF") end)
 Btnrm[9].MouseButton1Down:connect(function() Duvar() end)
 
@@ -242,7 +242,6 @@ end
 
 
 
-local Players = game:GetService("Players")
 
 function Sandik() 
 
@@ -304,9 +303,173 @@ end
 
 
 
+workspace.Gravity=150
+end
+
+
+
+
+function Sandik2() 
+
+workspace.Gravity=0
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local rootPart = character:WaitForChild("HumanoidRootPart")
+
+local tur=2
+local bkle=3
+
+for _, child in ipairs(workspace.ActiveRadios:GetChildren()) do 
+	if child:IsA("Model") or child:IsA("BasePart") then
+		for i=1,tur do
+			rootPart.CFrame = child:GetPivot()
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			wait(.2)
+		end
+		wait(bkle)
+	end
+end
+
+for _, child in ipairs(workspace.ActiveRadiosPurple:GetChildren()) do 
+	if child:IsA("Model") or child:IsA("BasePart") then
+		for i=1,tur do
+			rootPart.CFrame = child:GetPivot()
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			wait(.2)
+		end
+		wait(bkle)
+	end
+end
+
+for _, child in ipairs(workspace.ActiveTraps:GetChildren()) do 
+	if child:IsA("Model") or child:IsA("BasePart") then
+		for i=1,tur do
+			rootPart.CFrame = child:GetPivot()
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			wait(.2)
+		end
+		wait(bkle)
+	end
+end
+
+
+for _, child in ipairs(workspace.ActiveTrapsPurple:GetChildren()) do 
+	if child:IsA("Model") or child:IsA("BasePart") then
+		for i=1,tur do
+			rootPart.CFrame = child:GetPivot()
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			wait(.2)
+		end
+		wait(bkle)
+	end
+end
+
+
+
+
+
+
+for _, child in ipairs(workspace.ActiveEquipments:GetChildren()) do 
+	if child:IsA("Model") or child:IsA("BasePart") then
+		for i=1,tur do
+			rootPart.CFrame = child:GetPivot()
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			wait(.2)
+		end
+		wait(bkle)
+	end
+end
+
+
+for _, child in ipairs(workspace.ActiveFuel:GetChildren()) do 
+	if child:IsA("Model") or child:IsA("BasePart") then
+		for i=1,tur do
+			rootPart.CFrame = child:GetPivot()
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			wait(.2)
+		end
+		wait(bkle)
+	end
+end
+
+
+for _, child in ipairs(workspace.ActiveGoldenChest:GetChildren()) do 
+	if child:IsA("Model") or child:IsA("BasePart") then
+		for i=1,tur do
+			rootPart.CFrame = child:GetPivot()
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			wait(.2)
+		end
+		wait(bkle)
+	end
+end
+
+for _, child in ipairs(workspace.ActiveGoldenKey:GetChildren()) do 
+	if child:IsA("Model") or child:IsA("BasePart") then
+		for i=1,tur do
+			rootPart.CFrame = child:GetPivot()
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			wait(.2)
+		end
+		wait(bkle)
+	end
+end
+
+
+for _, child in ipairs(workspace.ActiveKeys:GetChildren()) do 
+	if child:IsA("Model") or child:IsA("BasePart") then
+		for i=1,tur do
+			rootPart.CFrame = child:GetPivot()
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			wait(.2)
+		end
+		wait(bkle)
+	end
+end
+
+
+
+for _, child in ipairs(workspace.ActivePapers:GetChildren()) do 
+	if child:IsA("Model") or child:IsA("BasePart") then
+		for i=1,tur do
+			rootPart.CFrame = child:GetPivot()
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			wait(.2)
+		end
+		wait(bkle)
+	end
+end
+
+
+for _, child in ipairs(workspace.Map:GetChildren()) do 
+	if child:IsA("Model") or child:IsA("BasePart") then
+		for i=1,tur do
+			rootPart.CFrame = child:GetPivot()
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			wait(.2)
+		end
+		wait(bkle)
+	end
+end
+
+
+
+
+
+
+
+
+
+
+
 
 workspace.Gravity=150
 end
+
+
+
+
+
 
 
 
@@ -597,7 +760,7 @@ end
 
 
 
-yaz("KRT YUKLENDI")
+yaz("SIREN YUKLENDI")
 
 
 
