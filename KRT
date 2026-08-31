@@ -1,0 +1,622 @@
+
+VVV=17
+
+sxx = game.workspace.CurrentCamera.ViewportSize.X
+ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
+UD2 = UDim2.new    POS="Position"   BGT="BackgroundTransparency" SZ="Size" BSR=Enum.ButtonStyle.RobloxRoundDefaultButton 
+C3N = Color3.new   VN=Vector3.new   PR="Parent"      ST="Style"  VS="Visible"     EFF=Enum.Font.Fantasy EFD=Enum.FrameStyle.DropShadow  
+YzL=Color3.fromRGB(74,46,27) YzY=Color3.fromRGB(0,255,0)
+
+ext=true Btnrm={}
+
+MainGRM = ins("ScreenGui")  MainGRM[PR]=game.CoreGui MainGRM.Name="MainGRM"
+MainFRM = ins("Frame")      MainFRM[PR]=MainGRM
+BtnrmFRM  = ins("Frame")      BtnrmFRM[PR] =MainFRM
+
+local KapaB   = ins("TextButton") KapaB[PR]=MainGRM KapaB.Text="X"    KapaB[POS]=UD2(0,5,0,-5) KapaB.Size=UD2(0,40,0,40) KapaB.Font=EFF KapaB[TSZ]=20 
+KapaB.Visible = true KapaB.Style=BSR KapaB[TC3]=C3N(1,1,0)
+local OpenB   = ins("TextButton") OpenB[PR]=MainGRM OpenB[TX]="<<"    OpenB[POS]=UD2(0,42,0,-5) OpenB.Size=UD2(0,40,0,40) OpenB.Font=EFF OpenB[TSZ]=20 
+OpenB.Visible = true OpenB.Style=BSR OpenB[TC3]=C3N(1,1,0)
+
+--scb=ins("TextBox") scb[PR]=MainFRM scb[POS]=UD2(0,10,0,50) scb.Size=UD2(0,1200,0,300) scb.ClearTextOnFocus=false scb.MultiLine=true scb.Font=EFF scb[TSZ]=15 scb[TX]=""
+
+for i =1,15  do Btnrm[i]=ins("TextButton") Btnrm[i][PR]=BtnrmFRM Btnrm[i][POS]=UD2(0,i*sxx/20+160,0,-55) Btnrm[i][TX]=i
+Btnrm[i][ST]=BSR Btnrm[i].Font=EFF Btnrm[i][TSZ]=16 Btnrm[i][SZ]=UD2(0,sxx/19,0,35) Btnrm[i][TC3]=C3N(1,1,0) Btnrm[i][TC3]=YzL end
+
+KapaB.MouseButton1Down:connect(function() for i=1,15 do Btnrm[i][ST]=BSR end ext=false MainGRM:Destroy() end)
+OpenB.MouseButton1Down:connect(function() if MainFRM[VS]==true then MainFRM[VS]=false OpenB[TX]=">>" else MainFRM[VS]=true OpenB[TX]="<<" end end)
+
+function yaz(msg) game.StarterGui:SetCore('SendNotification',{Title='BILGI';Text=msg;Duration=2;}) end
+function syaz(msg) scb[TX]=scb.Text.." \n" ..msg end
+
+
+for i=1,15 do Btnrm[i].MouseButton1Down:connect(function() if Btnrm[i][ST]==BSR then Btnrm[i][ST]=BSRD else Btnrm[i][ST]=BSR end end) end
+
+
+Btnrm[1][TX]=""
+Btnrm[2][TX]=""
+Btnrm[3][TX]=""
+Btnrm[4][TX]=""
+Btnrm[5][TX]="SANDK"
+Btnrm[6][TX]="AFK"
+Btnrm[7][TX]=""
+Btnrm[8][TX]="ESP"
+Btnrm[9][TX]="DUVAR"
+
+
+Btnrm[15][TX]="V"..VVV
+
+
+
+spawn(function() while ext do task.wait(.2) if Btnrm[1][ST]==BSRD then Atak1() end end end)
+spawn(function() while ext do task.wait(.1) if Btnrm[2][ST]==BSRD then SandikH() end end end)
+spawn(function() while ext do task.wait(.2) if Btnrm[3][ST]==BSRD then Atak3() end end end)
+spawn(function() while ext do task.wait(.1) if Btnrm[4][ST]==BSRD then Atak4() end end end)
+spawn(function() while ext do task.wait(.1) if Btnrm[5][ST]==BSRD then Sandik() end end end)
+spawn(function() while ext do task.wait(20) if Btnrm[6][ST]==BSRD then yaz("AFK AKTIF") Afk() end end end)
+
+
+Btnrm[7].MouseButton1Down:connect(function() Btnrm[7][ST]=BSRD Silah() yaz("TUM SILAHLAR ALINDI") wait(1) Btnrm[7][ST]=BSR end)
+Btnrm[8].MouseButton1Down:connect(function() Btnrm[8][ST]=BSRD espp() yaz("ESP AKTIF") end)
+Btnrm[9].MouseButton1Down:connect(function() Duvar() end)
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Atak1()
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt1(v) task.wait() end end
+end
+function atesEt1(bosPart)
+
+	benimPart=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+
+	if benimPart then
+	
+	
+	local off = CFrame.new(0, 30, 0)
+    local cf2 = bosPart.CFrame
+    local cf1 = cf2 * off
+	
+
+	
+	
+    local yeniCf1 = CFrame.new(cf1.Position, cf2.Position)
+    
+    local args = {
+        [1] = CFrame.new(yeniCf1.Position) * CFrame.Angles(yeniCf1:ToEulerAnglesXYZ()),
+        [2] = CFrame.new(cf2.Position) * CFrame.Angles(cf2:ToEulerAnglesXYZ())
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args)) task.wait()
+
+	end
+	
+end
+
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Atak2() HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt2(v) wait(.2) end end
+end
+function atesEt2(bosPart)
+
+    local args = {
+        [1] = bosPart.CFrame,
+        [2] = bosPart.CFrame
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
+
+end
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Atak3() HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt3(HRT,v) wait(.2) end end
+end
+function atesEt3(benimPart, bosPart)
+
+    local cf1 = benimPart.CFrame
+    local cf2 = bosPart.CFrame
+    
+    -- [1] = Senin yerinden, bosa doğru bakan CFrame (Açısı bosa çevrildi)
+    local yeniCf1 = CFrame.new(cf1.Position, cf2.Position)
+    
+    local args = {
+        [1] = CFrame.new(yeniCf1.Position) * CFrame.Angles(yeniCf1:ToEulerAnglesXYZ()),
+        [2] = CFrame.new(cf2.Position) * CFrame.Angles(cf2:ToEulerAnglesXYZ())
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
+
+
+end
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Atak4()
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt4(v) task.wait() end end
+end
+function atesEt4(bosPart)
+
+	benimPart=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+
+	if benimPart then
+	
+	local cf1 = benimPart.CFrame
+    local cf2 = bosPart.CFrame
+    
+    local yeniCf1 = CFrame.new(cf1.Position, cf2.Position)
+    
+    local args = {
+        [1] = CFrame.new(yeniCf1.Position) * CFrame.Angles(yeniCf1:ToEulerAnglesXYZ()),
+        [2] = CFrame.new(cf2.Position) * CFrame.Angles(cf2:ToEulerAnglesXYZ())
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args)) task.wait()
+
+	end
+	
+end
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Atak5() HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt5(HRT,v) wait(.2) end end
+end
+function atesEt5(benimPart, hedefPart)
+    -- Hedefin veya boş parçanın konumunu alıp biraz ileri yön ekleyebiliriz
+    local pozisyon1 = benimPart.CFrame
+    local pozisyon2 = hedefPart.CFrame -- veya hedefPart.CFrame + (hedefPart.CFrame.LookVector * 2)
+
+    local args = {
+        [1] = pozisyon1,
+        [2] = pozisyon2
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
+end
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Atak6() HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt6(HRT,v) wait(.2) end end
+end
+function atesEt6(benimPart, hedefPart)
+    -- Hedefin veya boş parçanın konumunu alıp biraz ileri yön ekleyebiliriz
+    local pozisyon1 = benimPart.CFrame
+    local pozisyon2 = hedefPart.CFrame -- veya hedefPart.CFrame + (hedefPart.CFrame.LookVector * 2)
+
+    local args = {
+        [1] = pozisyon1,
+        [2] = pozisyon2
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
+end
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Atak7() HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt7(HRT,v) wait(.2) end end
+end
+function atesEt7(benimPart, hedefPart)
+    -- Hedefin veya boş parçanın konumunu alıp biraz ileri yön ekleyebiliriz
+    local pozisyon1 = benimPart.CFrame
+    local pozisyon2 = hedefPart.CFrame -- veya hedefPart.CFrame + (hedefPart.CFrame.LookVector * 2)
+
+    local args = {
+        [1] = pozisyon1,
+        [2] = pozisyon2
+    }
+    
+    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args))
+end
+
+
+
+
+function Afk()
+
+	vim=game:GetService("VirtualInputManager")if vim then
+    vim:SendKeyEvent(true, Enum.KeyCode.K,false,game) task.wait(0.5)
+    vim:SendKeyEvent(false, Enum.KeyCode.K, false, game)
+    else game:GetService('VirtualUser'):Button1Down(Vector2.new(0,0)) task.wait(0.5)
+    game:GetService('VirtualUser'):Button1Up(Vector2.new(0,0)) end
+
+end	
+	
+
+
+
+function Sandikeski() 
+
+	for k,v in pairs(workspace.crates:GetDescendants()) do if v.Name=="ProximityPrompt" then 
+		local s=0 for k,v in pairs(workspace.crates:GetChildren()) do s=s+1 end Btnrm[5][TX]="SAN-"..s
+		local hrt=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+		if hrt then for i=1,10 do hrt.CFrame=v.Parent.CFrame task.wait(.1) fireproximityprompt(v) task.wait(.1) end end
+	end end
+
+end
+
+
+
+
+local Players = game:GetService("Players")
+
+function Sandik() 
+
+workspace.Gravity=0
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local rootPart = character:WaitForChild("HumanoidRootPart")
+
+local tur=2
+local bkle=3
+
+for _, child in ipairs(workspace.ActiveRadios:GetChildren()) do 
+	if child:IsA("Model") or child:IsA("BasePart") then
+		for i=1,tur do
+			rootPart.CFrame = child:GetPivot()
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			wait(.2)
+		end
+		wait(bkle)
+	end
+end
+
+for _, child in ipairs(workspace.ActiveRadiosPurple:GetChildren()) do 
+	if child:IsA("Model") or child:IsA("BasePart") then
+		for i=1,tur do
+			rootPart.CFrame = child:GetPivot()
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			wait(.2)
+		end
+		wait(bkle)
+	end
+end
+
+for _, child in ipairs(workspace.ActiveTraps:GetChildren()) do 
+	if child:IsA("Model") or child:IsA("BasePart") then
+		for i=1,tur do
+			rootPart.CFrame = child:GetPivot()
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			wait(.2)
+		end
+		wait(bkle)
+	end
+end
+
+
+for _, child in ipairs(workspace.ActiveTrapsPurple:GetChildren()) do 
+	if child:IsA("Model") or child:IsA("BasePart") then
+		for i=1,tur do
+			rootPart.CFrame = child:GetPivot()
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			wait(.2)
+		end
+		wait(bkle)
+	end
+end
+
+
+
+
+
+
+
+workspace.Gravity=150
+end
+
+
+
+function SandikH() 
+	workspace.Gravity=0
+    local player = Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local hrt = character:FindFirstChild("HumanoidRootPart")
+    
+    if not hrt then return end
+
+    -- Kasaları say
+    local cratesFolder = workspace:FindFirstChild("crates")
+    if not cratesFolder then return end
+    
+    local s = #cratesFolder:GetChildren()
+    if Btnrm and Btnrm[5] and TX then
+        Btnrm[5][TX] = "SAN-" .. s
+    end
+    
+    -- ProximityPrompt'ları bul ve işle
+    for _, v in ipairs(cratesFolder:GetDescendants()) do 
+        if v.Name == "ProximityPrompt" then
+            local t = tick() 
+            repeat 
+                task.wait() 
+                if v and v.Parent and hrt then 
+                    hrt.CFrame = v.Parent.CFrame 
+                    task.wait() 
+                    fireproximityprompt(v) 
+                    task.wait() 
+                end
+            until (tick()-t)>.3 or v==nil or hrt==nil or (v ~= nil and v.Parent == nil)
+        end 
+    end 
+workspace.Gravity=150
+end
+
+
+
+
+
+
+
+
+
+
+function Sandik2() 
+
+	for k,v in pairs(workspace.crates:GetDescendants()) do if v.Name=="ProximityPrompt" then 
+		local s=0 for k,v in pairs(workspace.crates:GetChildren()) do s=s+1 end Btnrm[2][TX]="SAN-"..s
+		local hrt=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+		if hrt then for i=1,2 do hrt.CFrame=v.Parent.CFrame task.wait(.1) fireproximityprompt(v) task.wait(.1) end end
+	end end
+
+end
+
+
+function Silah() for k,v in pairs(game:GetService("ReplicatedStorage").gun_models:GetChildren()) do Silahal(v.Name) end end
+function Silahal(s)
+	game:GetService("ReplicatedStorage").remotes.Shop:FireServer(s)
+	local player = game.Players.LocalPlayer
+	local character = player.Character or player.CharacterAdded:Wait()
+	local tool = player.Backpack:FindFirstChild(s)
+	if tool then tool.Parent = character end
+end
+
+
+
+function espp()
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+_G.FriendColor = Color3.fromRGB(0, 0, 255)
+_G.EnemyColor = Color3.fromRGB(255, 0, 0)
+_G.UseTeamColor = true
+
+--------------------------------------------------------------------
+local Holder = Instance.new("Folder", game.CoreGui)
+Holder.Name = "ESP"
+
+local Box = Instance.new("BoxHandleAdornment")
+Box.Name = "nilBox"
+Box.Size = Vector3.new(1, 2, 1)
+Box.Color3 = Color3.new(100 / 255, 100 / 255, 100 / 255)
+Box.Transparency = 0.7
+Box.ZIndex = 0
+Box.AlwaysOnTop = false
+Box.Visible = false
+
+local NameTag = Instance.new("BillboardGui")
+NameTag.Name = "nilNameTag"
+NameTag.Enabled = false
+NameTag.Size = UDim2.new(0, 200, 0, 50)
+NameTag.AlwaysOnTop = true
+NameTag.StudsOffset = Vector3.new(0, 1.8, 0)
+local Tag = Instance.new("TextLabel", NameTag)
+Tag.Name = "Tag"
+Tag.BackgroundTransparency = 1
+Tag.Position = UDim2.new(0, -50, 0, 0)
+Tag.Size = UDim2.new(0, 300, 0, 20)
+Tag.TextSize = 15
+Tag.TextColor3 = Color3.new(100 / 255, 100 / 255, 100 / 255)
+Tag.TextStrokeColor3 = Color3.new(0 / 255, 0 / 255, 0 / 255)
+Tag.TextStrokeTransparency = 0.4
+Tag.Text = "nil"
+Tag.Font = Enum.Font.SourceSansBold
+Tag.TextScaled = false
+
+local LoadCharacter = function(v)
+	repeat wait() until v.Character ~= nil
+	v.Character:WaitForChild("Humanoid")
+	local vHolder = Holder:FindFirstChild(v.Name)
+	vHolder:ClearAllChildren()
+	local b = Box:Clone()
+	b.Name = v.Name .. "Box"
+	b.Adornee = v.Character
+	b.Parent = vHolder
+	local t = NameTag:Clone()
+	t.Name = v.Name .. "NameTag"
+	t.Enabled = true
+	t.Parent = vHolder
+	t.Adornee = v.Character:WaitForChild("Head", 5)
+	if not t.Adornee then
+		return UnloadCharacter(v)
+	end
+	t.Tag.Text = v.Name
+	b.Color3 = Color3.new(v.TeamColor.r, v.TeamColor.g, v.TeamColor.b)
+	t.Tag.TextColor3 = Color3.new(v.TeamColor.r, v.TeamColor.g, v.TeamColor.b)
+	local Update
+	local UpdateNameTag = function()
+		if not pcall(function()
+			v.Character.Humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+			local maxh = math.floor(v.Character.Humanoid.MaxHealth)
+			local h = math.floor(v.Character.Humanoid.Health)
+		end) then
+			Update:Disconnect()
+		end
+	end
+	UpdateNameTag()
+	Update = v.Character.Humanoid.Changed:Connect(UpdateNameTag)
+end
+
+local UnloadCharacter = function(v)
+	local vHolder = Holder:FindFirstChild(v.Name)
+	if vHolder and (vHolder:FindFirstChild(v.Name .. "Box") ~= nil or vHolder:FindFirstChild(v.Name .. "NameTag") ~= nil) then
+		vHolder:ClearAllChildren()
+	end
+end
+
+local LoadPlayer = function(v)
+	local vHolder = Instance.new("Folder", Holder)
+	vHolder.Name = v.Name
+	v.CharacterAdded:Connect(function()
+		pcall(LoadCharacter, v)
+	end)
+	v.CharacterRemoving:Connect(function()
+		pcall(UnloadCharacter, v)
+	end)
+	v.Changed:Connect(function(prop)
+		if prop == "TeamColor" then
+			UnloadCharacter(v)
+			wait()
+			LoadCharacter(v)
+		end
+	end)
+	LoadCharacter(v)
+end
+
+local UnloadPlayer = function(v)
+	UnloadCharacter(v)
+	local vHolder = Holder:FindFirstChild(v.Name)
+	if vHolder then
+		vHolder:Destroy()
+	end
+end
+
+for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+	spawn(function() pcall(LoadPlayer, v) end)
+end
+
+game:GetService("Players").PlayerAdded:Connect(function(v)
+	pcall(LoadPlayer, v)
+end)
+
+game:GetService("Players").PlayerRemoving:Connect(function(v)
+	pcall(UnloadPlayer, v)
+end)
+
+game:GetService("Players").LocalPlayer.NameDisplayDistance = 0
+
+if _G.Reantheajfdfjdgs then
+    return
+end
+
+_G.Reantheajfdfjdgs = ":suifayhgvsdghfsfkajewfrhk321rk213kjrgkhj432rj34f67df"
+
+local players = game:GetService("Players")
+local plr = players.LocalPlayer
+
+function esp(target, color)
+    if target.Character then
+        if not target.Character:FindFirstChild("GetReal") then
+            local highlight = Instance.new("Highlight")
+            highlight.RobloxLocked = true
+            highlight.Name = "GetReal"
+            highlight.Adornee = target.Character
+            highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+            highlight.FillColor = color
+            highlight.Parent = target.Character
+        else
+            target.Character.GetReal.FillColor = color
+        end
+    end
+end
+
+while task.wait() do
+    for i, v in pairs(players:GetPlayers()) do
+        if v ~= plr then
+            esp(v, _G.UseTeamColor and v.TeamColor.Color or ((plr.TeamColor == v.TeamColor) and _G.FriendColor or _G.EnemyColor))
+        end
+    end
+end
+
+
+end
+
+
+
+function Duvar()
+
+    isNoclipping = not isNoclipping
+    Btnrm[9][ST]=BSR
+    if isNoclipping then Btnrm[9][ST]=BSRD
+        print("Noclip Açıldı!")
+        -- Eğer eski bir bağlantı kalmışsa temizle
+        if NoclipConnection then NoclipConnection:Disconnect() end
+        
+        -- Sürekli çalışarak çarpışmaları kapatan döngü
+        NoclipConnection = RunService.Stepped:Connect(function()
+            if not isNoclipping then return end
+            local character = LocalPlayer.Character
+            if character then
+                for _, v in pairs(character:GetDescendants()) do
+                    if v:IsA("BasePart") then
+                        v.CanCollide = false
+                    end
+                end
+            end
+        end)
+    else
+        print("Noclip Kapatıldı (Clip)")
+        -- 1. Döngü bağlantısını tamamen kopar
+        if NoclipConnection then
+            NoclipConnection:Disconnect()
+            NoclipConnection = nil
+        end
+        
+        -- 2. Karakterin çarpışmalarını hemen eski haline getir
+        local character = LocalPlayer.Character
+        if character then
+            for _, v in pairs(character:GetDescendants()) do
+                if v:IsA("BasePart") then
+                    v.CanCollide = true
+                end
+            end
+        end
+    end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+yaz("KRT YUKLENDI")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
