@@ -250,8 +250,8 @@ local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local rootPart = character:WaitForChild("HumanoidRootPart")
 
-local tur=2
-local bkle=3
+local tur=1
+local bkle=4
 
 for _, child in ipairs(workspace.ActiveRadios:GetChildren()) do 
 	if child:IsA("Model") or child:IsA("BasePart") then
@@ -316,8 +316,8 @@ local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local rootPart = character:WaitForChild("HumanoidRootPart")
 
-local tur=2
-local bkle=3
+local tur=1
+local bkle=4
 
 for _, child in ipairs(workspace.ActiveRadios:GetChildren()) do 
 	if child:IsA("Model") or child:IsA("BasePart") then
