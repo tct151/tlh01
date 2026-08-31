@@ -1,5 +1,5 @@
 
-VVV=20
+VVV=22
 
 sxx = game.workspace.CurrentCamera.ViewportSize.X
 ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
@@ -257,7 +257,7 @@ for _, child in ipairs(workspace.ActiveRadios:GetChildren()) do
 	if child:IsA("Model") or child:IsA("BasePart") then
 		for i=1,tur do
 			rootPart.CFrame = child:GetPivot()
-			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then for y=1,5 do fireproximityprompt(v) wait(.1) end end end
 			wait(.2)
 		end
 		wait(bkle)
@@ -268,7 +268,7 @@ for _, child in ipairs(workspace.ActiveRadiosPurple:GetChildren()) do
 	if child:IsA("Model") or child:IsA("BasePart") then
 		for i=1,tur do
 			rootPart.CFrame = child:GetPivot()
-			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then for y=1,5 do fireproximityprompt(v) wait(.1) end end end
 			wait(.2)
 		end
 		wait(bkle)
@@ -279,7 +279,7 @@ for _, child in ipairs(workspace.ActiveTraps:GetChildren()) do
 	if child:IsA("Model") or child:IsA("BasePart") then
 		for i=1,tur do
 			rootPart.CFrame = child:GetPivot()
-			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then for y=1,5 do fireproximityprompt(v) wait(.1) end end end
 			wait(.2)
 		end
 		wait(bkle)
@@ -291,7 +291,7 @@ for _, child in ipairs(workspace.ActiveTrapsPurple:GetChildren()) do
 	if child:IsA("Model") or child:IsA("BasePart") then
 		for i=1,tur do
 			rootPart.CFrame = child:GetPivot()
-			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then for y=1,5 do fireproximityprompt(v) wait(.1) end end end
 			wait(.2)
 		end
 		wait(bkle)
@@ -305,6 +305,9 @@ end
 
 workspace.Gravity=150
 end
+
+
+
 
 
 
@@ -323,7 +326,7 @@ for _, child in ipairs(workspace.ActiveRadios:GetChildren()) do
 	if child:IsA("Model") or child:IsA("BasePart") then
 		for i=1,tur do
 			rootPart.CFrame = child:GetPivot()
-			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then for y=1,5 do fireproximityprompt(v) wait(.1) end end end
 			wait(.2)
 		end
 		wait(bkle)
@@ -334,7 +337,7 @@ for _, child in ipairs(workspace.ActiveRadiosPurple:GetChildren()) do
 	if child:IsA("Model") or child:IsA("BasePart") then
 		for i=1,tur do
 			rootPart.CFrame = child:GetPivot()
-			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then for y=1,5 do fireproximityprompt(v) wait(.1) end end end
 			wait(.2)
 		end
 		wait(bkle)
@@ -345,7 +348,7 @@ for _, child in ipairs(workspace.ActiveTraps:GetChildren()) do
 	if child:IsA("Model") or child:IsA("BasePart") then
 		for i=1,tur do
 			rootPart.CFrame = child:GetPivot()
-			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then for y=1,5 do fireproximityprompt(v) wait(.1) end end end
 			wait(.2)
 		end
 		wait(bkle)
@@ -357,7 +360,7 @@ for _, child in ipairs(workspace.ActiveTrapsPurple:GetChildren()) do
 	if child:IsA("Model") or child:IsA("BasePart") then
 		for i=1,tur do
 			rootPart.CFrame = child:GetPivot()
-			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then for y=1,5 do fireproximityprompt(v) wait(.1) end end end
 			wait(.2)
 		end
 		wait(bkle)
@@ -373,7 +376,7 @@ for _, child in ipairs(workspace.ActiveEquipments:GetChildren()) do
 	if child:IsA("Model") or child:IsA("BasePart") then
 		for i=1,tur do
 			rootPart.CFrame = child:GetPivot()
-			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then for y=1,5 do fireproximityprompt(v) wait(.1) end end end
 			wait(.2)
 		end
 		wait(bkle)
@@ -385,7 +388,7 @@ for _, child in ipairs(workspace.ActiveFuel:GetChildren()) do
 	if child:IsA("Model") or child:IsA("BasePart") then
 		for i=1,tur do
 			rootPart.CFrame = child:GetPivot()
-			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then for y=1,5 do fireproximityprompt(v) wait(.1) end end end
 			wait(.2)
 		end
 		wait(bkle)
@@ -397,7 +400,7 @@ for _, child in ipairs(workspace.ActiveGoldenChest:GetChildren()) do
 	if child:IsA("Model") or child:IsA("BasePart") then
 		for i=1,tur do
 			rootPart.CFrame = child:GetPivot()
-			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then for y=1,5 do fireproximityprompt(v) wait(.1) end end end
 			wait(.2)
 		end
 		wait(bkle)
@@ -408,7 +411,7 @@ for _, child in ipairs(workspace.ActiveGoldenKey:GetChildren()) do
 	if child:IsA("Model") or child:IsA("BasePart") then
 		for i=1,tur do
 			rootPart.CFrame = child:GetPivot()
-			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then for y=1,5 do fireproximityprompt(v) wait(.1) end end end
 			wait(.2)
 		end
 		wait(bkle)
@@ -420,7 +423,7 @@ for _, child in ipairs(workspace.ActiveKeys:GetChildren()) do
 	if child:IsA("Model") or child:IsA("BasePart") then
 		for i=1,tur do
 			rootPart.CFrame = child:GetPivot()
-			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then for y=1,5 do fireproximityprompt(v) wait(.1) end end end
 			wait(.2)
 		end
 		wait(bkle)
@@ -433,7 +436,7 @@ for _, child in ipairs(workspace.ActivePapers:GetChildren()) do
 	if child:IsA("Model") or child:IsA("BasePart") then
 		for i=1,tur do
 			rootPart.CFrame = child:GetPivot()
-			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then for y=1,5 do fireproximityprompt(v) wait(.1) end end end
 			wait(.2)
 		end
 		wait(bkle)
@@ -445,7 +448,7 @@ for _, child in ipairs(workspace.Map:GetChildren()) do
 	if child:IsA("Model") or child:IsA("BasePart") then
 		for i=1,tur do
 			rootPart.CFrame = child:GetPivot()
-			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then fireproximityprompt(v) end end
+			for _,v in ipairs(child:GetDescendants()) do if v:IsA("ProximityPrompt") then for y=1,5 do fireproximityprompt(v) wait(.1) end end end
 			wait(.2)
 		end
 		wait(bkle)
