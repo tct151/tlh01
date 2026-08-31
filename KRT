@@ -1,5 +1,5 @@
 
-VVV=30
+VVV=31
 
 sxx = game.workspace.CurrentCamera.ViewportSize.X
 ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
@@ -64,6 +64,15 @@ Btnrm[9].MouseButton1Down:connect(function() Duvar() end)
 --/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function Atakk()
 
+local args = {
+    [1] = "Gun_Shoot",
+    [2] = "Start"
+}
+
+game:GetService("Players").LocalPlayer.Character:FindFirstChild("Basic Pistol").RemoteEvent:FireServer(unpack(args))
+
+
+
 for k, v in pairs(workspace:GetDescendants()) do
     if v.Name == "HumanoidRootPart" then
         local args = {
@@ -73,7 +82,7 @@ for k, v in pairs(workspace:GetDescendants()) do
         
         local tool = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Basic Pistol")
         if tool and tool:FindFirstChild("RemoteEvent") then
-            tool.RemoteEvent:FireServer(unpack(args))
+           for i=1,10 do tool.RemoteEvent:FireServer(unpack(args)) task.wait() end
         end
     end
 end
