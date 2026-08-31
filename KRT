@@ -1,5 +1,5 @@
 
-VVV=25
+VVV=30
 
 sxx = game.workspace.CurrentCamera.ViewportSize.X
 ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
@@ -33,7 +33,7 @@ function syaz(msg) scb[TX]=scb.Text.." \n" ..msg end
 for i=1,15 do Btnrm[i].MouseButton1Down:connect(function() if Btnrm[i][ST]==BSR then Btnrm[i][ST]=BSRD else Btnrm[i][ST]=BSR end end) end
 
 
-Btnrm[1][TX]=""
+Btnrm[1][TX]="ATAK"
 Btnrm[2][TX]=""
 Btnrm[3][TX]=""
 Btnrm[4][TX]="S2 TUM"
@@ -48,7 +48,7 @@ Btnrm[15][TX]="V"..VVV
 
 
 
---spawn(function() while ext do task.wait(.2) if Btnrm[1][ST]==BSRD then Atak1() end end end)
+spawn(function() while ext do task.wait(.1) if Btnrm[1][ST]==BSRD then Atakk() end end end)
 --spawn(function() while ext do task.wait(.1) if Btnrm[2][ST]==BSRD then SandikH() end end end)
 --spawn(function() while ext do task.wait(.2) if Btnrm[3][ST]==BSRD then Atak3() end end end)
 spawn(function() while ext do task.wait(.1) if Btnrm[4][ST]==BSRD then Sandik() end end end)
@@ -62,35 +62,24 @@ Btnrm[9].MouseButton1Down:connect(function() Duvar() end)
 
 
 --/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function Atak1()
-	for k,v in pairs(workspace.scps:GetDescendants()) do if v.Name=="HumanoidRootPart" then atesEt1(v) task.wait() end end
+function Atakk()
+
+for k, v in pairs(workspace:GetDescendants()) do
+    if v.Name == "HumanoidRootPart" then
+        local args = {
+            [1] = "UpdateTargetPos",
+            [2] = v.Position
+        }
+        
+        local tool = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Basic Pistol")
+        if tool and tool:FindFirstChild("RemoteEvent") then
+            tool.RemoteEvent:FireServer(unpack(args))
+        end
+    end
 end
-function atesEt1(bosPart)
 
-	benimPart=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-
-	if benimPart then
-	
-	
-	local off = CFrame.new(0, 30, 0)
-    local cf2 = bosPart.CFrame
-    local cf1 = cf2 * off
-	
-
-	
-	
-    local yeniCf1 = CFrame.new(cf1.Position, cf2.Position)
-    
-    local args = {
-        [1] = CFrame.new(yeniCf1.Position) * CFrame.Angles(yeniCf1:ToEulerAnglesXYZ()),
-        [2] = CFrame.new(cf2.Position) * CFrame.Angles(cf2:ToEulerAnglesXYZ())
-    }
-    
-    game:GetService("ReplicatedStorage").remotes.shoot:FireServer(unpack(args)) task.wait()
-
-	end
-	
 end
+
 
 
 
