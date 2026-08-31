@@ -1,5 +1,5 @@
 
-VVV=23
+VVV=25
 
 sxx = game.workspace.CurrentCamera.ViewportSize.X
 ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
@@ -245,7 +245,7 @@ end
 
 function Sandik() 
 
-workspace.Gravity=0
+workspace.Gravity=195
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local rootPart = character:WaitForChild("HumanoidRootPart")
@@ -307,7 +307,7 @@ end
 
 
 
-workspace.Gravity=150
+workspace.Gravity=195
 end
 
 
@@ -318,7 +318,7 @@ end
 
 function Sandik2() 
 
-workspace.Gravity=0
+workspace.Gravity=195
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local rootPart = character:WaitForChild("HumanoidRootPart")
@@ -472,7 +472,7 @@ end
 
 
 
-workspace.Gravity=150
+workspace.Gravity=195
 end
 
 
@@ -483,7 +483,7 @@ end
 
 
 function SandikH() 
-	workspace.Gravity=0
+	workspace.Gravity=195
     local player = Players.LocalPlayer
     local character = player.Character or player.CharacterAdded:Wait()
     local hrt = character:FindFirstChild("HumanoidRootPart")
@@ -514,7 +514,7 @@ function SandikH()
             until (tick()-t)>.3 or v==nil or hrt==nil or (v ~= nil and v.Parent == nil)
         end 
     end 
-workspace.Gravity=150
+workspace.Gravity=195
 end
 
 
