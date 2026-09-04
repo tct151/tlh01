@@ -129,7 +129,7 @@ Btn[32].MouseButton1Down:connect(function() loadstring(game:HttpGet("https://pas
 Btn[33].MouseButton1Down:connect(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe%20Viewer"))() end) 
 
 
-Btn[30].MouseButton1Down:connect(function() ZEMINKOY() game.Workspace.AAA.Sp1.Size=Vector3.new(5,1,5)  Btn[30][ST]=BSRD  end)
+Btn[30].MouseButton1Down:connect(function() ZEMINKOY() game.Workspace.AAA.Sp1.Size=Vector3.new(100,5,100)  Btn[30][ST]=BSRD  end)
 Btn[30].MouseButton2Down:connect(function() game.Workspace.AAA.Sp1:Destroy()  Btn[30][ST]=BSR   end) 
 Btn[51].MouseButton1Down:connect(function() spinsc() yaz("SPIN ACILDI") Btn[51][ST]=BSRD end) 
 Btn[52].MouseButton1Down:connect(function() hitboxsc() yaz("HITBOX ACILDI") Btn[52][ST]=BSRD end) 
