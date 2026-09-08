@@ -1,0 +1,608 @@
+
+VVV=17 
+
+sxx = game.workspace.CurrentCamera.ViewportSize.X
+LName=tostring(game.Players.LocalPlayer)
+HRT=game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+HRTP=HRT.Position
+Players = game:GetService("Players")
+LocalPlayer = Players.LocalPlayer
+Character = LocalPlayer.Character
+ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+
+
+ins = Instance.new TC3="TextColor3" TSZ="TextSize"               TX="Text" BSRD=Enum.ButtonStyle.RobloxRoundDropdownButton
+UD2 = UDim2.new    POS="Position"   BGT="BackgroundTransparency" SZ="Size" BSR=Enum.ButtonStyle.RobloxRoundDefaultButton 
+C3N = Color3.new   VN=Vector3.new   PR="Parent"      ST="Style"  VS="Visible"     EFF=Enum.Font.Fantasy EFD=Enum.FrameStyle.DropShadow  
+YzL=Color3.fromRGB(74,46,27) YzY=Color3.fromRGB(0,255,0)
+
+ext=true Btnrm={} 
+
+MainGRM = ins("ScreenGui")  MainGRM[PR]=game.CoreGui MainGRM.Name="MainGRM"
+MainFRM = ins("Frame")      MainFRM[PR]=MainGRM
+BtnrmFRM  = ins("Frame")      BtnrmFRM[PR] =MainFRM
+
+local KapaB   = ins("TextButton") KapaB[PR]=MainGRM KapaB.Text="X"    KapaB[POS]=UD2(0,5,0,-5) KapaB.Size=UD2(0,40,0,40) KapaB.Font=EFF KapaB[TSZ]=20 
+KapaB.Visible = true KapaB.Style=BSR KapaB[TC3]=C3N(1,1,0)
+local OpenB   = ins("TextButton") OpenB[PR]=MainGRM OpenB[TX]="<<"    OpenB[POS]=UD2(0,42,0,-5) OpenB.Size=UD2(0,40,0,40) OpenB.Font=EFF OpenB[TSZ]=20 
+OpenB.Visible = true OpenB.Style=BSR OpenB[TC3]=C3N(1,1,0)
+
+--scb=ins("TextBox") scb[PR]=MainFRM scb[POS]=UD2(0,10,0,50) scb.Size=UD2(0,1200,0,300) scb.ClearTextOnFocus=false scb.MultiLine=true scb.Font=EFF scb[TSZ]=15 scb[TX]=""
+
+for i=1,15  do Btnrm[i]=ins("TextButton") Btnrm[i][PR]=BtnrmFRM Btnrm[i][POS]=UD2(0,i*sxx/20+160,0,-55) Btnrm[i][TX]=i
+Btnrm[i][ST]=BSR Btnrm[i].Font=EFF Btnrm[i][TSZ]=16 Btnrm[i][SZ]=UD2(0,sxx/19,0,35) Btnrm[i][TC3]=C3N(1,1,0) Btnrm[i][TC3]=YzL end
+
+for i=16,26 do Btnrm[i]=ins("TextButton") Btnrm[i][PR]=BtnrmFRM Btnrm[i][POS]=UD2(0,0,0,(i-15)*25+50) Btnrm[i][TX]=i
+    Btnrm[i][ST]=BSR Btnrm[i].Font=EFF Btnrm[i][TSZ]=18 Btnrm[i].Size=UD2(0,40,0,27) Btnrm[i][TC3]=C3N(0,1,1) end
+
+
+KapaB.MouseButton1Down:connect(function() for i=1,15 do Btnrm[i][ST]=BSR end ext=false MainGRM:Destroy() end)
+OpenB.MouseButton1Down:connect(function() if MainFRM[VS]==true then MainFRM[VS]=false OpenB[TX]=">>" else MainFRM[VS]=true OpenB[TX]="<<" end end)
+
+function yaz(msg) game.StarterGui:SetCore('SendNotification',{Title='BILGI';Text=msg;Duration=2;}) end
+function Git(x,y,z) HRT=nil HRT=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") 
+					if HRT~=nil then HRT.CFrame=CFrame.new(x,y,z) task.wait() end end
+--function syaz(msg) scb[TX]=scb.Text.." \n" ..msg end
+
+
+
+for i=1,15 do Btnrm[i].MouseButton1Down:connect(function() if Btnrm[i][ST]==BSR then Btnrm[i][ST]=BSRD else Btnrm[i][ST]=BSR end end) end
+
+
+Btnrm[1][TX]="TOPLA"
+Btnrm[2][TX]="DIG"
+Btnrm[3][TX]="REB"
+Btnrm[4][TX]="SAT"
+Btnrm[5][TX]="SIL"
+Btnrm[6][TX]="ATAK"
+Btnrm[7][TX]="WORLD"
+
+Btnrm[11][TX]="AFK"
+Btnrm[12][TX]="ESP"
+Btnrm[13][TX]="DUVAR"
+Btnrm[14][TX]="DEX"
+Btnrm[15][TX]="SERV"
+
+
+
+
+
+Btnrm[1].MouseButton2Down:connect(function() Topla1() end)
+Btnrm[2].MouseButton2Down:connect(function() eniyial() end)
+Btnrm[3].MouseButton2Down:connect(function() sat() end)
+
+
+
+Btnrm[7].MouseButton1Down:connect(function() Git(992,37,1706) end)
+
+
+spawn(function() while ext do task.wait(.1)  if Btnrm[1][ST]==BSRD then Topla1() end end end)
+spawn(function() while ext do task.wait(.1)  if Btnrm[2][ST]==BSRD then Dig1() end end end)
+spawn(function() while ext do task.wait(2)   if Btnrm[3][ST]==BSRD then Reb1() end end end)
+spawn(function() while ext do task.wait(.5)  if Btnrm[6][ST]==BSRD then Atak() end end end)
+--spawn(function() while ext do task.wait(1)   if Btnrm[5][ST]==BSRD then  end end end)
+
+
+
+
+
+
+
+spawn(function() while ext do task.wait(20)  if Btnrm[11][ST]==BSRD then yaz("AFK AKTIF") Afk() end end end)
+Btnrm[12].MouseButton1Down:connect(function() Btnrm[12][ST]=BSRD espp() yaz("ESP AKTIF") end)
+Btnrm[13].MouseButton1Down:connect(function() Duvar() end)
+Btnrm[14].MouseButton1Down:connect(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/jodta/my-scripts/refs/heads/main/Dex%2B%2B/Decompiler%20Fix.lua"))() end)
+Btnrm[15].MouseButton1Down:connect(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Universe%20Viewer"))() end) 
+
+
+
+
+-- /////////////////////////////////////  KAYDET VE ISINLAN BUTONLARI TOPLU FONKSIYON  /////////////////////////////////////
+Knm = {} for i = 16,26 do Btnrm[i].MouseButton2Down:connect(function()
+Knm[i*3-2]=game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.x 
+Knm[i*3-1]=game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.y 
+Knm[i*3-0]=game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.z 
+yaz(math.ceil(Knm[i*3-2]).."  "..math.ceil(Knm[i*3-1]).."  "..math.ceil(Knm[i*3-0]))
+Btnrm[i][ST]=BSRD Btnrm[i][TC3]=C3N(0,1,0) end) 
+Btnrm[i].MouseButton1Down:connect(function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Knm[i*3-2],Knm[i*3-1],Knm[i*3-0]) end) end
+
+
+
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Dig1()
+
+for i=1,20 do
+game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.StrengthService.RE.ClickRequested:FireServer()
+task.wait()
+end
+
+
+
+end
+
+function Atak()
+
+game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.AttackService.RE.AttackRequested:FireServer()
+
+
+	vim=game:GetService("VirtualInputManager")if vim then
+    vim:SendKeyEvent(true, Enum.KeyCode.W,false,game) task.wait()
+    vim:SendKeyEvent(false, Enum.KeyCode.W, false, game)
+    else game:GetService('VirtualUser'):Button1Down(Vector2.new(0,0)) task.wait()
+    game:GetService('VirtualUser'):Button1Up(Vector2.new(0,0)) end
+
+
+
+end
+
+
+
+function Reb1()
+
+
+game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.RebirtService.RE.RebirthButtonClicked:FireServer()
+
+
+
+end
+
+
+function sat()
+
+
+game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.DataService.RF.SellAllBackpackLoot:InvokeServer()
+task.wait(.1)
+
+
+end
+
+
+function sat2()
+
+--yaz("sat")
+Btnrm[14][TX]="SAT"
+
+Git(-897,38,34) --1742
+
+Sell=nil HRT=nil
+
+Sell=workspace.Worlds.World_1:FindFirstChild("Sell")
+HRT  =game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+
+--if Sell~=nil then SellP=Sell
+
+
+-- SellP=workspace.Worlds.World_1.Sell.TriggerPlace.ClaimPart
+  
+
+--yaz(tostring(Sell))
+--yaz(tostring(HRT))
+
+if Sell~=nil and HRT~=nil then  
+	HRT.CFrame=Sell.TriggerPlace.ClaimPart.CFrame + Vector3.new(0,3.5,0)
+	task.wait(.1)
+	fire(Sell.TriggerPlace.ClaimPart.ShopOpenPrompt)
+end
+
+game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.DataService.RF.SellAllBackpackLoot:InvokeServer()
+
+end
+
+
+function Topla1()
+
+Btnrm[14][TX]="EN 1"
+
+local target = getDeepChild(game:GetService("Players").LocalPlayer.PlayerGui, "MainScreenGui.Currencies.Backpack.Value")
+
+if target and target.Text then 
+
+	local x, y = target.Text:match("^(%d+)/(%d+)$")
+	x, y = tonumber(x), tonumber(y)
+
+	if x and y and x > y-3 then
+
+		game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.BaseTeleportService.RF.TeleportToSpawn:InvokeServer()
+		task.wait(.1)
+		if Btnrm[4][ST]==BSRD then sat() end
+		
+	else
+
+	
+	
+
+Btnrm[14][TX]="EN 2"
+
+local items = {}
+
+-- workspace.Zones içindeki tüm Model'leri tarama
+for _, desc in ipairs(workspace.Zones:GetDescendants()) do
+	if Btnrm[5][ST]==BSRD and string.find(desc.Name,"Grass") then desc:Destroy() end
+	if desc:IsA("Model") then
+		-- Özellik penceresinde göründüğü için GetAttribute kullanıyoruz
+		local price = desc:GetAttribute("LootSellPrice")
+		if price then
+			table.insert(items, {Model = desc, Price = price})
+		end
+	end
+end
+
+Btnrm[14][TX]="EN 3"
+
+-- LootSellPrice değerine göre yüksekten düşüğe sıralama
+table.sort(items, function(a, b)
+	return a.Price > b.Price
+end)
+
+Btnrm[14][TX]="EN 4"
+
+-- En yüksek değerli modeli işleme alma
+if #items > 0 then
+	local bestItem = items[1].Model
+	local basePart = bestItem:FindFirstChild("Base")
+	
+	HRT=nil HRT=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+
+	if HRT~=nil and basePart then
+		-- Karakteri Base CFrame konumuna ışınlama (üst üste binmemesi için hafif yukarı offset verilebilir)
+		HRT.CFrame = basePart.CFrame 
+		--+ Vector3.new(0, 3, 0)
+		-- Işınlanma gerçekleştikten sonra kısa bir bekleme ve prompt tetikleme
+		task.wait(0.1)
+		local promptAttachment = basePart:FindFirstChild("PickupPromptAttachment")
+		if promptAttachment then
+			local prompt = promptAttachment:FindFirstChild("PickupPrompt")
+			if prompt then
+				Btnrm[14][TX]="5"
+				fire(prompt)
+				if Btnrm[5][ST]==BSRD and basePart then Btnrm[14][TX]="7" basePart.Parent:Destroy() Btnrm[14][TX]="8" end
+				Btnrm[14][TX]="6"
+			end
+		end
+	end
+end
+
+end 
+end
+
+end
+
+function fire(Obj)
+	if Obj and Obj:IsA("ProximityPrompt") then
+		Obj:InputHoldBegin()
+		task.wait(Obj.HoldDuration)
+		Obj:InputHoldEnd()
+	end
+end
+
+function getDeepChild(parent, path)
+	local current = parent
+	for _, name in ipairs(string.split(path, ".")) do
+		current = current and current:FindFirstChild(name)
+		if not current then break end
+	end
+	return current
+end
+
+
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+function ZEMINKOY()
+
+
+if not workspace:FindFirstChild("AAA") then f=ins("Folder",workspace) f.Name="AAA" end
+for i,v in pairs(game.workspace.AAA:GetChildren()) do v:Destroy() end
+for i=1,10 do p=ins("Part") p[PR]=game.Workspace.AAA p.Name="Sp"..i end
+
+game.Workspace.AAA.Sp1.Anchored=true
+game.Workspace.AAA.Sp1.Size=Vector3.new(5,1,5)
+game.Workspace.AAA.Sp1.CFrame=CFrame.new(HRT[POS].x,HRT[POS].y-7,HRT[POS].z)
+wait(.5)
+	
+end
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+function Afk()
+
+	vim=game:GetService("VirtualInputManager")if vim then
+    vim:SendKeyEvent(true, Enum.KeyCode.K,false,game) task.wait(0.5)
+    vim:SendKeyEvent(false, Enum.KeyCode.K, false, game)
+    else game:GetService('VirtualUser'):Button1Down(Vector2.new(0,0)) task.wait(0.5)
+    game:GetService('VirtualUser'):Button1Up(Vector2.new(0,0)) end
+
+end	
+	
+
+
+function espp()
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+_G.FriendColor = Color3.fromRGB(0, 0, 255)
+_G.EnemyColor = Color3.fromRGB(255, 0, 0)
+_G.UseTeamColor = true
+
+--------------------------------------------------------------------
+local Holder = Instance.new("Folder", game.CoreGui)
+Holder.Name = "ESP"
+
+local Box = Instance.new("BoxHandleAdornment")
+Box.Name = "nilBox"
+Box.Size = Vector3.new(1, 2, 1)
+Box.Color3 = Color3.new(100 / 255, 100 / 255, 100 / 255)
+Box.Transparency = 0.7
+Box.ZIndex = 0
+Box.AlwaysOnTop = false
+Box.Visible = false
+
+local NameTag = Instance.new("BillboardGui")
+NameTag.Name = "nilNameTag"
+NameTag.Enabled = false
+NameTag.Size = UDim2.new(0, 200, 0, 50)
+NameTag.AlwaysOnTop = true
+NameTag.StudsOffset = Vector3.new(0, 1.8, 0)
+local Tag = Instance.new("TextLabel", NameTag)
+Tag.Name = "Tag"
+Tag.BackgroundTransparency = 1
+Tag.Position = UDim2.new(0, -50, 0, 0)
+Tag.Size = UDim2.new(0, 300, 0, 20)
+Tag.TextSize = 15
+Tag.TextColor3 = Color3.new(100 / 255, 100 / 255, 100 / 255)
+Tag.TextStrokeColor3 = Color3.new(0 / 255, 0 / 255, 0 / 255)
+Tag.TextStrokeTransparency = 0.4
+Tag.Text = "nil"
+Tag.Font = Enum.Font.SourceSansBold
+Tag.TextScaled = false
+
+local LoadCharacter = function(v)
+	repeat wait() until v.Character ~= nil
+	v.Character:WaitForChild("Humanoid")
+	local vHolder = Holder:FindFirstChild(v.Name)
+	vHolder:ClearAllChildren()
+	local b = Box:Clone()
+	b.Name = v.Name .. "Box"
+	b.Adornee = v.Character
+	b.Parent = vHolder
+	local t = NameTag:Clone()
+	t.Name = v.Name .. "NameTag"
+	t.Enabled = true
+	t.Parent = vHolder
+	t.Adornee = v.Character:WaitForChild("Head", 5)
+	if not t.Adornee then
+		return UnloadCharacter(v)
+	end
+	t.Tag.Text = v.Name
+	b.Color3 = Color3.new(v.TeamColor.r, v.TeamColor.g, v.TeamColor.b)
+	t.Tag.TextColor3 = Color3.new(v.TeamColor.r, v.TeamColor.g, v.TeamColor.b)
+	local Update
+	local UpdateNameTag = function()
+		if not pcall(function()
+			v.Character.Humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+			local maxh = math.floor(v.Character.Humanoid.MaxHealth)
+			local h = math.floor(v.Character.Humanoid.Health)
+		end) then
+			Update:Disconnect()
+		end
+	end
+	UpdateNameTag()
+	Update = v.Character.Humanoid.Changed:Connect(UpdateNameTag)
+end
+
+local UnloadCharacter = function(v)
+	local vHolder = Holder:FindFirstChild(v.Name)
+	if vHolder and (vHolder:FindFirstChild(v.Name .. "Box") ~= nil or vHolder:FindFirstChild(v.Name .. "NameTag") ~= nil) then
+		vHolder:ClearAllChildren()
+	end
+end
+
+local LoadPlayer = function(v)
+	local vHolder = Instance.new("Folder", Holder)
+	vHolder.Name = v.Name
+	v.CharacterAdded:Connect(function()
+		pcall(LoadCharacter, v)
+	end)
+	v.CharacterRemoving:Connect(function()
+		pcall(UnloadCharacter, v)
+	end)
+	v.Changed:Connect(function(prop)
+		if prop == "TeamColor" then
+			UnloadCharacter(v)
+			wait()
+			LoadCharacter(v)
+		end
+	end)
+	LoadCharacter(v)
+end
+
+local UnloadPlayer = function(v)
+	UnloadCharacter(v)
+	local vHolder = Holder:FindFirstChild(v.Name)
+	if vHolder then
+		vHolder:Destroy()
+	end
+end
+
+for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+	spawn(function() pcall(LoadPlayer, v) end)
+end
+
+game:GetService("Players").PlayerAdded:Connect(function(v)
+	pcall(LoadPlayer, v)
+end)
+
+game:GetService("Players").PlayerRemoving:Connect(function(v)
+	pcall(UnloadPlayer, v)
+end)
+
+game:GetService("Players").LocalPlayer.NameDisplayDistance = 0
+
+if _G.Reantheajfdfjdgs then
+    return
+end
+
+_G.Reantheajfdfjdgs = ":suifayhgvsdghfsfkajewfrhk321rk213kjrgkhj432rj34f67df"
+
+local players = game:GetService("Players")
+local plr = players.LocalPlayer
+
+function esp(target, color)
+    if target.Character then
+        if not target.Character:FindFirstChild("GetReal") then
+            local highlight = Instance.new("Highlight")
+            highlight.RobloxLocked = true
+            highlight.Name = "GetReal"
+            highlight.Adornee = target.Character
+            highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+            highlight.FillColor = color
+            highlight.Parent = target.Character
+        else
+            target.Character.GetReal.FillColor = color
+        end
+    end
+end
+
+while task.wait() do
+    for i, v in pairs(players:GetPlayers()) do
+        if v ~= plr then
+            esp(v, _G.UseTeamColor and v.TeamColor.Color or ((plr.TeamColor == v.TeamColor) and _G.FriendColor or _G.EnemyColor))
+        end
+    end
+end
+
+
+end
+
+
+
+function Duvar()
+
+    isNoclipping = not isNoclipping
+    if isNoclipping then 
+        yaz("Noclip Açıldı!")
+		Btnrm[9][ST]=BSR yaz("bsrd") wait(2)
+		yaz("Noclip Açıldı!2")
+		wait(2)
+        -- Eğer eski bir bağlantı kalmışsa temizle
+        if NoclipConnection then NoclipConnection:Disconnect() end
+        
+        -- Sürekli çalışarak çarpışmaları kapatan döngü
+        NoclipConnection = RunService.Stepped:Connect(function()
+            if not isNoclipping then return end
+            local character = LocalPlayer.Character
+            if character then
+                for _, v in pairs(character:GetDescendants()) do
+                    if v:IsA("BasePart") then
+                        v.CanCollide = false
+                    end
+                end
+            end
+        end)
+    else
+        yaz("Noclip Kapatıldı (Clip)")
+		Btnrm[9][ST]=BSRD
+        -- 1. Döngü bağlantıDını tamamen kopar
+        if NoclipConnection then
+            NoclipConnection:Disconnect()
+            NoclipConnection = nil
+        end
+        
+        -- 2. Karakterin çarpışmalarını hemen eski haline getir
+        local character = LocalPlayer.Character
+        if character then
+            for _, v in pairs(character:GetDescendants()) do
+                if v:IsA("BasePart") then
+                    v.CanCollide = true
+                end
+            end
+        end
+    end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+yaz("CUT GRASS YUKLENDI")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
