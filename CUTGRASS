@@ -72,7 +72,7 @@ Btnrm[15][TX]="SERV"
 Btnrm[1].MouseButton2Down:connect(function() Topla1() end)
 Btnrm[2].MouseButton2Down:connect(function() eniyial() end)
 Btnrm[3].MouseButton2Down:connect(function() sat() end)
-Btnrm[8].MouseButton2Down:connect(function() CraftT=CraftT+1 if CraftT>3 then CraftT=1 end Btnrm[8][TX]="CRF "..CraftT end)
+Btnrm[9].MouseButton1Down:connect(function() CraftT=CraftT+1 if CraftT>3 then CraftT=1 end Btnrm[8][TX]="CRF "..CraftT end)
 
 
 Btnrm[7].MouseButton1Down:connect(function() Git(992,37,1706) end)
