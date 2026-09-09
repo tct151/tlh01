@@ -1,5 +1,5 @@
 
-VVV=17 
+VVV=17 CraftT=1
 
 sxx = game.workspace.CurrentCamera.ViewportSize.X
 LName=tostring(game.Players.LocalPlayer)
@@ -57,6 +57,7 @@ Btnrm[4][TX]="SAT"
 Btnrm[5][TX]="SIL"
 Btnrm[6][TX]="ATAK"
 Btnrm[7][TX]="WORLD"
+Btnrm[8][TX]="CRF "..CraftT
 
 Btnrm[11][TX]="AFK"
 Btnrm[12][TX]="ESP"
@@ -71,7 +72,7 @@ Btnrm[15][TX]="SERV"
 Btnrm[1].MouseButton2Down:connect(function() Topla1() end)
 Btnrm[2].MouseButton2Down:connect(function() eniyial() end)
 Btnrm[3].MouseButton2Down:connect(function() sat() end)
-
+Btnrm[8].MouseButton2Down:connect(function() CraftT=CraftT+1 if CraftT>3 then CraftT=1 end Btnrm[8][TX]="CRF "..CraftT end)
 
 
 Btnrm[7].MouseButton1Down:connect(function() Git(992,37,1706) end)
@@ -81,6 +82,7 @@ spawn(function() while ext do task.wait(.1)  if Btnrm[1][ST]==BSRD then Topla1()
 spawn(function() while ext do task.wait(.1)  if Btnrm[2][ST]==BSRD then Dig1() end end end)
 spawn(function() while ext do task.wait(2)   if Btnrm[3][ST]==BSRD then Reb1() end end end)
 spawn(function() while ext do task.wait(.5)  if Btnrm[6][ST]==BSRD then Atak() end end end)
+spawn(function() while ext do task.wait(1)   if Btnrm[8][ST]==BSRD then Craft() end end end)
 --spawn(function() while ext do task.wait(1)   if Btnrm[5][ST]==BSRD then  end end end)
 
 
@@ -124,6 +126,36 @@ end
 
 end
 
+
+function Craft()
+
+i="Big"
+v="VineGrappler"
+t="normal"
+
+if CraftT==1 then i="Big"   t="normal" end 
+if CraftT==2 then i="Huge"  t="big"    end 
+if CraftT==3 then i="Giant" t="huge" end 
+
+
+for l=1,5 do task.wait()
+game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.SizeMachineService.RF.RemoveIngredient:InvokeServer(i)
+end
+
+task.wait()
+game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.SizeMachineService.RF.SelectLoot
+:InvokeServer(i,"loot|".. v .."|"..t)
+
+for l=1,5 do task.wait()
+game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.SizeMachineService.RF.AddIngredient:InvokeServer(i)
+end
+
+task.wait()
+game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.SizeMachineService.RF.Craft:InvokeServer(i)
+
+
+end
+
 function Atak()
 
 game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.AttackService.RE.AttackRequested:FireServer()
@@ -153,9 +185,17 @@ end
 
 function sat()
 
+game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.BaseTeleportService.RF.TeleportToSpawn:InvokeServer()
+task.wait()
+game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.BaseTeleportService.RF.TeleportToSpawn:InvokeServer()
+task.wait()
 
-game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.DataService.RF.SellAllBackpackLoot:InvokeServer()
-task.wait(.1)
+if Btnrm[4][ST]==BSRD then
+	game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.DataService.RF.SellAllBackpackLoot:InvokeServer()
+	task.wait()
+	game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.DataService.RF.SellAllBackpackLoot:InvokeServer()
+	task.wait()
+end
 
 
 end
@@ -193,7 +233,110 @@ game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_k
 end
 
 
+
+
+
+
+
+
+
 function Topla1()
+
+Btnrm[14][TX]="EN 1"
+
+
+sat()
+
+--local target = getDeepChild(game:GetService("Players").LocalPlayer.PlayerGui, "MainScreenGui.Currencies.Backpack.Value")
+
+--if target and target.Text then 
+
+	--local x, y = target.Text:match("^(%d+)/(%d+)$")
+	--x, y = tonumber(x), tonumber(y)
+
+	--if x and y and x > y-3 then
+
+		game:GetService("ReplicatedStorage").Packages._Index:FindFirstChild("acecateer_knit@1.7.2").knit.Services.BaseTeleportService.RF.TeleportToSpawn:InvokeServer()
+		task.wait(.1)
+--if Btnrm[4][ST]==BSRD then sat() end
+		
+	--else
+
+	
+	
+
+Btnrm[14][TX]="EN 2"
+
+local items = {}
+
+-- workspace.Zones içindeki tüm Model'leri tarama
+for _, desc in ipairs(workspace.Zones:GetDescendants()) do
+	if Btnrm[5][ST]==BSRD and string.find(desc.Name,"Grass") then desc:Destroy() end
+	if desc:IsA("Model") then price=nil
+		-- Özellik penceresinde göründüğü için GetAttribute kullanıyoruz
+		local price = desc:GetAttribute("LootSellPrice")
+		if price then
+		
+		
+			--if string.find(tostring(desc.Name),"Violin") then price=price*100 end
+			--if string.find(tostring(desc.Name),"Cannon") then price=price*100 end
+			if string.find(tostring(desc.Name),"Vine")   then price=price*100 end
+			
+			table.insert(items, {Model = desc, Price = price})
+		end
+	end
+end
+
+--Btnrm[14][TX]="EN 3"
+
+-- LootSellPrice değerine göre yüksekten düşüğe sıralama
+table.sort(items, function(a, b) return a.Price > b.Price end)
+
+--Btnrm[14][TX]="EN 4"
+
+-- En yüksek değerli modeli işleme alma
+if #items > 4 then
+
+for i=1,20 do
+
+	
+	local bestItem = items[i].Model
+	local basePart = bestItem:FindFirstChild("Base")
+	
+	HRT=nil HRT=game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+
+	if HRT~=nil and basePart then
+		-- Karakteri Base CFrame konumuna ışınlama (üst üste binmemesi için hafif yukarı offset verilebilir)
+		HRT.CFrame = basePart.CFrame task.wait()
+		HRT.CFrame = basePart.CFrame task.wait()
+		--+ Vector3.new(0, 3, 0)
+		-- Işınlanma gerçekleştikten sonra kısa bir bekleme ve prompt tetikleme
+		--task.wait()
+		local promptAttachment = basePart:FindFirstChild("PickupPromptAttachment")
+		if promptAttachment then
+			local prompt = promptAttachment:FindFirstChild("PickupPrompt")
+			if prompt then
+				--Btnrm[14][TX]="5"
+				fire(prompt) task.wait()
+				fire(prompt) task.wait()
+				--fire(prompt) task.wait()
+				--if Btnrm[5][ST]==BSRD and basePart then Btnrm[14][TX]="7" basePart.Parent:Destroy() Btnrm[14][TX]="8" end
+				--Btnrm[14][TX]="6"
+				--task.wait()
+			end
+		end
+	end
+end
+	
+end
+
+--end 
+--end
+
+end
+
+
+function Topla2()
 
 Btnrm[14][TX]="EN 1"
 
@@ -344,6 +487,12 @@ function Afk()
 	vim=game:GetService("VirtualInputManager")if vim then
     vim:SendKeyEvent(true, Enum.KeyCode.K,false,game) task.wait(0.5)
     vim:SendKeyEvent(false, Enum.KeyCode.K, false, game)
+    else game:GetService('VirtualUser'):Button1Down(Vector2.new(0,0)) task.wait(0.5)
+    game:GetService('VirtualUser'):Button1Up(Vector2.new(0,0)) end
+	
+	vim=game:GetService("VirtualInputManager")if vim then
+    vim:SendKeyEvent(true, Enum.KeyCode.W,false,game) task.wait(0.5)
+    vim:SendKeyEvent(false, Enum.KeyCode.W, false, game)
     else game:GetService('VirtualUser'):Button1Down(Vector2.new(0,0)) task.wait(0.5)
     game:GetService('VirtualUser'):Button1Up(Vector2.new(0,0)) end
 
