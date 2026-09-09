@@ -1,5 +1,5 @@
 
-VVV=17 CraftT=1
+VVV=18 CraftT=1
 
 sxx = game.workspace.CurrentCamera.ViewportSize.X
 LName=tostring(game.Players.LocalPlayer)
@@ -278,8 +278,8 @@ for _, desc in ipairs(workspace.Zones:GetDescendants()) do
 		if price then
 		
 		
-			--if string.find(tostring(desc.Name),"Violin") then price=price*100 end
-			--if string.find(tostring(desc.Name),"Cannon") then price=price*100 end
+			if string.find(tostring(desc.Name),"Levi") then price=price*100 end
+			if string.find(tostring(desc.Name),"Astral") then price=price*100 end
 			if string.find(tostring(desc.Name),"Vine")   then price=price*100 end
 			
 			table.insert(items, {Model = desc, Price = price})
@@ -732,7 +732,7 @@ end
 
 
 
-yaz("CUT GRASS YUKLENDI")
+yaz(VVV.."  -  CUT GRASS")
 
 
 
