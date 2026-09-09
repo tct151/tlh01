@@ -1,4 +1,6 @@
 
+-- loadstring(game:HttpGet("https://raw.githubusercontent.com/tct151/tlh01/refs/heads/main/CUTGRASS"))() 
+
 VVV=21 CraftT=1
 
 sxx = game.workspace.CurrentCamera.ViewportSize.X
